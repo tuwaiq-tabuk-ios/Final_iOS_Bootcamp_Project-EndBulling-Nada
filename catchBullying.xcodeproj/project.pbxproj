@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1805138C276A16E000F3265A /* PsicologistQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1805138B276A16E000F3265A /* PsicologistQuestionsViewController.swift */; };
-		1807B9DD2770A7E8005D40E7 /* LoginViewControllerDoctorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1807B9DC2770A7E8005D40E7 /* LoginViewControllerDoctorViewController.swift */; };
+		1807B9DD2770A7E8005D40E7 /* DoctorLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1807B9DC2770A7E8005D40E7 /* DoctorLoginViewController.swift */; };
+		181CD8562777225300E0C105 /* UserHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CD8552777225300E0C105 /* UserHomeViewController.swift */; };
+		181CD8582777248200E0C105 /* DoctorHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CD8572777248200E0C105 /* DoctorHomeViewController.swift */; };
 		182BD464276DBAE600FA32BC /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182BD463276DBAE600FA32BC /* UserModel.swift */; };
 		18798171276B4F2000FD4F8C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18798170276B4F2000FD4F8C /* GoogleService-Info.plist */; };
 		187BA3102768D73C00CBB7CC /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BA30F2768D73C00CBB7CC /* LandingViewController.swift */; };
@@ -37,7 +39,9 @@
 
 /* Begin PBXFileReference section */
 		1805138B276A16E000F3265A /* PsicologistQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsicologistQuestionsViewController.swift; sourceTree = "<group>"; };
-		1807B9DC2770A7E8005D40E7 /* LoginViewControllerDoctorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerDoctorViewController.swift; sourceTree = "<group>"; };
+		1807B9DC2770A7E8005D40E7 /* DoctorLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorLoginViewController.swift; sourceTree = "<group>"; };
+		181CD8552777225300E0C105 /* UserHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeViewController.swift; sourceTree = "<group>"; };
+		181CD8572777248200E0C105 /* DoctorHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorHomeViewController.swift; sourceTree = "<group>"; };
 		182BD463276DBAE600FA32BC /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		18798170276B4F2000FD4F8C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		187BA30F2768D73C00CBB7CC /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				187BA30F2768D73C00CBB7CC /* LandingViewController.swift */,
+				181CD8552777225300E0C105 /* UserHomeViewController.swift */,
 				187BA3112768EBC400CBB7CC /* LoginViewControllerUser.swift */,
 				189207102769F95F0008B4B7 /* UserSignupViewController.swift */,
 				1805138B276A16E000F3265A /* PsicologistQuestionsViewController.swift */,
@@ -157,7 +162,8 @@
 				18C6A921276F1E480056240D /* SupportViewController.swift */,
 				18E1865F276972B100367E68 /* DoctorSignupViewController.swift */,
 				18C6A917276F19F10056240D /* QuestionsViewController.swift */,
-				1807B9DC2770A7E8005D40E7 /* LoginViewControllerDoctorViewController.swift */,
+				1807B9DC2770A7E8005D40E7 /* DoctorLoginViewController.swift */,
+				181CD8572777248200E0C105 /* DoctorHomeViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -249,12 +255,14 @@
 				18C6A91E276F1C670056240D /* ProFileViewController.swift in Sources */,
 				18E18660276972B100367E68 /* DoctorSignupViewController.swift in Sources */,
 				18E915EE2767E86B005772AB /* AppDelegate.swift in Sources */,
+				181CD8562777225300E0C105 /* UserHomeViewController.swift in Sources */,
 				18C6A92D276F41B40056240D /* MainTF.swift in Sources */,
 				18E915F02767E86B005772AB /* SceneDelegate.swift in Sources */,
 				189207112769F95F0008B4B7 /* UserSignupViewController.swift in Sources */,
-				1807B9DD2770A7E8005D40E7 /* LoginViewControllerDoctorViewController.swift in Sources */,
+				1807B9DD2770A7E8005D40E7 /* DoctorLoginViewController.swift in Sources */,
 				18C6A922276F1E480056240D /* SupportViewController.swift in Sources */,
 				18C6A916276F08100056240D /* DoctorModel.swift in Sources */,
+				181CD8582777248200E0C105 /* DoctorHomeViewController.swift in Sources */,
 				18C6A91C276F1BCC0056240D /* ListOfDoctoresViewController.swift in Sources */,
 				187BA3102768D73C00CBB7CC /* LandingViewController.swift in Sources */,
 				182BD464276DBAE600FA32BC /* UserModel.swift in Sources */,
@@ -409,6 +417,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BF3KGN734D;
 				INFOPLIST_FILE = catchBullying/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -428,6 +437,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BF3KGN734D;
 				INFOPLIST_FILE = catchBullying/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

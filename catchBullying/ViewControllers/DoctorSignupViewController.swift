@@ -7,6 +7,8 @@
 
 import UIKit
 import FirebaseAuth
+import Firebase
+import FirebaseFirestoreSwift
 
 class DoctorSignupViewController: UIViewController {
   
@@ -28,12 +30,55 @@ class DoctorSignupViewController: UIViewController {
     }
   
   @IBAction func signup(_ sender: Any) {
-    if !validateForm() {
-      errorLabel.text = errorMessage
-      return
+    if validateForm() {
+    
+
+      Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { authResult, error in
+        if let error = error {
+          if let errCode = AuthErrorCode(rawValue: error._code) {
+            switch errCode {
+            case .emailAlreadyInUse:
+              self.errorLabel.text = "emailAlreadyInUse"
+            case .wrongPassword:
+              self.errorLabel.text = "wrongPassword"
+            case .userNotFound:
+              self.errorLabel.text = "userNotFound"
+            case .invalidEmail:
+              self.errorLabel.text = "invalidEmail"
+            default:
+              self.errorLabel.text = "Error: \(errCode.rawValue)"
+            }
+          }
+          return
+        }
+        print("user created")
+        // create user file in firestore
+        // seague to questions
+        let doctor = DoctorModel(id: authResult!.user.uid,
+                                 firstName: self.firstNameTextField.text!,
+                                 lastName: self.lastNameTextField.text!,
+                                 email: self.emailTextField.text!)
+        
+        let db = Firestore.firestore()
+        do {
+          _ = try db.collection("doctors").addDocument(from: doctor) { error in
+            if let error = error {
+              print(error.localizedDescription)
+              return
+            }
+            
+            //
+            self.performSegue(withIdentifier: "doctorSignupToQuestions", sender: nil)
+          }
+        } catch {
+          print(error.localizedDescription)
+        }
+        
+        
+        
+      }
+
     }
-    let vc = storyboard?.instantiateViewController(withIdentifier: "Questions")
-    navigationController?.pushViewController(vc!, animated: true)
   }
   
   func validateForm() -> Bool {

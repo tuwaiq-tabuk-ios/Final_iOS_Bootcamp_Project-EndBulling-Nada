@@ -7,11 +7,13 @@
 
 import UIKit
 import FirebaseAuth
+import Firebase
+import FirebaseFirestoreSwift
 
 class UserSignupViewController: UIViewController {
   
   @IBOutlet weak var nicknameTextField: UITextField!
-  @IBOutlet weak var emailAddressTextField: UITextField!
+  @IBOutlet weak var emailTextField: UITextField!
   @IBOutlet weak var passwordTextField: UITextField!
   @IBOutlet weak var confirmPasswordText: UITextField!
   @IBOutlet weak var errorLabel: UILabel!
@@ -31,34 +33,52 @@ class UserSignupViewController: UIViewController {
   
   @IBAction func signUpButton(_ sender: Any) {
     
-    if !validateForm(){
+    if validateForm() {
     
-//
-//      Auth.auth().createUser(withEmail: emailAddressTextField.text!, password: passwordTextField.text!) { authResult, error in
-//        if let error = error {
-//          if let errCode = AuthErrorCode(rawValue: error._code) {
-//            switch errCode {
-//            case .wrongPassword:
-//              self.errorLabel.text = "wrongPassword"
-//            case .userNotFound:
-//              self.errorLabel.text = "userNotFound"
-//            case .invalidEmail:
-//              self.errorLabel.text = "invalidEmail"
-//            default:
-//              self.errorLabel.text = "Error: \(errCode.rawValue)"
-//            }
-//          }
-//          return
-//        }
-//        print("user created")
-//        // seague to questions
-//        self.performSegue(withIdentifier: "userSignupToQuestions", sender: nil)
-//      }
-//
+
+      Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { authResult, error in
+        if let error = error {
+          if let errCode = AuthErrorCode(rawValue: error._code) {
+            switch errCode {
+            case .emailAlreadyInUse:
+              self.errorLabel.text = "emailAlreadyInUse"
+            case .wrongPassword:
+              self.errorLabel.text = "wrongPassword"
+            case .userNotFound:
+              self.errorLabel.text = "userNotFound"
+            case .invalidEmail:
+              self.errorLabel.text = "invalidEmail"
+            default:
+              self.errorLabel.text = "Error: \(errCode.rawValue)"
+            }
+          }
+          return
+        }
+        print("user created")
+        // create user file in firestore
+        // seague to questions
+        let user = UserModel(id: authResult!.user.uid, nickName: self.nicknameTextField.text!, email: self.emailTextField.text!)
+        
+        let db = Firestore.firestore()
+        do {
+          try db.collection("users").addDocument(from: user) { error in
+            if let error = error {
+              print(error.localizedDescription)
+              return
+            }
+            
+            //
+            self.performSegue(withIdentifier: "userSignupToQuestions", sender: nil)
+          }
+        } catch {
+          print(error.localizedDescription)
+        }
+        
+        
+        
+      }
+
     }
-    
-    let vc = storyboard?.instantiateViewController(withIdentifier: "UserQuestion")
-    navigationController?.pushViewController(vc!, animated: true)
     
   }
   
@@ -69,7 +89,7 @@ class UserSignupViewController: UIViewController {
       return false
       
     }
-    if emailAddressTextField.text!.isEmpty {
+    if emailTextField.text!.isEmpty {
       errorLabel.text = "Email Addressis Missing!"
       return false
     }
@@ -93,7 +113,7 @@ class UserSignupViewController: UIViewController {
       errorLabel.text = "Password Does Not Match"
       return false
     }
-    if !emailAddressTextField.text!.contains("@") {
+    if !emailTextField.text!.contains("@") {
       errorLabel.text = "Email invalid"
       return false
     }

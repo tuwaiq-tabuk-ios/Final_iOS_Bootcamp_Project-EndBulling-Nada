@@ -138,11 +138,12 @@
                         <outlet property="errorLabel" destination="9u6-cT-fLK" id="iY4-Il-0W0"/>
                         <outlet property="loginButton" destination="2LN-80-UdM" id="FNE-8Y-ZXy"/>
                         <outlet property="passwordField" destination="Xha-E1-Chv" id="pg9-hs-by2"/>
+                        <segue destination="xB4-Cb-Z43" kind="show" identifier="userHomeScreen" id="XKs-yX-F9g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tuV-iF-j2D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1596" y="788"/>
+            <point key="canvasLocation" x="3483" y="1370"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="vxN-Ah-G6C">
@@ -217,10 +218,11 @@
             </objects>
             <point key="canvasLocation" x="5269.5652173913049" y="731.91964285714278"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Doctor Home View Controller-->
         <scene sceneID="zkI-PQ-h1J">
             <objects>
-                <tabBarController storyboardIdentifier="Doctors" id="s0U-Xj-88t" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Doctors" id="s0U-Xj-88t" customClass="DoctorHomeViewController" customModule="catchBullying" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="tl1-Lu-HVC"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Y6H-RE-q23">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -307,10 +309,11 @@
             </objects>
             <point key="canvasLocation" x="5106" y="3315"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--User Home View Controller-->
         <scene sceneID="Rfn-31-iDV">
             <objects>
-                <tabBarController storyboardIdentifier="User" id="xB4-Cb-Z43" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="User" id="xB4-Cb-Z43" customClass="UserHomeViewController" customModule="catchBullying" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="RhL-zN-UNj"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eH2-AD-s4Y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -377,10 +380,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Gmp-wX-Jj2">
-                                <rect key="frame" x="40" y="168" width="334" height="316"/>
+                                <rect key="frame" x="40" y="168" width="334" height="331"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nickname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JcR-ZP-oZs" customClass="MainTF" customModule="catchBullying" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="334" height="36"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="334" height="38.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
@@ -391,7 +394,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oku-ci-kfN" customClass="MainTF" customModule="catchBullying" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="56" width="334" height="36"/>
+                                        <rect key="frame" x="0.0" y="58.5" width="334" height="38.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
@@ -402,7 +405,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kWI-RI-fAm" customClass="MainTF" customModule="catchBullying" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="112" width="334" height="36"/>
+                                        <rect key="frame" x="0.0" y="117" width="334" height="38.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
@@ -414,7 +417,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kM4-Y6-jaw" customClass="MainTF" customModule="catchBullying" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="168" width="334" height="36"/>
+                                        <rect key="frame" x="0.0" y="175.5" width="334" height="38.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
@@ -426,7 +429,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eds-Hl-Crj">
-                                        <rect key="frame" x="0.0" y="224" width="334" height="36"/>
+                                        <rect key="frame" x="0.0" y="234" width="334" height="38.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Signup"/>
                                         <connections>
@@ -434,7 +437,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRO-Bq-Oy8">
-                                        <rect key="frame" x="0.0" y="280" width="334" height="36"/>
+                                        <rect key="frame" x="0.0" y="292.5" width="334" height="38.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <color key="textColor" systemColor="systemRedColor"/>
                                         <color key="highlightedColor" systemColor="systemRedColor"/>
@@ -453,10 +456,11 @@
                     <navigationItem key="navigationItem" id="jK3-VS-SIv"/>
                     <connections>
                         <outlet property="confirmPasswordText" destination="kM4-Y6-jaw" id="lPX-ai-Eo2"/>
-                        <outlet property="emailAddressTextField" destination="Oku-ci-kfN" id="aUZ-q9-n7B"/>
+                        <outlet property="emailTextField" destination="Oku-ci-kfN" id="lqF-k7-hjS"/>
                         <outlet property="errorLabel" destination="nRO-Bq-Oy8" id="I4g-ZW-BKj"/>
                         <outlet property="nicknameTextField" destination="JcR-ZP-oZs" id="lIb-87-bI2"/>
                         <outlet property="passwordTextField" destination="kWI-RI-fAm" id="5d8-Ap-2Cw"/>
+                        <segue destination="6RW-i1-Wkm" kind="show" identifier="userSignupToQuestions" id="89V-ht-sDZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Io1-hn-Qe3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -571,6 +575,7 @@
                         <outlet property="firstNameTextField" destination="LaY-rz-cZ6" id="7Qg-tg-NgX"/>
                         <outlet property="lastNameTextField" destination="UER-Ra-ZlT" id="X8l-ZJ-Qjh"/>
                         <outlet property="passwordTextField" destination="bAo-h7-liT" id="8De-pv-jpJ"/>
+                        <segue destination="D96-MI-h6D" kind="show" identifier="doctorSignupToQuestions" id="XT3-rf-yNK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rpx-ke-Zaa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -771,10 +776,10 @@
             </objects>
             <point key="canvasLocation" x="1066.6666666666667" y="1535.4910714285713"/>
         </scene>
-        <!--Login View Controller Doctor View Controller-->
+        <!--Doctor Login View Controller-->
         <scene sceneID="AF3-0v-nvE">
             <objects>
-                <viewController storyboardIdentifier="logindoctor" id="Zaq-C8-ZBW" customClass="LoginViewControllerDoctorViewController" customModule="catchBullying" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="logindoctor" id="Zaq-C8-ZBW" customClass="DoctorLoginViewController" customModule="catchBullying" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vNz-s1-aub">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -810,7 +815,6 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="login"/>
                                         <connections>
-                                            <action selector="login:" destination="Zaq-C8-ZBW" eventType="touchUpInside" id="cWN-S2-sEE"/>
                                             <action selector="loginButton:" destination="Zaq-C8-ZBW" eventType="touchUpInside" id="Rbn-fr-RQv"/>
                                         </connections>
                                     </button>
@@ -836,54 +840,54 @@
                     <connections>
                         <outlet property="emailField" destination="xae-aH-uJL" id="U17-hW-DLD"/>
                         <outlet property="errorLabel" destination="82O-nO-A0X" id="Rtf-ju-eb9"/>
-                        <outlet property="loginButton" destination="QmF-aY-fEt" id="ZUp-0q-Xc2"/>
                         <outlet property="passwordField" destination="XVk-7f-TLl" id="Bgy-TD-pgS"/>
+                        <segue destination="s0U-Xj-88t" kind="show" identifier="doctorHomeScreen" id="yOy-Kp-qyx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kdo-vF-KaC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2225" y="788"/>
+            <point key="canvasLocation" x="826" y="821"/>
         </scene>
     </scenes>
     <designables>
         <designable name="JcR-ZP-oZs">
-            <size key="intrinsicContentSize" width="138" height="29"/>
+            <size key="intrinsicContentSize" width="128" height="37"/>
         </designable>
         <designable name="LaY-rz-cZ6">
-            <size key="intrinsicContentSize" width="145.5" height="29"/>
+            <size key="intrinsicContentSize" width="135.5" height="37"/>
         </designable>
         <designable name="Oku-ci-kfN">
-            <size key="intrinsicContentSize" width="182" height="30.5"/>
+            <size key="intrinsicContentSize" width="172" height="38.5"/>
         </designable>
         <designable name="Rxq-Db-asF">
-            <size key="intrinsicContentSize" width="256.5" height="29"/>
+            <size key="intrinsicContentSize" width="216.5" height="38.5"/>
         </designable>
         <designable name="UER-Ra-ZlT">
-            <size key="intrinsicContentSize" width="144.5" height="29"/>
+            <size key="intrinsicContentSize" width="134.5" height="37"/>
         </designable>
         <designable name="XVk-7f-TLl">
-            <size key="intrinsicContentSize" width="168" height="29"/>
+            <size key="intrinsicContentSize" width="128" height="38.5"/>
         </designable>
         <designable name="Xha-E1-Chv">
-            <size key="intrinsicContentSize" width="168" height="29"/>
+            <size key="intrinsicContentSize" width="128" height="38.5"/>
         </designable>
         <designable name="bAo-h7-liT">
-            <size key="intrinsicContentSize" width="168" height="29"/>
+            <size key="intrinsicContentSize" width="128" height="38.5"/>
         </designable>
         <designable name="c0g-3t-5Xb">
-            <size key="intrinsicContentSize" width="182" height="30.5"/>
+            <size key="intrinsicContentSize" width="172" height="38.5"/>
         </designable>
         <designable name="kM4-Y6-jaw">
-            <size key="intrinsicContentSize" width="256.5" height="29"/>
+            <size key="intrinsicContentSize" width="216.5" height="38.5"/>
         </designable>
         <designable name="kWI-RI-fAm">
-            <size key="intrinsicContentSize" width="168" height="29"/>
+            <size key="intrinsicContentSize" width="128" height="38.5"/>
         </designable>
         <designable name="rnY-tA-uMi">
-            <size key="intrinsicContentSize" width="182" height="30.5"/>
+            <size key="intrinsicContentSize" width="172" height="38.5"/>
         </designable>
         <designable name="xae-aH-uJL">
-            <size key="intrinsicContentSize" width="182" height="30.5"/>
+            <size key="intrinsicContentSize" width="172" height="38.5"/>
         </designable>
     </designables>
     <resources>

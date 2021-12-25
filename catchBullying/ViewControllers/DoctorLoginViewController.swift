@@ -1,8 +1,8 @@
 //
-//  LoginViewController.swift
+//  LoginViewControllerDoctorViewController.swift
 //  catchBullying
 //
-//  Created by apple on 10/05/1443 AH.
+//  Created by apple on 16/05/1443 AH.
 //
 
 import UIKit
@@ -10,17 +10,18 @@ import FirebaseAuth
 import Firebase
 import FirebaseFirestoreSwift
 
-class LoginViewController: UIViewController {
+class DoctorLoginViewController: UIViewController {
   
-  @IBOutlet weak var loginButton: UIButton!
-  @IBOutlet weak var emailField: UITextField!
-  @IBOutlet weak var passwordField: UITextField!
+  @IBOutlet weak var emailField: MainTF!
+  @IBOutlet weak var passwordField: MainTF!
   @IBOutlet weak var errorLabel: UILabel!
   
-  var user: UserModel!
+  var doctor: DoctorModel!
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
   }
   
   func validate() -> Bool {
@@ -44,7 +45,8 @@ class LoginViewController: UIViewController {
     return true
   }
   
-  @IBAction func login(_ sender: UIButton) {
+  @IBAction func loginButton(_ sender: UIButton) {
+    
     sender.isEnabled = false
     if !validate() {
       sender.isEnabled = true
@@ -73,7 +75,7 @@ class LoginViewController: UIViewController {
       
       let db = Firestore.firestore()
       
-      db.collection("users").whereField("id", isEqualTo: authResult!.user.uid).getDocuments { snapshot, error in
+      db.collection("doctors").whereField("id", isEqualTo: authResult!.user.uid).getDocuments { snapshot, error in
         if let error = error {
           print(error.localizedDescription)
           sender.isEnabled = true
@@ -82,10 +84,10 @@ class LoginViewController: UIViewController {
         
         if let docs = snapshot?.documents {
           do {
-            try self.user = docs.first!.data(as: UserModel.self)
-            print("done", self.user.email)
+            try self.doctor = docs.first!.data(as: DoctorModel.self)
+            print("done", self.doctor.email)
             
-            self.performSegue(withIdentifier: "userHomeScreen", sender: nil)
+            self.performSegue(withIdentifier: "doctorHomeScreen", sender: nil)
             // seague
           } catch {
             sender.isEnabled = true
@@ -94,5 +96,6 @@ class LoginViewController: UIViewController {
         }
       }
     }
+    
   }
 }
