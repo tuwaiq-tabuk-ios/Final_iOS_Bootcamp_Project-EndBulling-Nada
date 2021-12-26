@@ -11,6 +11,11 @@
 		1807B9DD2770A7E8005D40E7 /* DoctorLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1807B9DC2770A7E8005D40E7 /* DoctorLoginViewController.swift */; };
 		181CD8562777225300E0C105 /* UserHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CD8552777225300E0C105 /* UserHomeViewController.swift */; };
 		181CD8582777248200E0C105 /* DoctorHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CD8572777248200E0C105 /* DoctorHomeViewController.swift */; };
+		181CD85A2777341C00E0C105 /* PsicologistQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CD8592777341C00E0C105 /* PsicologistQuestions.swift */; };
+		181CD880277792A300E0C105 /* DoctorProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CD87F277792A300E0C105 /* DoctorProfileViewController.swift */; };
+		181CD88227785CBB00E0C105 /* PageOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CD88127785CBB00E0C105 /* PageOnboarding.swift */; };
+		181CD88427785DA600E0C105 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CD88327785DA600E0C105 /* OnboardingViewController.swift */; };
+		181CD88627785DC200E0C105 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CD88527785DC200E0C105 /* CollectionViewCell.swift */; };
 		182BD464276DBAE600FA32BC /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182BD463276DBAE600FA32BC /* UserModel.swift */; };
 		18798171276B4F2000FD4F8C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18798170276B4F2000FD4F8C /* GoogleService-Info.plist */; };
 		187BA3102768D73C00CBB7CC /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BA30F2768D73C00CBB7CC /* LandingViewController.swift */; };
@@ -24,7 +29,7 @@
 		18C6A916276F08100056240D /* DoctorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C6A915276F08100056240D /* DoctorModel.swift */; };
 		18C6A918276F19F10056240D /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C6A917276F19F10056240D /* QuestionsViewController.swift */; };
 		18C6A91C276F1BCC0056240D /* ListOfDoctoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C6A91B276F1BCC0056240D /* ListOfDoctoresViewController.swift */; };
-		18C6A91E276F1C670056240D /* ProFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C6A91D276F1C670056240D /* ProFileViewController.swift */; };
+		18C6A91E276F1C670056240D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C6A91D276F1C670056240D /* ProfileViewController.swift */; };
 		18C6A920276F1DF30056240D /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C6A91F276F1DF30056240D /* CalendarViewController.swift */; };
 		18C6A922276F1E480056240D /* SupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C6A921276F1E480056240D /* SupportViewController.swift */; };
 		18C6A92D276F41B40056240D /* MainTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C6A92C276F41B40056240D /* MainTF.swift */; };
@@ -42,6 +47,11 @@
 		1807B9DC2770A7E8005D40E7 /* DoctorLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorLoginViewController.swift; sourceTree = "<group>"; };
 		181CD8552777225300E0C105 /* UserHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeViewController.swift; sourceTree = "<group>"; };
 		181CD8572777248200E0C105 /* DoctorHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorHomeViewController.swift; sourceTree = "<group>"; };
+		181CD8592777341C00E0C105 /* PsicologistQuestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsicologistQuestions.swift; sourceTree = "<group>"; };
+		181CD87F277792A300E0C105 /* DoctorProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorProfileViewController.swift; sourceTree = "<group>"; };
+		181CD88127785CBB00E0C105 /* PageOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageOnboarding.swift; sourceTree = "<group>"; };
+		181CD88327785DA600E0C105 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		181CD88527785DC200E0C105 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		182BD463276DBAE600FA32BC /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		18798170276B4F2000FD4F8C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		187BA30F2768D73C00CBB7CC /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -50,7 +60,7 @@
 		18C6A915276F08100056240D /* DoctorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorModel.swift; sourceTree = "<group>"; };
 		18C6A917276F19F10056240D /* QuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
 		18C6A91B276F1BCC0056240D /* ListOfDoctoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfDoctoresViewController.swift; sourceTree = "<group>"; };
-		18C6A91D276F1C670056240D /* ProFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProFileViewController.swift; sourceTree = "<group>"; };
+		18C6A91D276F1C670056240D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		18C6A91F276F1DF30056240D /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		18C6A921276F1E480056240D /* SupportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportViewController.swift; sourceTree = "<group>"; };
 		18C6A92C276F41B40056240D /* MainTF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTF.swift; sourceTree = "<group>"; };
@@ -86,6 +96,8 @@
 			children = (
 				182BD463276DBAE600FA32BC /* UserModel.swift */,
 				18C6A915276F08100056240D /* DoctorModel.swift */,
+				181CD88127785CBB00E0C105 /* PageOnboarding.swift */,
+				181CD8592777341C00E0C105 /* PsicologistQuestions.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -151,19 +163,22 @@
 		18E916042767ECD9005772AB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				181CD88327785DA600E0C105 /* OnboardingViewController.swift */,
+				181CD88527785DC200E0C105 /* CollectionViewCell.swift */,
 				187BA30F2768D73C00CBB7CC /* LandingViewController.swift */,
-				181CD8552777225300E0C105 /* UserHomeViewController.swift */,
 				187BA3112768EBC400CBB7CC /* LoginViewControllerUser.swift */,
 				189207102769F95F0008B4B7 /* UserSignupViewController.swift */,
+				181CD8552777225300E0C105 /* UserHomeViewController.swift */,
 				1805138B276A16E000F3265A /* PsicologistQuestionsViewController.swift */,
 				18C6A91B276F1BCC0056240D /* ListOfDoctoresViewController.swift */,
-				18C6A91D276F1C670056240D /* ProFileViewController.swift */,
+				18C6A91D276F1C670056240D /* ProfileViewController.swift */,
 				18C6A91F276F1DF30056240D /* CalendarViewController.swift */,
 				18C6A921276F1E480056240D /* SupportViewController.swift */,
-				18E1865F276972B100367E68 /* DoctorSignupViewController.swift */,
-				18C6A917276F19F10056240D /* QuestionsViewController.swift */,
 				1807B9DC2770A7E8005D40E7 /* DoctorLoginViewController.swift */,
+				18E1865F276972B100367E68 /* DoctorSignupViewController.swift */,
 				181CD8572777248200E0C105 /* DoctorHomeViewController.swift */,
+				181CD87F277792A300E0C105 /* DoctorProfileViewController.swift */,
+				18C6A917276F19F10056240D /* QuestionsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -249,10 +264,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				181CD85A2777341C00E0C105 /* PsicologistQuestions.swift in Sources */,
 				18C6A918276F19F10056240D /* QuestionsViewController.swift in Sources */,
+				181CD88627785DC200E0C105 /* CollectionViewCell.swift in Sources */,
 				187BA3122768EBC400CBB7CC /* LoginViewControllerUser.swift in Sources */,
 				1805138C276A16E000F3265A /* PsicologistQuestionsViewController.swift in Sources */,
-				18C6A91E276F1C670056240D /* ProFileViewController.swift in Sources */,
+				181CD88427785DA600E0C105 /* OnboardingViewController.swift in Sources */,
+				18C6A91E276F1C670056240D /* ProfileViewController.swift in Sources */,
 				18E18660276972B100367E68 /* DoctorSignupViewController.swift in Sources */,
 				18E915EE2767E86B005772AB /* AppDelegate.swift in Sources */,
 				181CD8562777225300E0C105 /* UserHomeViewController.swift in Sources */,
@@ -265,6 +283,8 @@
 				181CD8582777248200E0C105 /* DoctorHomeViewController.swift in Sources */,
 				18C6A91C276F1BCC0056240D /* ListOfDoctoresViewController.swift in Sources */,
 				187BA3102768D73C00CBB7CC /* LandingViewController.swift in Sources */,
+				181CD88227785CBB00E0C105 /* PageOnboarding.swift in Sources */,
+				181CD880277792A300E0C105 /* DoctorProfileViewController.swift in Sources */,
 				182BD464276DBAE600FA32BC /* UserModel.swift in Sources */,
 				18C6A920276F1DF30056240D /* CalendarViewController.swift in Sources */,
 				18E915F82767E86B005772AB /* catchBullying.xcdatamodeld in Sources */,
