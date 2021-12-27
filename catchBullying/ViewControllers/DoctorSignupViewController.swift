@@ -54,14 +54,14 @@ class DoctorSignupViewController: UIViewController {
         print("user created")
         // create user file in firestore
         // seague to questions
-        let doctor = DoctorModel(id: authResult!.user.uid,
-                                 firstName: self.firstNameTextField.text!,
-                                 lastName: self.lastNameTextField.text!,
-                                 email: self.emailTextField.text!)
+        let user = UserModel(id: authResult!.user.uid,
+                             nickName: self.firstNameTextField.text!,
+                             email: self.emailTextField.text!,
+                             isDoctor: true)
         
         let db = Firestore.firestore()
         do {
-          _ = try db.collection("doctors").addDocument(from: doctor) { error in
+          _ = try db.collection("users").addDocument(from: user) { error in
             if let error = error {
               print(error.localizedDescription)
               return

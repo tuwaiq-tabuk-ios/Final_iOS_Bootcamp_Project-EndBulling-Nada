@@ -16,7 +16,7 @@ class DoctorLoginViewController: UIViewController {
   @IBOutlet weak var passwordField: MainTF!
   @IBOutlet weak var errorLabel: UILabel!
   
-  var doctor: DoctorModel!
+  var user: UserModel!
   
   
   override func viewDidLoad() {
@@ -75,7 +75,7 @@ class DoctorLoginViewController: UIViewController {
       
       let db = Firestore.firestore()
       
-      db.collection("doctors").whereField("id", isEqualTo: authResult!.user.uid).getDocuments { snapshot, error in
+      db.collection("users").whereField("id", isEqualTo: authResult!.user.uid).getDocuments { snapshot, error in
         if let error = error {
           print(error.localizedDescription)
           sender.isEnabled = true
@@ -84,8 +84,8 @@ class DoctorLoginViewController: UIViewController {
         
         if let docs = snapshot?.documents {
           do {
-            try self.doctor = docs.first!.data(as: DoctorModel.self)
-            print("done", self.doctor.email)
+            try self.user = docs.first!.data(as: UserModel.self)
+            print("done", self.user.email)
             
             self.performSegue(withIdentifier: "doctorHomeScreen", sender: nil)
             // seague

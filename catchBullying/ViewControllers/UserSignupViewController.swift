@@ -57,17 +57,18 @@ class UserSignupViewController: UIViewController {
         print("user created")
         // create user file in firestore
         // seague to questions
-        let user = UserModel(id: authResult!.user.uid, nickName: self.nicknameTextField.text!, email: self.emailTextField.text!)
+        let user = UserModel(id: authResult!.user.uid,
+                             nickName: self.nicknameTextField.text!,
+                             email: self.emailTextField.text!,
+                             isDoctor: false)
         
         let db = Firestore.firestore()
         do {
-          try db.collection("users").addDocument(from: user) { error in
+          _ = try db.collection("users").addDocument(from: user) { error in
             if let error = error {
               print(error.localizedDescription)
               return
             }
-            
-            //
             self.performSegue(withIdentifier: "userSignupToQuestions", sender: nil)
           }
         } catch {

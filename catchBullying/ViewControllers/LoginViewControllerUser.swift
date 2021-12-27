@@ -85,7 +85,13 @@ class LoginViewController: UIViewController {
             try self.user = docs.first!.data(as: UserModel.self)
             print("done", self.user.email)
             
-            self.performSegue(withIdentifier: "userHomeScreen", sender: nil)
+            if self.user.isDoctor {
+              self.performSegue(withIdentifier: "doctorHomeScreen", sender: nil)
+            } else {
+              self.performSegue(withIdentifier: "userHomeScreen", sender: nil)
+            }
+            
+            
             // seague
           } catch {
             sender.isEnabled = true

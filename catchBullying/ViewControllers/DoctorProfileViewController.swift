@@ -9,21 +9,28 @@ import UIKit
 
 class DoctorProfileViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  
+  @IBOutlet weak var imageView: UITableViewCell!
+  
+  @IBOutlet weak var nameLabel: UILabel!
+  @IBOutlet weak var informationsLabel: UILabel!
+  @IBOutlet weak var languageLabel: UILabel!
+  @IBOutlet weak var emailLabel: UILabel!
+  @IBOutlet weak var experienceLabel: UILabel!
+  @IBOutlet weak var zoomLabel: UILabel!
+  
+  
+  
 
-        // Do any additional setup after loading the view.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+  @IBAction func languageButton(_ sender: Any) {
+  }
+  
+  @IBAction func logoffButton(_ sender: Any) {
+  }
+  
+  
+  @IBAction func deleteAccount(_ sender: Any) {
+  }
+  
+  
 }

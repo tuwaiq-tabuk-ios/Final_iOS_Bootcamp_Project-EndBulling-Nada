@@ -11,4 +11,5 @@ struct UserModel: Codable {
   var id: String
   var nickName: String
   var email: String
+  var isDoctor: Bool
 }

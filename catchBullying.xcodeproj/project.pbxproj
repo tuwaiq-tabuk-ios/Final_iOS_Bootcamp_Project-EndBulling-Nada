@@ -16,6 +16,7 @@
 		181CD88227785CBB00E0C105 /* PageOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CD88127785CBB00E0C105 /* PageOnboarding.swift */; };
 		181CD88427785DA600E0C105 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CD88327785DA600E0C105 /* OnboardingViewController.swift */; };
 		181CD88627785DC200E0C105 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CD88527785DC200E0C105 /* CollectionViewCell.swift */; };
+		181CD88827799D1300E0C105 /* DoctorProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CD88727799D1300E0C105 /* DoctorProfile.swift */; };
 		182BD464276DBAE600FA32BC /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182BD463276DBAE600FA32BC /* UserModel.swift */; };
 		18798171276B4F2000FD4F8C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18798170276B4F2000FD4F8C /* GoogleService-Info.plist */; };
 		187BA3102768D73C00CBB7CC /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BA30F2768D73C00CBB7CC /* LandingViewController.swift */; };
@@ -52,6 +53,7 @@
 		181CD88127785CBB00E0C105 /* PageOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageOnboarding.swift; sourceTree = "<group>"; };
 		181CD88327785DA600E0C105 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		181CD88527785DC200E0C105 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		181CD88727799D1300E0C105 /* DoctorProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorProfile.swift; sourceTree = "<group>"; };
 		182BD463276DBAE600FA32BC /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		18798170276B4F2000FD4F8C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		187BA30F2768D73C00CBB7CC /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				18C6A915276F08100056240D /* DoctorModel.swift */,
 				181CD88127785CBB00E0C105 /* PageOnboarding.swift */,
 				181CD8592777341C00E0C105 /* PsicologistQuestions.swift */,
+				181CD88727799D1300E0C105 /* DoctorProfile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -177,8 +180,8 @@
 				1807B9DC2770A7E8005D40E7 /* DoctorLoginViewController.swift */,
 				18E1865F276972B100367E68 /* DoctorSignupViewController.swift */,
 				181CD8572777248200E0C105 /* DoctorHomeViewController.swift */,
-				181CD87F277792A300E0C105 /* DoctorProfileViewController.swift */,
 				18C6A917276F19F10056240D /* QuestionsViewController.swift */,
+				181CD87F277792A300E0C105 /* DoctorProfileViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				181CD8582777248200E0C105 /* DoctorHomeViewController.swift in Sources */,
 				18C6A91C276F1BCC0056240D /* ListOfDoctoresViewController.swift in Sources */,
 				187BA3102768D73C00CBB7CC /* LandingViewController.swift in Sources */,
+				181CD88827799D1300E0C105 /* DoctorProfile.swift in Sources */,
 				181CD88227785CBB00E0C105 /* PageOnboarding.swift in Sources */,
 				181CD880277792A300E0C105 /* DoctorProfileViewController.swift in Sources */,
 				182BD464276DBAE600FA32BC /* UserModel.swift in Sources */,
