@@ -18,17 +18,18 @@ class ProfileViewController: UIViewController {
   
   let data: [[ProfileCellModel]] = [
     [
-    ProfileCellModel(title: "Information",                icon: "person", color: .black),
-    ProfileCellModel(title: "Manage My Profile",          icon: "person", color: .black),
-    ProfileCellModel(title: "Change Language",            icon: "person", color: .black)
+    ProfileCellModel(title: "Information",                            icon: "person",
+                                             color: .black),
+    ProfileCellModel(title: "Manage My Profile",          icon: "person.crop.circle.badge.checkmark.fill",                     color: .black),
+    ProfileCellModel(title: "Change Language",            icon: "textformat.size.larger.ja",                                    color: .black)
      ],
     [
     ProfileCellModel(title: "Contact Customer Service",   icon: "person", color: .black),
-    ProfileCellModel(title: "Important Numbers for You",  icon: "person", color: .black),
-    ProfileCellModel(title: "Logout",                     icon: "person", color: .black)
+    ProfileCellModel(title: "Important Numbers for You",  icon: "phone",                                                   color: .black),
+    ProfileCellModel(title: "Logout",                     icon: "power", color: .black)
      ],
     [
-      ProfileCellModel(title: "Delete Account",           icon: "person", color: .red)
+      ProfileCellModel(title: "Delete Account",           icon: "delete", color: .red)
     ]
     
   ]

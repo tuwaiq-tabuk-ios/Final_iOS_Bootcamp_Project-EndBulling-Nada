@@ -14,10 +14,6 @@ class UserHomeViewController: UITabBarController {
 
       self.navigationItem.setHidesBackButton(true, animated: false)
     }
-    
 
-    /*
-    // MARK: - Navigation
- */
 
 }
