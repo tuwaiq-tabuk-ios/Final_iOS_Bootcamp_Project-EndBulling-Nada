@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import SwiftUI
 
 class ListOfDoctoresViewController: UIViewController {
 
   @IBOutlet weak var tableView: UITableView!
-  var arryListOfDoctores : [ListOfDoctores] = [ListOfDoctores(name:"name" , emil: "emil" , zoom: "zome" , image: UIImage(named: "")       ),
+  var arryListOfDoctores : [ListOfDoctores] = [ListOfDoctores(name:"name" , emil: "emil" , zoom:"zome" ,image: UIImage(named: "")       ),
      ListOfDoctores(name:"name" , emil: "emil" , zoom: "zoom"),
      ListOfDoctores(name:"name" , emil: "emil" , zoom: "zoom"),
      ListOfDoctores(name:"name" , emil: "emil" , zoom: "zoom"),
@@ -26,9 +27,10 @@ class ListOfDoctoresViewController: UIViewController {
 
     tableView.delegate = self
     tableView.dataSource = self
+    
+    
     }
 
-  
 }
 
 extension ListOfDoctoresViewController : UITableViewDelegate , UITableViewDataSource {
@@ -46,7 +48,7 @@ extension ListOfDoctoresViewController : UITableViewDelegate , UITableViewDataSo
 //   cell.textLabel?.text = arryListOfDoctores[indexPath.row].zoom
     cell.imageView?.image = arryListOfDoctores[indexPath.row].image
 //   cell.textLabel?.text = "nada"
-//    cell.imageViewDoctor.layer.cornerRadius = UIImageView.
+//    cell.imageViewDoctor.layer.cornerRadius = 
     
     return cell
   }
@@ -56,16 +58,15 @@ extension ListOfDoctoresViewController : UITableViewDelegate , UITableViewDataSo
   
   }
   
-//  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-////   print(indexPath.row)
-//  }
-//
-//
-//
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+   print(indexPath.row)
+  }
+
+
+ 
+  
 //  let vc = UIStoryboard?.instantiateViewController(withIdentifier: "profileDoctor")
-//  present(present(vc, animated: true, completion: nil)
-//
-//  }
-//
-//
+  
+  
+  
 }

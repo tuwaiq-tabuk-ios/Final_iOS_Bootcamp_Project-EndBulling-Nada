@@ -19,9 +19,10 @@ class ProfileViewController: UIViewController {
   let data: [[ProfileCellModel]] = [
     [
     ProfileCellModel(title: "Information",                            icon: "person",
-                                             color: .black),
+                                             
+                     color: .black),
     ProfileCellModel(title: "Manage My Profile",          icon: "person.crop.circle.badge.checkmark.fill",                     color: .black),
-    ProfileCellModel(title: "Change Language",            icon: "textformat.size.larger.ja",                                    color: .black)
+    ProfileCellModel(title: "Change Language",            icon: "Editor placeholder in source file",                                    color: .black)
      ],
     [
     ProfileCellModel(title: "Contact Customer Service",   icon: "person", color: .black),
@@ -92,6 +93,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
       } catch {
         print(error.localizedDescription)
       }
+    }
+    if data[indexPath.section][indexPath.row].title == "Manage My Profile" {
+      self.performSegue(withIdentifier: "userProfileToQuestion", sender: nil)
     }
   }
   

@@ -44,6 +44,16 @@ class LoginViewController: UIViewController {
     return true
   }
   
+  @IBAction func inputUser(_ sender: Any) {
+    emailField.text = "user@user.com"
+    passwordField.text = "useruser"
+  }
+  
+  @IBAction func inputDoctor(_ sender: Any) {
+    emailField.text = "doctor@doctor.com"
+    passwordField.text = "doctordoctor"
+  }
+  
   @IBAction func login(_ sender: UIButton) {
     sender.isEnabled = false
     if !validate() {

@@ -9,8 +9,9 @@ import Foundation
 import UIKit
 
 struct ListOfDoctores {
-  var name : String
-  var emil : String
-  var zoom : String
-  var image : UIImage?
+  var name           : String
+  var emil           : String
+  var zoom           : String
+  var image          : UIImage?
+
 }

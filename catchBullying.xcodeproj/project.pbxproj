@@ -11,6 +11,11 @@
 		18074214277A3BA50090BDCC /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18074213277A3BA50090BDCC /* File.swift */; };
 		18074216277AE6B50090BDCC /* ListOfDoctores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18074215277AE6B50090BDCC /* ListOfDoctores.swift */; };
 		18074218277AEDB40090BDCC /* listTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18074217277AEDB40090BDCC /* listTableViewCell.swift */; };
+		1807421A277C39EE0090BDCC /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18074219277C39EE0090BDCC /* SettingViewController.swift */; };
+		1807421C277C3F710090BDCC /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1807421B277C3F710090BDCC /* Setting.swift */; };
+		1807421E277C6FFB0090BDCC /* ProfileOfDoctor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1807421D277C6FFB0090BDCC /* ProfileOfDoctor.swift */; };
+		18074220277C805A0090BDCC /* ImportantNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1807421F277C805A0090BDCC /* ImportantNumbers.swift */; };
+		18074222277C81000090BDCC /* ImportantNumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18074221277C81000090BDCC /* ImportantNumbersViewController.swift */; };
 		1807B9DD2770A7E8005D40E7 /* DoctorLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1807B9DC2770A7E8005D40E7 /* DoctorLoginViewController.swift */; };
 		181CD8562777225300E0C105 /* UserHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CD8552777225300E0C105 /* UserHomeViewController.swift */; };
 		181CD8582777248200E0C105 /* DoctorHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CD8572777248200E0C105 /* DoctorHomeViewController.swift */; };
@@ -51,6 +56,11 @@
 		18074213277A3BA50090BDCC /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		18074215277AE6B50090BDCC /* ListOfDoctores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfDoctores.swift; sourceTree = "<group>"; };
 		18074217277AEDB40090BDCC /* listTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listTableViewCell.swift; sourceTree = "<group>"; };
+		18074219277C39EE0090BDCC /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		1807421B277C3F710090BDCC /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		1807421D277C6FFB0090BDCC /* ProfileOfDoctor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileOfDoctor.swift; sourceTree = "<group>"; };
+		1807421F277C805A0090BDCC /* ImportantNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportantNumbers.swift; sourceTree = "<group>"; };
+		18074221277C81000090BDCC /* ImportantNumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportantNumbersViewController.swift; sourceTree = "<group>"; };
 		1807B9DC2770A7E8005D40E7 /* DoctorLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorLoginViewController.swift; sourceTree = "<group>"; };
 		181CD8552777225300E0C105 /* UserHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeViewController.swift; sourceTree = "<group>"; };
 		181CD8572777248200E0C105 /* DoctorHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorHomeViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +118,9 @@
 				181CD8592777341C00E0C105 /* PsicologistQuestions.swift */,
 				181CD88727799D1300E0C105 /* DoctorProfile.swift */,
 				18074215277AE6B50090BDCC /* ListOfDoctores.swift */,
+				1807421B277C3F710090BDCC /* Setting.swift */,
+				1807421D277C6FFB0090BDCC /* ProfileOfDoctor.swift */,
+				1807421F277C805A0090BDCC /* ImportantNumbers.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -174,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				181CD88327785DA600E0C105 /* OnboardingViewController.swift */,
+				18074221277C81000090BDCC /* ImportantNumbersViewController.swift */,
 				181CD88527785DC200E0C105 /* CollectionViewCell.swift */,
 				187BA30F2768D73C00CBB7CC /* LandingViewController.swift */,
 				187BA3112768EBC400CBB7CC /* LoginViewControllerUser.swift */,
@@ -190,6 +204,7 @@
 				181CD8572777248200E0C105 /* DoctorHomeViewController.swift */,
 				18C6A917276F19F10056240D /* QuestionsViewController.swift */,
 				181CD87F277792A300E0C105 /* DoctorProfileViewController.swift */,
+				18074219277C39EE0090BDCC /* SettingViewController.swift */,
 				18074213277A3BA50090BDCC /* File.swift */,
 			);
 			path = ViewControllers;
@@ -276,16 +291,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1807421A277C39EE0090BDCC /* SettingViewController.swift in Sources */,
 				18074216277AE6B50090BDCC /* ListOfDoctores.swift in Sources */,
 				181CD85A2777341C00E0C105 /* PsicologistQuestions.swift in Sources */,
 				18C6A918276F19F10056240D /* QuestionsViewController.swift in Sources */,
 				181CD88627785DC200E0C105 /* CollectionViewCell.swift in Sources */,
+				18074222277C81000090BDCC /* ImportantNumbersViewController.swift in Sources */,
 				187BA3122768EBC400CBB7CC /* LoginViewControllerUser.swift in Sources */,
 				1805138C276A16E000F3265A /* PsicologistQuestionsViewController.swift in Sources */,
 				181CD88427785DA600E0C105 /* OnboardingViewController.swift in Sources */,
 				18C6A91E276F1C670056240D /* ProfileViewController.swift in Sources */,
 				18E18660276972B100367E68 /* DoctorSignupViewController.swift in Sources */,
 				18E915EE2767E86B005772AB /* AppDelegate.swift in Sources */,
+				18074220277C805A0090BDCC /* ImportantNumbers.swift in Sources */,
 				181CD8562777225300E0C105 /* UserHomeViewController.swift in Sources */,
 				18C6A92D276F41B40056240D /* MainTF.swift in Sources */,
 				18E915F02767E86B005772AB /* SceneDelegate.swift in Sources */,
@@ -295,6 +313,7 @@
 				18C6A916276F08100056240D /* DoctorModel.swift in Sources */,
 				18074218277AEDB40090BDCC /* listTableViewCell.swift in Sources */,
 				181CD8582777248200E0C105 /* DoctorHomeViewController.swift in Sources */,
+				1807421C277C3F710090BDCC /* Setting.swift in Sources */,
 				18C6A91C276F1BCC0056240D /* ListOfDoctoresViewController.swift in Sources */,
 				187BA3102768D73C00CBB7CC /* LandingViewController.swift in Sources */,
 				181CD88827799D1300E0C105 /* DoctorProfile.swift in Sources */,
@@ -302,6 +321,7 @@
 				181CD880277792A300E0C105 /* DoctorProfileViewController.swift in Sources */,
 				182BD464276DBAE600FA32BC /* UserModel.swift in Sources */,
 				18074214277A3BA50090BDCC /* File.swift in Sources */,
+				1807421E277C6FFB0090BDCC /* ProfileOfDoctor.swift in Sources */,
 				18C6A920276F1DF30056240D /* CalendarViewController.swift in Sources */,
 				18E915F82767E86B005772AB /* catchBullying.xcdatamodeld in Sources */,
 			);
