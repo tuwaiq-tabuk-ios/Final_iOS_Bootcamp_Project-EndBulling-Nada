@@ -13,12 +13,17 @@ class ImportantNumbersViewController: UIViewController {
   
   var importantNumbersarray : [ImportantNumbers] = [
     ImportantNumbers( title: "Child HelpLine "      , phoneNumber: "116111"    , icon: "phone"),
-    ImportantNumbers( title: "Receiving Communications Center Against Violence and Abuse"      , phoneNumber: "1919"    , icon: "phone"),
-    ImportantNumbers( title: ""      , phoneNumber: "0112075242"    , icon: "phone"),
-    ImportantNumbers( title: ""      , phoneNumber: "0126616688"    , icon: "phone"),
-    ImportantNumbers( title: ""      , phoneNumber: "0138349422"    , icon: "phone"),
-    ImportantNumbers( title: ""      , phoneNumber: "144235048"    , icon: "phone"),
-    ImportantNumbers( title: ""      , phoneNumber: "146629932"    , icon: "phone")
+    
+    ImportantNumbers( title: "Receiving Communications Center Against Violence and Abuse"      , phoneNumber: "1919"   , icon: "phone"),
+    
+    ImportantNumbers( title: "Protection Committee in Riyadh Province"      , phoneNumber: "0112075242"    , icon: "phone"),
+    
+    ImportantNumbers( title: "ProtectProtection Committee in Makkah Province"      , phoneNumber: "144235048"    , icon: "phone"),
+    
+    ImportantNumbers( title: "ProtectProtection Committee in Tabuk Province"      , phoneNumber: "14423504845"    , icon: "phone"),
+
+    
+    ImportantNumbers( title: "Protection Committee in Al-Baha Province"      , phoneNumber: "146629932"    , icon: "phone")
 
                                                     
   ]

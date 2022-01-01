@@ -7,11 +7,10 @@
 
 import UIKit
 
-struct Setting {
-  var title : String
-  var icon : String
-  var color : UIColor
-  
+struct ProfileCellModel {
+  var title: String
+  var icon: String
+  var color: UIColor
 }
 
 

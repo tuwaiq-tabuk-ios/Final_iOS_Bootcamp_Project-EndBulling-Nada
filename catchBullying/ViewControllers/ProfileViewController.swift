@@ -8,27 +8,21 @@
 import UIKit
 import FirebaseAuth
 
-struct ProfileCellModel {
-  var title: String
-  var icon: String
-  var color: UIColor
-}
-
 class ProfileViewController: UIViewController {
   
   let data: [[ProfileCellModel]] = [
     [
-    ProfileCellModel(title: "Information",                            icon: "person",
-                                             
-                     color: .black),
-    ProfileCellModel(title: "Manage My Profile",          icon: "person.crop.circle.badge.checkmark.fill",                     color: .black),
-    ProfileCellModel(title: "Change Language",            icon: "Editor placeholder in source file",                                    color: .black)
-     ],
+      ProfileCellModel(title: "Information",                            icon: "person",
+                       
+                       color: .black),
+      ProfileCellModel(title: "Manage My Profile",          icon: "person.crop.circle.badge.checkmark.fill",                     color: .black),
+      ProfileCellModel(title: "Change Language",            icon: "Editor placeholder in source file",                                    color: .black)
+    ],
     [
-    ProfileCellModel(title: "Contact Customer Service",   icon: "person", color: .black),
-    ProfileCellModel(title: "Important Numbers for You",  icon: "phone",                                                   color: .black),
-    ProfileCellModel(title: "Logout",                     icon: "power", color: .black)
-     ],
+      ProfileCellModel(title: "Contact Customer Service",   icon: "person", color: .black),
+      ProfileCellModel(title: "Important Numbers for You",  icon: "phone",                                                   color: .black),
+      ProfileCellModel(title: "Logout",                     icon: "power", color: .black)
+    ],
     [
       ProfileCellModel(title: "Delete Account",           icon: "delete", color: .red)
     ]
@@ -40,9 +34,9 @@ class ProfileViewController: UIViewController {
   override func viewDidAppear(_ animated: Bool) {
     Auth.auth().addStateDidChangeListener { auth, user in
       if let user = user {
-          print("User is signed in.")
+        print("User is signed in.")
       } else {
-          print("User is signed out.")
+        print("User is signed out.")
         let controller = self.storyboard?.instantiateViewController(identifier: "MainVC") as! UINavigationController
         controller.modalPresentationStyle = .fullScreen
         controller.modalTransitionStyle = .flipHorizontal
@@ -84,19 +78,48 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     return cell
   }
   
+  //  [
+  //    ProfileCellModel(title: "Information",                            icon: "person",
+  //
+  //                     color: .black),
+  //    ProfileCellModel(title: "Manage My Profile",          icon: "person.crop.circle.badge.checkmark.fill",                     color: .black),
+  //    ProfileCellModel(title: "Change Language",            icon: "Editor placeholder in source file",                                    color: .black)
+  //  ],
+  //  [
+  //    ProfileCellModel(title: "Contact Customer Service",   icon: "person", color: .black),
+  //    ProfileCellModel(title: "Important Numbers for You",  icon: "phone",                                                   color: .black),
+  //    ProfileCellModel(title: "Logout",                     icon: "power", color: .black)
+  //  ],
+  //  [
+  //    ProfileCellModel(title: "Delete Account",           icon: "delete", color: .red)
+  //  ]
+  
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
-    if data[indexPath.section][indexPath.row].title == "Logout" {
-      // logout
+    switch data[indexPath.section][indexPath.row].title {
+    case "Information":
+      self.performSegue(withIdentifier: "information", sender: nil)
+    case "Manage My Profile":
+      self.performSegue(withIdentifier: "userProfileToQuestion", sender: nil)
+    case "Change Language":
+      print("change language")
+    case "Contact Customer Service":
+      print("Contact Customer Service")
+    case "Important Numbers for You":
+      self.performSegue(withIdentifier: "phone", sender: nil)
+    case "Logout":
       do {
         try Auth.auth().signOut()
       } catch {
         print(error.localizedDescription)
       }
+    case "Delete Account":
+      print("delete account")
+    default: fatalError()
     }
-    if data[indexPath.section][indexPath.row].title == "Manage My Profile" {
-      self.performSegue(withIdentifier: "userProfileToQuestion", sender: nil)
-    }
+    
+    
+    
   }
   
 }
