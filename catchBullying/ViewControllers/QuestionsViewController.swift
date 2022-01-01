@@ -1,19 +1,19 @@
 //
-//  QuestionsViewController.swift
+//  PsicologistQuestionsViewController.swift
 //  catchBullying
 //
-//  Created by apple on 15/05/1443 AH.
+//  Created by apple on 11/05/1443 AH.
 //
 
 import UIKit
 
-class DoctorQuestionsViewController: UIViewController {
+class QuestionsViewController: UIViewController {
   var currentQuestionIndex: Int = 0
   var answers: [String] = []
   
   let arryPsicologistQuestions : [PsicologistQuestions] = [
     PsicologistQuestions(question: "Gender", answers:["Male" , "Female" ,"Other"]),
-    PsicologistQuestions(question: "Do you currentiy have a job?", answers:["yes" , "No"]),
+    PsicologistQuestions(question: "Do you currentiy have a job?", answers:["yes" , "No" ,"prefer not answer"]),
     PsicologistQuestions(question: "Have you taken a psychiatric medication befor?", answers: ["yes" , "No" ,"prefer not answer"]),
     PsicologistQuestions(question: "Does your family have a history of psychiatrist counseling?", answers: ["yes" , "No" ,"prefer not answer"]),
     PsicologistQuestions(question: "Were you subjected to domestic violence (verbal , psychological, physical, sexual , negligence ...)?", answers: ["yes" , "No" ,"prefer not answer"]),
@@ -46,10 +46,23 @@ class DoctorQuestionsViewController: UIViewController {
       setupQuestion()
     } else {
       print("dismiss")
-      self.dismiss(animated: true, completion: nil)
-      //self.navigationController?.dismiss(animated: true, completion: nil)
-//      let vc = storyboard?.instantiateViewController(withIdentifier: "loginuser")
-//      navigationController?.pushViewController(vc!, animated: true)
+      if isUpdating {
+        self.dismiss(animated: true, completion: nil)
+      } else {
+        if user.isDoctor {
+          let controller = self.storyboard?.instantiateViewController(identifier: "DoctorHomeVC") as! DoctorHomeViewController
+          controller.modalPresentationStyle = .fullScreen
+          controller.modalTransitionStyle = .flipHorizontal
+          self.present(controller, animated: false, completion: nil)
+        } else {
+          let controller = self.storyboard?.instantiateViewController(identifier: "UserHomeVC") as! UserHomeViewController
+          controller.modalPresentationStyle = .fullScreen
+          controller.modalTransitionStyle = .flipHorizontal
+          self.present(controller, animated: false, completion: nil)
+        }
+      }
+      
+      
     }
   }
   
@@ -85,4 +98,3 @@ class DoctorQuestionsViewController: UIViewController {
   
   
 }
-

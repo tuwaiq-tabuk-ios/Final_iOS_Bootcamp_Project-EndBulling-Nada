@@ -16,15 +16,15 @@ class ProfileViewController: UIViewController {
                        
                        color: .black),
       ProfileCellModel(title: "Manage My Profile",          icon: "person.crop.circle.badge.checkmark.fill",                     color: .black),
-      ProfileCellModel(title: "Change Language",            icon: "Editor placeholder in source file",                                    color: .black)
+      ProfileCellModel(title: "Change Language",            icon: "textformat.size.larger.ja",                                    color: .black)
     ],
     [
-      ProfileCellModel(title: "Contact Customer Service",   icon: "person", color: .black),
+      ProfileCellModel(title: "Contact Customer Service",   icon: "bubble.left.and.bubble.right", color: .black),
       ProfileCellModel(title: "Important Numbers for You",  icon: "phone",                                                   color: .black),
       ProfileCellModel(title: "Logout",                     icon: "power", color: .black)
     ],
     [
-      ProfileCellModel(title: "Delete Account",           icon: "delete", color: .red)
+      ProfileCellModel(title: "Delete Account",           icon: "trash.square", color: .red)
     ]
     
   ]
@@ -44,6 +44,7 @@ class ProfileViewController: UIViewController {
         self.present(controller, animated: false, completion: nil)
       }
     }
+  
   }
   
   override func viewDidLoad() {
@@ -58,6 +59,7 @@ class ProfileViewController: UIViewController {
     tableView.layer.shadowOpacity = 1 // any value you want
     tableView.layer.shadowRadius = 100 // any value you want
     tableView.layer.shadowOffset = .init(width: 0, height: 10)
+    
   }
 }
 
@@ -100,7 +102,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     case "Information":
       self.performSegue(withIdentifier: "information", sender: nil)
     case "Manage My Profile":
-      self.performSegue(withIdentifier: "userProfileToQuestion", sender: nil)
+      self.performSegue(withIdentifier: "PatientToQuestions", sender: nil)
     case "Change Language":
       print("change language")
     case "Contact Customer Service":

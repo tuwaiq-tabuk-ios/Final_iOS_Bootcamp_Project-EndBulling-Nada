@@ -12,10 +12,9 @@ import FirebaseFirestoreSwift
 
 class LandingViewController: UIViewController {
   
-  var user: UserModel!
-  
   override func viewDidLoad() {
     super.viewDidLoad()
+    //try! Auth.auth().signOut()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -33,13 +32,23 @@ class LandingViewController: UIViewController {
         
         if let docs = snapshot?.documents {
           do {
-            try self.user = docs.first!.data(as: UserModel.self)
-            print("done", self.user.email)
+            try user = docs.first!.data(as: UserModel.self)
+            print("done", user.email)
             
-            if self.user.isDoctor {
-              self.performSegue(withIdentifier: "landingToDoctorHome", sender: nil)
+            if user.isDoctor {
+//              self.performSegue(withIdentifier: "landingToDoctorHome", sender: nil)
+              let controller = self.storyboard?.instantiateViewController(identifier: "DoctorHomeVC") as! DoctorHomeViewController
+              controller.modalPresentationStyle = .fullScreen
+              controller.modalTransitionStyle = .flipHorizontal
+              //UserDefaults.standard.hasOnboarded = true
+              self.present(controller, animated: false, completion: nil)
             } else {
-              self.performSegue(withIdentifier: "landingToUserHome", sender: nil)
+//              self.performSegue(withIdentifier: "landingToUserHome", sender: nil)
+              let controller = self.storyboard?.instantiateViewController(identifier: "UserHomeVC") as! UserHomeViewController
+              controller.modalPresentationStyle = .fullScreen
+              controller.modalTransitionStyle = .flipHorizontal
+              //UserDefaults.standard.hasOnboarded = true
+              self.present(controller, animated: false, completion: nil)
             }
             
             

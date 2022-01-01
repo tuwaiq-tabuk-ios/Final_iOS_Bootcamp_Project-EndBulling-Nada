@@ -80,7 +80,7 @@ extension SettingViewController : UITableViewDelegate , UITableViewDataSource {
       }
     }
     if data[indexPath.row].title == "Manage My Profile" {
-      self.performSegue(withIdentifier: "ToDoctorQuestion", sender: nil)
+      self.performSegue(withIdentifier: "DoctorToQuestions", sender: nil)
     }
   }
   
