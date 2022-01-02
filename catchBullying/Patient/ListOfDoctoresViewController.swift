@@ -48,7 +48,7 @@ extension ListOfDoctoresViewController : UITableViewDelegate , UITableViewDataSo
 //   cell.textLabel?.text = arryListOfDoctores[indexPath.row].zoom
     cell.imageView?.image = arryListOfDoctores[indexPath.row].image
 //   cell.textLabel?.text = "nada"
-//    cell.imageViewDoctor.layer.cornerRadius = 
+    cell.imageViewDoctor.layer.cornerRadius = cell.imageViewDoctor.frame.width/2
     
     return cell
   }
@@ -60,13 +60,23 @@ extension ListOfDoctoresViewController : UITableViewDelegate , UITableViewDataSo
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
    print(indexPath.row)
+    
+  let vc = storyboard?.instantiateViewController(withIdentifier: "ListDoctor")
+    if let viewcontroller = vc {
+    present(vc!, animated: true, completion: nil)
   }
 
-
+  }
+  
+//
  
-  
-//  let vc = UIStoryboard?.instantiateViewController(withIdentifier: "profileDoctor")
-  
+//
+//  private func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//    tableView.deselectRow(at: indexPath, animated: true)
+//    self.performSegue(withIdentifier: "ListDetail", sender: nil)
+//
+//}
+
   
   
 }

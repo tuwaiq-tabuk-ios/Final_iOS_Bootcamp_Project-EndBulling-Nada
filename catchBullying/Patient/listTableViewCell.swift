@@ -12,9 +12,7 @@ class listTableViewCell: UITableViewCell {
   
   @IBOutlet weak var imageViewDoctor: UIImageView!
   @IBOutlet weak var nameLabel: UILabel!
-  
-  @IBOutlet weak var emailLabel: UILabel!
-  
+  @IBOutlet weak var emailLabel: UILabel!  
   @IBOutlet weak var zoomLabel: UILabel!
   override func awakeFromNib() {
         super.awakeFromNib()
