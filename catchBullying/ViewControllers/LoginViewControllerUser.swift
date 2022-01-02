@@ -17,8 +17,6 @@ class LoginViewController: UIViewController {
   @IBOutlet weak var passwordField: UITextField!
   @IBOutlet weak var errorLabel: UILabel!
   
-  var user: UserModel!
-  
   override func viewDidLoad() {
     super.viewDidLoad()
   }
@@ -42,6 +40,16 @@ class LoginViewController: UIViewController {
     }
     
     return true
+  }
+  
+  @IBAction func inputUser(_ sender: Any) {
+    emailField.text = "patient@patient.com"
+    passwordField.text = "12345678"
+  }
+  
+  @IBAction func inputDoctor(_ sender: Any) {
+    emailField.text = "doctor@doctor.com"
+    passwordField.text = "112345678"
   }
   
   @IBAction func login(_ sender: UIButton) {
@@ -82,10 +90,24 @@ class LoginViewController: UIViewController {
         
         if let docs = snapshot?.documents {
           do {
-            try self.user = docs.first!.data(as: UserModel.self)
-            print("done", self.user.email)
+            try user = docs.first!.data(as: UserModel.self)
+            print("done", user.email)
             
-            self.performSegue(withIdentifier: "userHomeScreen", sender: nil)
+            if user.isDoctor {
+//              self.performSegue(withIdentifier: "landingToDoctorHome", sender: nil)
+              let controller = self.storyboard?.instantiateViewController(identifier: "DoctorHomeVC") as! DoctorHomeViewController
+              controller.modalPresentationStyle = .fullScreen
+              controller.modalTransitionStyle = .flipHorizontal
+              //UserDefaults.standard.hasOnboarded = true
+              self.present(controller, animated: false, completion: nil)
+            } else {
+//              self.performSegue(withIdentifier: "landingToUserHome", sender: nil)
+              let controller = self.storyboard?.instantiateViewController(identifier: "UserHomeVC") as! UserHomeViewController
+              controller.modalPresentationStyle = .fullScreen
+              controller.modalTransitionStyle = .flipHorizontal
+              //UserDefaults.standard.hasOnboarded = true
+              self.present(controller, animated: false, completion: nil)
+            }
             // seague
           } catch {
             sender.isEnabled = true

@@ -1,18 +1,12 @@
-//
-//  UserSignupViewController.swift
-//  catchBullying
-//
-//  Created by apple on 11/05/1443 AH.
-//
-
 import UIKit
 import FirebaseAuth
 import Firebase
 import FirebaseFirestoreSwift
 
-class UserSignupViewController: UIViewController {
+class SignUpViewController: UIViewController {
   
-  @IBOutlet weak var nicknameTextField: UITextField!
+  
+  @IBOutlet weak var userTypePicker: UISegmentedControl!
   @IBOutlet weak var emailTextField: UITextField!
   @IBOutlet weak var passwordTextField: UITextField!
   @IBOutlet weak var confirmPasswordText: UITextField!
@@ -57,18 +51,57 @@ class UserSignupViewController: UIViewController {
         print("user created")
         // create user file in firestore
         // seague to questions
-        let user = UserModel(id: authResult!.user.uid, nickName: self.nicknameTextField.text!, email: self.emailTextField.text!)
+        let userModel = UserModel(id: authResult!.user.uid,
+                             email: self.emailTextField.text!,
+                                  isDoctor: self.userTypePicker.selectedSegmentIndex == 1)
         
         let db = Firestore.firestore()
         do {
-          try db.collection("users").addDocument(from: user) { error in
+          _ = try db.collection("users").addDocument(from: userModel) { error in
             if let error = error {
               print(error.localizedDescription)
               return
             }
-            
-            //
-            self.performSegue(withIdentifier: "userSignupToQuestions", sender: nil)
+            user = userModel
+            isUpdating = false
+            if self.userTypePicker.selectedSegmentIndex == 0 {
+              let profileModel = PatientModel(id: authResult!.user.uid,
+                                         firstName: "",
+                                         lastName: "",
+                                         mobileNumber: "",
+                                         answers: [])
+              do {
+                _ = try db.collection("patients").addDocument(from: profileModel) { error in
+                  if let error = error {
+                    print(error.localizedDescription)
+                    return
+                  }
+                  
+                  patientProfile = profileModel
+                  self.performSegue(withIdentifier: "userSignupToQuestions", sender: nil)
+                }
+              } catch {
+                print(error.localizedDescription)
+              }
+            } else {
+              let profileModel = DoctorModel(id: authResult!.user.uid,
+                                         firstName: "",
+                                         lastName: "",
+                                         mobileNumber: "",
+                                         answers: [])
+              do {
+                _ = try db.collection("doctors").addDocument(from: profileModel) { error in
+                  if let error = error {
+                    print(error.localizedDescription)
+                    return
+                  }
+                  doctorProfile = profileModel
+                  self.performSegue(withIdentifier: "userSignupToQuestions", sender: nil)
+                }
+              } catch {
+                print(error.localizedDescription)
+              }
+            }
           }
         } catch {
           print(error.localizedDescription)
@@ -84,11 +117,6 @@ class UserSignupViewController: UIViewController {
   
   
   func validateForm() ->Bool {
-    if nicknameTextField.text!.isEmpty {
-      errorLabel.text = "Nickname is Missing!"
-      return false
-      
-    }
     if emailTextField.text!.isEmpty {
       errorLabel.text = "Email Addressis Missing!"
       return false
@@ -123,4 +151,3 @@ class UserSignupViewController: UIViewController {
   }
   
 }
-

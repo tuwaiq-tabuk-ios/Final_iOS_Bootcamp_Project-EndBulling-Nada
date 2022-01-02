@@ -1,17 +1,16 @@
 //
-//  DoctorModel.swift
+//  PatientModel.swift
 //  catchBullying
 //
-//  Created by apple on 15/05/1443 AH.
+//  Created by apple on 29/05/1443 AH.
 //
 
 import Foundation
 
-struct DoctorModel: Codable {
+struct PatientModel: Codable {
   var id :String
   var firstName :String
   var lastName :String
   var mobileNumber : String
   var answers: [Int]
-  
 }

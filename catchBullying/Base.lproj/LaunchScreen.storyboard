@@ -16,18 +16,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EndBullying" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bz5-KV-uGb">
-                                <rect key="frame" x="99" y="427.5" width="216.5" height="51.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="43"/>
-                                <color key="textColor" systemColor="systemRedColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image2" translatesAutoresizingMaskIntoConstraints="NO" id="NwS-7K-3R8">
+                                <rect key="frame" x="87" y="360" width="240" height="186"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="186" id="G74-cx-GX0"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="bz5-KV-uGb" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="5oy-oI-YCw"/>
-                            <constraint firstItem="bz5-KV-uGb" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="8IX-lI-jnO"/>
+                            <constraint firstItem="NwS-7K-3R8" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="9Yz-em-Tuf"/>
+                            <constraint firstItem="NwS-7K-3R8" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="15:56" id="mt5-BI-KzX"/>
+                            <constraint firstItem="NwS-7K-3R8" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerXWithinMargins" id="tOR-n2-TP6"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -37,11 +38,9 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="image2" width="341.33334350585938" height="334.33334350585938"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
