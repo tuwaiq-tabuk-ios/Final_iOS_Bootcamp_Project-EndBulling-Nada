@@ -9,8 +9,9 @@ import Foundation
 
 struct PatientModel: Codable {
   var id :String
-  var firstName :String
-  var lastName :String
-  var mobileNumber : String
+  var nickname: String
+  var dateOfBirth: Date?
+  var imageURL: String
+  var description: String
   var answers: [Int]
 }

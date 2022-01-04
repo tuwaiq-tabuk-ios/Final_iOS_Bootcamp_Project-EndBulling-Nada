@@ -7,7 +7,7 @@
 
 import UIKit
 
-class listTableViewCell: UITableViewCell {
+class DoctorsListCell: UITableViewCell {
 
   
   @IBOutlet weak var imageViewDoctor: UIImageView!

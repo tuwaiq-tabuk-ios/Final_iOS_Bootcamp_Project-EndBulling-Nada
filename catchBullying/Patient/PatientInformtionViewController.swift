@@ -9,14 +9,20 @@ import UIKit
 
 class PatientInformtionViewController: UIViewController {
   
-  let data: [[InformationCellModel]] = [
+  let data : [[InformationCellModel]] = [
     [
-      .init(title: "First Name", icon: "circle", color: .red),
-      .init(title: "First Name", icon: "circle", color: .red)
+      .init(title: "First Name", cellType: .textField),
+      .init(title: "Last Name", cellType: .textField),
+      .init(title: "Mobile Number", cellType: .textField),
+      .init(title: "Email", cellType: .textField)
     ],
     [
-      .init(title: "Mobile Number", icon: "circle", color: .red),
-      .init(title: "Address", icon: "circle", color: .red)
+      .init(title: "Zoom", cellType: .textField),
+      .init(title: "Experience", cellType: .stepper),
+      .init(title: "Languages", cellType: .textField)
+    ],
+    [
+      .init(title: "Description", cellType: .textArea)
     ],
   ]
   

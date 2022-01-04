@@ -6,9 +6,12 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
 struct MessageModel: Codable {
-  var senderID: String
-  var receiverID: String
-  var message: String
+  var id: UUID
+  var content: String
+  var received: Bool
+  var sender: String
+  var sentAt = Date()
 }

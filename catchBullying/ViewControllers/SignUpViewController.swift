@@ -65,11 +65,12 @@ class SignUpViewController: UIViewController {
             user = userModel
             isUpdating = false
             if self.userTypePicker.selectedSegmentIndex == 0 {
-              let profileModel = PatientModel(id: authResult!.user.uid,
-                                         firstName: "",
-                                         lastName: "",
-                                         mobileNumber: "",
-                                         answers: [])
+              let profileModel = PatientModel(id: user.id,
+                                              nickname: "",
+                                              dateOfBirth: nil,
+                                              imageURL: "",
+                                              description: "",
+                                              answers: [])
               do {
                 _ = try db.collection("patients").addDocument(from: profileModel) { error in
                   if let error = error {
@@ -84,11 +85,17 @@ class SignUpViewController: UIViewController {
                 print(error.localizedDescription)
               }
             } else {
-              let profileModel = DoctorModel(id: authResult!.user.uid,
-                                         firstName: "",
-                                         lastName: "",
-                                         mobileNumber: "",
-                                         answers: [])
+              let profileModel = DoctorModel(id: user.id,
+                                             firstName: "",
+                                             lastName: "",
+                                             mobileNumber: "",
+                                             
+                                             imageURL: "",
+                                             zoom: "",
+                                             experience: 0,
+                                             languages: [],
+                                             description: "",
+                                             answers: [])
               do {
                 _ = try db.collection("doctors").addDocument(from: profileModel) { error in
                   if let error = error {

@@ -11,3 +11,4 @@ var title : String
 var phoneNumber : String
 var icon: String
 }
+

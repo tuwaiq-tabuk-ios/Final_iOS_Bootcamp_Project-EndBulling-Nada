@@ -71,16 +71,27 @@ extension SettingViewController : UITableViewDelegate , UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
-    if data[indexPath.row].title == "Logout" {
-      // logout
+    
+    switch data[indexPath.row].title {
+    case "Information":
+      self.performSegue(withIdentifier: "information", sender: nil)
+    case "Manage My Profile":
+      self.performSegue(withIdentifier: "DoctorToQuestions", sender: nil)
+    case "Change Language":
+      print("change language")
+    case "Contact Customer Service":
+      print("Contact Customer Service")
+    case "Important Numbers for You":
+      self.performSegue(withIdentifier: "phone", sender: nil)
+    case "Logout":
       do {
         try Auth.auth().signOut()
       } catch {
         print(error.localizedDescription)
       }
-    }
-    if data[indexPath.row].title == "Manage My Profile" {
-      self.performSegue(withIdentifier: "DoctorToQuestions", sender: nil)
+    case "Delete Account":
+      print("delete account")
+    default: fatalError()
     }
   }
   

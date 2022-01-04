@@ -7,8 +7,13 @@
 
 import UIKit
 
+enum CellType {
+  case textField
+  case stepper
+  case textArea
+}
+
 struct InformationCellModel {
   var title: String
-  var icon: String
-  var color: UIColor
+  var cellType: CellType
 }
