@@ -18,7 +18,11 @@ struct DoctorModel: Codable {
   var zoom: String
   var experience: Int
   var languages: [String]
+  var availableDates: [Date]
   var description: String
   var answers: [Int]
   
+  var fullName: String {
+    return firstName + " " + lastName
+  }
 }

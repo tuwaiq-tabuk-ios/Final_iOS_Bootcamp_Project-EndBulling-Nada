@@ -42,8 +42,16 @@ class LoginViewController: UIViewController {
     return true
   }
   
-  @IBAction func inputUser(_ sender: Any) {
+  @IBAction func inputUser1(_ sender: Any) {
     emailField.text = "patient@patient.com"
+    passwordField.text = "12345678"
+  }
+  @IBAction func inputUser2(_ sender: Any) {
+    emailField.text = "patient1@patient.com"
+    passwordField.text = "12345678"
+  }
+  @IBAction func inputUser3(_ sender: Any) {
+    emailField.text = "patient2@patient.com"
     passwordField.text = "12345678"
   }
   

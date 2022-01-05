@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
 struct PatientModel: Codable {
+  @DocumentID var docID: String?
   var id :String
   var nickname: String
   var dateOfBirth: Date?

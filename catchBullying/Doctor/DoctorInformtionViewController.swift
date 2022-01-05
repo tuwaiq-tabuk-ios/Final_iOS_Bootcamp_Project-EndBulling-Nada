@@ -90,7 +90,7 @@ class DoctorInformtionViewController: UIViewController {
                                      zoom: getCell(indexPath: IndexPath(row: 0, section: 1)).textField.text!,
                                      experience: Int(getCell(indexPath: IndexPath(row: 1, section: 1)).textField.text!)!,
                                      languages: [],
-                                     description: getCell(indexPath: IndexPath(row: 0, section: 0)).textArea.text!,
+                                     availableDates: [], description: getCell(indexPath: IndexPath(row: 0, section: 0)).textArea.text!,
                                      answers: doctorProfile.answers)
     
     let db = Firestore.firestore()

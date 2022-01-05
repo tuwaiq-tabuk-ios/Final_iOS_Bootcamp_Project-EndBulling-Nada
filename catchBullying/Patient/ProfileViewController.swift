@@ -14,14 +14,14 @@ class ProfileViewController: UIViewController {
     [
       ProfileCellModel(title: "Information",                            icon: "person",
                        
-                       color: .black),
-      ProfileCellModel(title: "Manage My Profile",          icon: "person.crop.circle.badge.checkmark.fill",                     color: .black),
-      ProfileCellModel(title: "Change Language",            icon: "textformat.size.larger.ja",                                    color: .black)
+                       color: .systemBlue),
+      ProfileCellModel(title: "Manage My Profile",          icon: "person.crop.circle.badge.checkmark.fill",                     color: .systemBlue),
+      ProfileCellModel(title: "Change Language",            icon: "textformat.size.larger.ja",                                    color: .systemBlue)
     ],
     [
-      ProfileCellModel(title: "Contact Customer Service",   icon: "bubble.left.and.bubble.right", color: .black),
-      ProfileCellModel(title: "Important Numbers for You",  icon: "phone",                                                   color: .black),
-      ProfileCellModel(title: "Logout",                     icon: "power", color: .black)
+      ProfileCellModel(title: "Contact Customer Service",   icon: "bubble.left.and.bubble.right", color: .systemBlue),
+      ProfileCellModel(title: "Important Numbers for You",  icon: "phone",                                                   color: .systemBlue),
+      ProfileCellModel(title: "Logout",                     icon: "power", color: .systemRed)
     ],
     [
       ProfileCellModel(title: "Delete Account",           icon: "trash.square", color: .red)
@@ -104,7 +104,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     case "Manage My Profile":
       self.performSegue(withIdentifier: "PatientToQuestions", sender: nil)
     case "Change Language":
-      print("change language")
+      let url = URL(string: UIApplication.openSettingsURLString)!
+      UIApplication.shared.open(url)
     case "Contact Customer Service":
       print("Contact Customer Service")
     case "Important Numbers for You":

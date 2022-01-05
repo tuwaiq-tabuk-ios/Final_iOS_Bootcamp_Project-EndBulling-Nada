@@ -11,15 +11,15 @@ import FirebaseFirestoreSwift
 
 class InformationVC: UIViewController {
   
-  @IBOutlet weak var imageView: UIImageView!
-  @IBOutlet weak var firstNameField: UITextField!
-  @IBOutlet weak var lastNameField: UITextField!
+  @IBOutlet weak var imageView:         UIImageView!
+  @IBOutlet weak var firstNameField:    UITextField!
+  @IBOutlet weak var lastNameField:     UITextField!
   @IBOutlet weak var mobileNumberField: UITextField!
-  @IBOutlet weak var emailField: UITextField!
-  @IBOutlet weak var zoomField: UITextField!
-  @IBOutlet weak var languagesField: UITextField!
-  @IBOutlet weak var experienceField: UITextField!
-  @IBOutlet weak var descriptionField: UITextView!
+  @IBOutlet weak var emailField:        UITextField!
+  @IBOutlet weak var zoomField:         UITextField!
+  @IBOutlet weak var languagesField:    UITextField!
+  @IBOutlet weak var experienceField:   UITextField!
+  @IBOutlet weak var descriptionField:  UITextView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -58,7 +58,7 @@ class InformationVC: UIViewController {
                                      zoom: zoom,
                                      experience: experienceInt,
                                      languages: [],
-                                     description: description,
+                                     availableDates: [], description: description,
                                      answers: doctorProfile.answers)
     
     let db = Firestore.firestore()

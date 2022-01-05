@@ -12,11 +12,11 @@ class SettingViewController: UIViewController {
   @IBOutlet weak var tabelView: UITableView!
   
   var  data : [ProfileCellModel] = [
-    ProfileCellModel(title: "Information", icon: "person", color: .blue),
-    ProfileCellModel(title: "Manage My Profile", icon: "person", color: .black),
-    ProfileCellModel(title: "Change Language", icon:"textformat.size.smaller.ja", color: .black),
-    ProfileCellModel(title: "Logout", icon: "person", color: .red),
-    ProfileCellModel(title: "Delete Account", icon: "person", color: .red)
+    ProfileCellModel(title: "Information", icon: "person", color: .systemBlue),
+    ProfileCellModel(title: "Manage My Profile", icon: "person", color: .systemBlue),
+    ProfileCellModel(title: "Change Language", icon:"textformat.size.smaller.ja", color: .systemBlue),
+    ProfileCellModel(title: "Logout", icon: "person", color: .systemRed),
+    ProfileCellModel(title: "Delete Account", icon: "person", color: .systemRed)
   ]
   
   
@@ -78,7 +78,8 @@ extension SettingViewController : UITableViewDelegate , UITableViewDataSource {
     case "Manage My Profile":
       self.performSegue(withIdentifier: "DoctorToQuestions", sender: nil)
     case "Change Language":
-      print("change language")
+      let url = URL(string: UIApplication.openSettingsURLString)!
+      UIApplication.shared.open(url)
     case "Contact Customer Service":
       print("Contact Customer Service")
     case "Important Numbers for You":

@@ -94,7 +94,7 @@ class SignUpViewController: UIViewController {
                                              zoom: "",
                                              experience: 0,
                                              languages: [],
-                                             description: "",
+                                             availableDates: [], description: "",
                                              answers: [])
               do {
                 _ = try db.collection("doctors").addDocument(from: profileModel) { error in

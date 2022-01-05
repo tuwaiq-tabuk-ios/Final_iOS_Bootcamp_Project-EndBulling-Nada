@@ -11,6 +11,14 @@ import Firebase
 class DoctorProfileDetailsViewController: UIViewController {
   
   @IBOutlet weak var nameLabel: UILabel!
+  @IBOutlet weak var informationLabel: UILabel!
+  @IBOutlet weak var providesAdviceLabel: UILabel!
+  @IBOutlet weak var experienceLabel: UILabel!
+  @IBOutlet weak var languageLabel: UILabel!
+  @IBOutlet weak var emailLabel: UILabel!
+  @IBOutlet weak var zommLabel: UILabel!
+  
+  
   
   var selectedProfile: DoctorModel?
   
@@ -22,8 +30,21 @@ class DoctorProfileDetailsViewController: UIViewController {
     super.viewWillAppear(animated)
     guard let profile = selectedProfile else { return }
     
-    nameLabel.text = profile.firstName + " " + profile.lastName
+   
     // fill fields
+    nameLabel.text = profile.firstName + " " + profile.lastName
+    informationLabel.text = profile.description
+//    providesAdviceLabel.text = profile
+    experienceLabel.text = String(profile.experience)
+//    languageLabel.text = profile.[languages]
+    zommLabel.text = profile.zoom
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "appointmentSelect" {
+      let vc = segue.destination as! AppointmentSelectorViewController
+      vc.selectedProfile = selectedProfile
+    }
   }
   
   func gotoChat(conversation: ConversationModel) {
@@ -32,6 +53,10 @@ class DoctorProfileDetailsViewController: UIViewController {
     controller.modalPresentationStyle = .fullScreen
     controller.modalTransitionStyle = .flipHorizontal
     self.present(controller, animated: false, completion: nil)
+  }
+  
+  @IBAction func appointmentAction(_ sender: Any) {
+    performSegue(withIdentifier: "appointmentSelect", sender: self)
   }
   
   @IBAction func chatAction(_ sender: Any) {

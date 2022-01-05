@@ -30,6 +30,7 @@ class ChattViewController: UIViewController {
     
     // if there is a converasion fetch it,
     // else create new one.
+    senderName.text = conversation?.users.first(where: { $0.id != user.id })!.name
     if let conversation = conversation {
       //fetchData()
     } else {
