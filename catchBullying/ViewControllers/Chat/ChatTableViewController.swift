@@ -25,7 +25,7 @@ class ChatTableViewController: UITableViewController {
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "ChatTableToChat" {
-      let vc = segue.destination as! ChattViewController
+      let vc = segue.destination as! ChatViewController
       vc.conversation = selectedConversation
     }
   }

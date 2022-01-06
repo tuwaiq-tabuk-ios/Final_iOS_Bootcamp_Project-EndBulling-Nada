@@ -50,7 +50,8 @@ class InformationVC: UIViewController {
     guard let experienceInt = Int(experience) else { return }
     guard let description = descriptionField.text else { return }
     
-    let updatedProfile = DoctorModel(id: doctorProfile.id,
+    let updatedProfile = DoctorModel(docID: doctorProfile.docID,
+      id: doctorProfile.id,
                                      firstName: firstName,
                                      lastName: lastName,
                                      mobileNumber: mobileNumber,

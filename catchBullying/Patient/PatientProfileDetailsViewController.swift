@@ -37,7 +37,7 @@ class PatientProfileDetailsViewController: UIViewController {
   }
   
   func gotoChat(conversation: ConversationModel) {
-    let controller = self.storyboard?.instantiateViewController(identifier: "ChatVC") as! ChattViewController
+    let controller = self.storyboard?.instantiateViewController(identifier: "ChatVC") as! ChatViewController
     controller.conversation = conversation
     controller.modalPresentationStyle = .fullScreen
     controller.modalTransitionStyle = .flipHorizontal

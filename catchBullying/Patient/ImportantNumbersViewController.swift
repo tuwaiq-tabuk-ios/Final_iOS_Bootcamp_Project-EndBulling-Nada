@@ -38,9 +38,8 @@ extension ImportantNumbersViewController : UITableViewDelegate , UITableViewData
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 //    let data = importantNumbersarray[indexPath.row]
     cell.textLabel?.text = importantNumbersarray[indexPath.row].title
+    cell.detailTextLabel?.text = importantNumbersarray[indexPath.row].phoneNumber
     cell.imageView?.image = UIImage(systemName:importantNumbersarray[indexPath.row].icon)
-//    cell.textLabel?.text = importantNumbersarray[indexPath.row].phoneNumber
-
     return cell
   }
   

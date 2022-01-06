@@ -13,7 +13,6 @@ class SettingViewController: UIViewController {
   
   var  data : [ProfileCellModel] = [
     ProfileCellModel(title: "Information", icon: "person", color: .systemBlue),
-    ProfileCellModel(title: "Manage My Profile", icon: "person", color: .systemBlue),
     ProfileCellModel(title: "Change Language", icon:"textformat.size.smaller.ja", color: .systemBlue),
     ProfileCellModel(title: "Logout", icon: "person", color: .systemRed),
     ProfileCellModel(title: "Delete Account", icon: "person", color: .systemRed)
@@ -75,8 +74,6 @@ extension SettingViewController : UITableViewDelegate , UITableViewDataSource {
     switch data[indexPath.row].title {
     case "Information":
       self.performSegue(withIdentifier: "information", sender: nil)
-    case "Manage My Profile":
-      self.performSegue(withIdentifier: "DoctorToQuestions", sender: nil)
     case "Change Language":
       let url = URL(string: UIApplication.openSettingsURLString)!
       UIApplication.shared.open(url)

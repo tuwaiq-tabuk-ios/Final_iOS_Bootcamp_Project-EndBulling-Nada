@@ -54,6 +54,11 @@ class InformationPatientViewController: UIViewController {
     dateOfBirthField.inputAccessoryView = createToolbar()
   }
   
+  
+  @IBAction func closeAction(_ sender: Any) {
+    navigationController?.dismiss(animated: true, completion: nil)
+  }
+  
   @IBAction func saveAction(_ sender: Any) {
     
     guard let nickname = nicknameField.text else { return }
