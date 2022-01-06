@@ -20,6 +20,8 @@ class LandingViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
+    
+    
     if let usr = Auth.auth().currentUser {
       
       let db = Firestore.firestore()

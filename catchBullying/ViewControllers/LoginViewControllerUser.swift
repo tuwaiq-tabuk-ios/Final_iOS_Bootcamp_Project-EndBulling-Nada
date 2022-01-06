@@ -117,6 +117,7 @@ class LoginViewController: UIViewController {
                 if let docs = snapshot?.documents {
                   do {
                     try doctorProfile = docs.first!.data(as: DoctorModel.self)
+                    sender.isEnabled = true
                     let controller = self.storyboard?.instantiateViewController(identifier: "DoctorHomeVC") as! DoctorHomeViewController
                     controller.modalPresentationStyle = .fullScreen
                     controller.modalTransitionStyle = .flipHorizontal
@@ -137,6 +138,7 @@ class LoginViewController: UIViewController {
                 if let docs = snapshot?.documents {
                   do {
                     try patientProfile = docs.first!.data(as: PatientModel.self)
+                    sender.isEnabled = true
                     let controller = self.storyboard?.instantiateViewController(identifier: "UserHomeVC") as! UserHomeViewController
                     controller.modalPresentationStyle = .fullScreen
                     controller.modalTransitionStyle = .flipHorizontal

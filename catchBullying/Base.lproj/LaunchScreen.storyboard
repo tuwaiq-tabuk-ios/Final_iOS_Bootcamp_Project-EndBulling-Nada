@@ -22,8 +22,8 @@
                                     <constraint firstAttribute="height" constant="186" id="G74-cx-GX0"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EndBullying" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VyE-OI-Qsa">
-                                <rect key="frame" x="178" y="544" width="186" height="41.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EndBullying" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VyE-OI-Qsa">
+                                <rect key="frame" x="150" y="544" width="214" height="41.5"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="38"/>
                                 <color key="textColor" red="0.9355601616" green="0.19835099580000001" blue="0.33317389460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -35,7 +35,7 @@
                             <constraint firstItem="NwS-7K-3R8" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="9Yz-em-Tuf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VyE-OI-Qsa" secondAttribute="trailing" constant="50" id="NNc-jX-n3z"/>
                             <constraint firstItem="VyE-OI-Qsa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="500" id="PlG-dh-kkm"/>
-                            <constraint firstItem="VyE-OI-Qsa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="178" id="QJ9-cE-Oe1"/>
+                            <constraint firstItem="VyE-OI-Qsa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="150" id="QJ9-cE-Oe1"/>
                             <constraint firstItem="NwS-7K-3R8" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="15:56" id="mt5-BI-KzX"/>
                             <constraint firstItem="NwS-7K-3R8" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerXWithinMargins" id="tOR-n2-TP6"/>
                         </constraints>
@@ -43,7 +43,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52.173913043478265" y="375"/>
+            <point key="canvasLocation" x="-12875" y="-7563"/>
         </scene>
     </scenes>
     <resources>

@@ -56,7 +56,7 @@ class ChatViewController: UIViewController {
   }
   
   @IBAction func closeAction(_ sender: Any) {
-    navigationController?.dismiss(animated: true, completion: nil)
+  dismiss(animated: true, completion: nil)
   }
   
   
