@@ -42,14 +42,30 @@ class LoginViewController: UIViewController {
     return true
   }
   
-  @IBAction func inputUser(_ sender: Any) {
+  @IBAction func inputUser1(_ sender: Any) {
     emailField.text = "patient@patient.com"
     passwordField.text = "12345678"
   }
+  @IBAction func inputUser2(_ sender: Any) {
+    emailField.text = "patient1@patient.com"
+    passwordField.text = "12345678"
+  }
+  @IBAction func inputUser3(_ sender: Any) {
+    emailField.text = "patient2@patient.com"
+    passwordField.text = "12345678"
+  }
   
-  @IBAction func inputDoctor(_ sender: Any) {
+  @IBAction func inputDoctor1(_ sender: Any) {
     emailField.text = "doctor@doctor.com"
-    passwordField.text = "112345678"
+    passwordField.text = "12345678"
+  }
+  @IBAction func inputDoctor2(_ sender: Any) {
+    emailField.text = "doctor1@doctor.com"
+    passwordField.text = "12345678"
+  }
+  @IBAction func inputDoctor3(_ sender: Any) {
+    emailField.text = "doctor2@doctor.com"
+    passwordField.text = "12345678"
   }
   
   @IBAction func login(_ sender: UIButton) {
@@ -83,9 +99,7 @@ class LoginViewController: UIViewController {
       
       db.collection("users").whereField("id", isEqualTo: authResult!.user.uid).getDocuments { snapshot, error in
         if let error = error {
-          print(error.localizedDescription)
-          sender.isEnabled = true
-          return
+          fatalError()
         }
         
         if let docs = snapshot?.documents {
@@ -94,21 +108,47 @@ class LoginViewController: UIViewController {
             print("done", user.email)
             
             if user.isDoctor {
-//              self.performSegue(withIdentifier: "landingToDoctorHome", sender: nil)
-              let controller = self.storyboard?.instantiateViewController(identifier: "DoctorHomeVC") as! DoctorHomeViewController
-              controller.modalPresentationStyle = .fullScreen
-              controller.modalTransitionStyle = .flipHorizontal
-              //UserDefaults.standard.hasOnboarded = true
-              self.present(controller, animated: false, completion: nil)
+              
+              db.collection("doctors").whereField("id", isEqualTo: user.id).getDocuments { snapshot, error in
+                if let error = error {
+                  fatalError()
+                }
+                
+                if let docs = snapshot?.documents {
+                  do {
+                    try doctorProfile = docs.first!.data(as: DoctorModel.self)
+                    sender.isEnabled = true
+                    let controller = self.storyboard?.instantiateViewController(identifier: "DoctorHomeVC") as! DoctorHomeViewController
+                    controller.modalPresentationStyle = .fullScreen
+                    controller.modalTransitionStyle = .flipHorizontal
+                    self.present(controller, animated: false, completion: nil)
+                  } catch {
+                    fatalError()
+                  }
+                }
+              }
+              
             } else {
-//              self.performSegue(withIdentifier: "landingToUserHome", sender: nil)
-              let controller = self.storyboard?.instantiateViewController(identifier: "UserHomeVC") as! UserHomeViewController
-              controller.modalPresentationStyle = .fullScreen
-              controller.modalTransitionStyle = .flipHorizontal
-              //UserDefaults.standard.hasOnboarded = true
-              self.present(controller, animated: false, completion: nil)
+              
+              db.collection("patients").whereField("id", isEqualTo: user.id).getDocuments { snapshot, error in
+                if let error = error {
+                  fatalError()
+                }
+                
+                if let docs = snapshot?.documents {
+                  do {
+                    try patientProfile = docs.first!.data(as: PatientModel.self)
+                    sender.isEnabled = true
+                    let controller = self.storyboard?.instantiateViewController(identifier: "UserHomeVC") as! UserHomeViewController
+                    controller.modalPresentationStyle = .fullScreen
+                    controller.modalTransitionStyle = .flipHorizontal
+                    self.present(controller, animated: false, completion: nil)
+                  } catch {
+                    fatalError()
+                  }
+                }
+              }
             }
-            // seague
           } catch {
             sender.isEnabled = true
             print(error.localizedDescription)

@@ -1,0 +1,23 @@
+//
+//  File.swift
+//  catchBullying
+//
+//  Created by apple on 01/06/1443 AH.
+//
+
+import Foundation
+import FirebaseFirestoreSwift
+
+
+// contains users and messages
+
+struct ConversationUser: Codable {
+  var id: String
+  var name: String
+}
+struct ConversationModel: Codable {
+  @DocumentID var docID: String?
+  var messages: [MessageModel]
+  var usersIDs: [String]
+  var users: [ConversationUser]
+}

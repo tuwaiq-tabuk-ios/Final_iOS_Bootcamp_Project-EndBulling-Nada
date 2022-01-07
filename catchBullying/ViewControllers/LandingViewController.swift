@@ -20,6 +20,8 @@ class LandingViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
+    
+    
     if let usr = Auth.auth().currentUser {
       
       let db = Firestore.firestore()
@@ -36,19 +38,44 @@ class LandingViewController: UIViewController {
             print("done", user.email)
             
             if user.isDoctor {
-//              self.performSegue(withIdentifier: "landingToDoctorHome", sender: nil)
-              let controller = self.storyboard?.instantiateViewController(identifier: "DoctorHomeVC") as! DoctorHomeViewController
-              controller.modalPresentationStyle = .fullScreen
-              controller.modalTransitionStyle = .flipHorizontal
-              //UserDefaults.standard.hasOnboarded = true
-              self.present(controller, animated: false, completion: nil)
+              
+              db.collection("doctors").whereField("id", isEqualTo: user.id).getDocuments { snapshot, error in
+                if let error = error {
+                  fatalError()
+                }
+                
+                if let docs = snapshot?.documents {
+                  do {
+                    try doctorProfile = docs.first!.data(as: DoctorModel.self)
+                    let controller = self.storyboard?.instantiateViewController(identifier: "DoctorHomeVC") as! DoctorHomeViewController
+                    controller.modalPresentationStyle = .fullScreen
+                    controller.modalTransitionStyle = .flipHorizontal
+                    self.present(controller, animated: false, completion: nil)
+                  } catch {
+                    fatalError()
+                  }
+                }
+              }
+              
             } else {
-//              self.performSegue(withIdentifier: "landingToUserHome", sender: nil)
-              let controller = self.storyboard?.instantiateViewController(identifier: "UserHomeVC") as! UserHomeViewController
-              controller.modalPresentationStyle = .fullScreen
-              controller.modalTransitionStyle = .flipHorizontal
-              //UserDefaults.standard.hasOnboarded = true
-              self.present(controller, animated: false, completion: nil)
+              
+              db.collection("patients").whereField("id", isEqualTo: user.id).getDocuments { snapshot, error in
+                if let error = error {
+                  fatalError()
+                }
+                
+                if let docs = snapshot?.documents {
+                  do {
+                    try patientProfile = docs.first!.data(as: PatientModel.self)
+                    let controller = self.storyboard?.instantiateViewController(identifier: "UserHomeVC") as! UserHomeViewController
+                    controller.modalPresentationStyle = .fullScreen
+                    controller.modalTransitionStyle = .flipHorizontal
+                    self.present(controller, animated: false, completion: nil)
+                  } catch {
+                    fatalError()
+                  }
+                }
+              }
             }
             
             
