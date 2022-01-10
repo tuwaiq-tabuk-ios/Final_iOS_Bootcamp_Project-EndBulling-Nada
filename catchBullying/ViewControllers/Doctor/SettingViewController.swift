@@ -7,9 +7,12 @@
 
 import UIKit
 import FirebaseAuth
+import Firebase
 
 class SettingViewController: UIViewController {
   @IBOutlet weak var tabelView: UITableView!
+  
+  private var deleting: Bool = false
   
   var  data : [ProfileCellModel] = [
     ProfileCellModel(title: "Information", icon: "person", color: .systemBlue),
@@ -42,6 +45,74 @@ class SettingViewController: UIViewController {
         self.present(controller, animated: false, completion: nil)
       }
     }
+  }
+  
+  private func deleteAppointments(field: String, id: String ,completion: @escaping () -> ()) {
+    let db = Firestore.firestore()
+    var total: Int = 0
+    var deleted: Int = 0
+    db.collection("appointments").whereField(field, isEqualTo: id).getDocuments { snapshot, error in
+      if let error = error { fatalError() }
+      else {
+        print(snapshot?.documents.count)
+        guard let docs = snapshot?.documents else {
+          completion()
+          return
+        }
+        if docs.count == 0 {
+          completion()
+          return
+        }
+        total = docs.count
+        for doc in docs {
+          db.collection("appointments").document(doc.documentID).delete { error in
+            deleted += 1
+            if total == deleted {
+              completion()
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  private func deleteAccount() {
+    if deleting { return }
+    deleting = true
+    print("delete account")
+    // delete user file
+    // delete profile file
+    // delete appointments
+    // delete account
+    
+    let profileFolder: String = user.isDoctor ? "doctors" : "patients"
+    let profileDocID: String = user.isDoctor ? doctorProfile.docID! : patientProfile.docID!
+    let field: String = user.isDoctor ? "doctorID" : "patientID"
+
+    let db = Firestore.firestore()
+    db.collection("users").document(user.docID!).delete { error in
+      if let error = error { fatalError() }
+      else {
+        print("d users")
+        db.collection(profileFolder).document(profileDocID).delete { error in
+          if let error = error { fatalError() }
+          else {
+            print("d profile")
+            self.deleteAppointments(field: field, id: user.id) {
+              Auth.auth().currentUser?.delete(completion: { error in
+                if let error = error { fatalError() }
+                else {
+                  print("d account")
+                  self.deleting = false
+                }
+              })
+            }
+          }
+        }
+      }
+    }
+    
+    
   }
   
   
@@ -95,7 +166,7 @@ extension SettingViewController : UITableViewDelegate , UITableViewDataSource {
         print(error.localizedDescription)
       }
     case "Delete Account":
-      print("delete account")
+      deleteAccount()
     default: fatalError()
     }
   }

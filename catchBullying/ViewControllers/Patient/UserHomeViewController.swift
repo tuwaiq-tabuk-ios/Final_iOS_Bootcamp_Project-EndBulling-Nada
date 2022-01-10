@@ -13,6 +13,7 @@ class UserHomeViewController: UITabBarController {
         super.viewDidLoad()
 
       self.navigationItem.setHidesBackButton(true, animated: false)
+      
     }
 
 

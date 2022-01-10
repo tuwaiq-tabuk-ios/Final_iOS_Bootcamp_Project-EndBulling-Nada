@@ -30,13 +30,10 @@ class QuestionsViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.isModalInPresentation = true
     self.navigationItem.setHidesBackButton(true, animated: false)
     configureButtons()
     questionLabel.text=arryPsicologistQuestions[currentQuestionIndex].question
-  }
-
-  @IBAction func closeAction(_ sender: Any) {
-  dismiss(animated: true, completion: nil)
   }
   
   func setupQuestion() {

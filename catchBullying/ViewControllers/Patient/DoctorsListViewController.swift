@@ -25,7 +25,7 @@ class DoctorsListViewController: UIViewController {
     tableView.delegate = self
     tableView.dataSource = self
     
-    
+    dismissKeyboard()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -77,7 +77,7 @@ extension DoctorsListViewController : UITableViewDelegate , UITableViewDataSourc
     //   cell.textLabel?.text = arryListOfDoctores[indexPath.row].emil
     //   cell.textLabel?.text = arryListOfDoctores[indexPath.row].zoom
     //cell.imageView?.image = data[indexPath.row].image
-    cell.textLabel?.text = data[indexPath.row].firstName
+    //cell.textLabel?.text = data[indexPath.row].firstName
     //cell.imageViewDoctor.layer.cornerRadius = cell.imageViewDoctor.frame.width/2
     
     return cell

@@ -65,6 +65,7 @@
 		18C6A92D276F41B40056240D /* MainTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C6A92C276F41B40056240D /* MainTF.swift */; };
 		18CD74C12786DFAE001120C1 /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CD74C02786DFAE001120C1 /* ChangeEmailViewController.swift */; };
 		18CD74C32786E573001120C1 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CD74C22786E573001120C1 /* ChangePasswordViewController.swift */; };
+		18CD74C6278A967F001120C1 /* ViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CD74C5278A967F001120C1 /* ViewController+.swift */; };
 		18E915EE2767E86B005772AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E915ED2767E86B005772AB /* AppDelegate.swift */; };
 		18E915F02767E86B005772AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E915EF2767E86B005772AB /* SceneDelegate.swift */; };
 		18E915F52767E86B005772AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E915F32767E86B005772AB /* Main.storyboard */; };
@@ -129,6 +130,7 @@
 		18C6A92C276F41B40056240D /* MainTF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTF.swift; sourceTree = "<group>"; };
 		18CD74C02786DFAE001120C1 /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
 		18CD74C22786E573001120C1 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		18CD74C5278A967F001120C1 /* ViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+.swift"; sourceTree = "<group>"; };
 		18E915EA2767E86B005772AB /* catchBullying.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = catchBullying.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18E915ED2767E86B005772AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18E915EF2767E86B005772AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 			children = (
 				18C6A92C276F41B40056240D /* MainTF.swift */,
 				18893EA72781174100C258D7 /* UIView+.swift */,
+				18CD74C5278A967F001120C1 /* ViewController+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				18074226277DA00D0090BDCC /* ChatTableViewCell.swift in Sources */,
 				18893E9C2781056900C258D7 /* MessageModel.swift in Sources */,
 				181CD880277792A300E0C105 /* DoctorProfileViewController.swift in Sources */,
+				18CD74C6278A967F001120C1 /* ViewController+.swift in Sources */,
 				18893EA0278106CA00C258D7 /* GlobalVariables.swift in Sources */,
 				182BD464276DBAE600FA32BC /* UserModel.swift in Sources */,
 				184D60AC2785028D009AE8CE /* VideoPlayerViewController.swift in Sources */,

@@ -6,6 +6,7 @@ import FirebaseFirestoreSwift
 class SignUpViewController: UIViewController {
   
   
+  @IBOutlet weak var emailLabel: UILabel!
   @IBOutlet weak var userTypePicker: UISegmentedControl!
   @IBOutlet weak var emailTextField: UITextField!
   @IBOutlet weak var passwordTextField: UITextField!
@@ -18,9 +19,9 @@ class SignUpViewController: UIViewController {
   override func viewDidLoad() {
     
     super.viewDidLoad()
+    self.dismissKeyboard()
     passwordTextField.isSecureTextEntry = true
     confirmPasswordText.isSecureTextEntry = true
-    
   }
   
   
@@ -51,33 +52,36 @@ class SignUpViewController: UIViewController {
         print("user created")
         // create user file in firestore
         // seague to questions
-        let userModel = UserModel(id: authResult!.user.uid,
+        var userModel = UserModel(id: authResult!.user.uid,
                              email: self.emailTextField.text!,
                                   isDoctor: self.userTypePicker.selectedSegmentIndex == 1)
         
         let db = Firestore.firestore()
         do {
-          _ = try db.collection("users").addDocument(from: userModel) { error in
+          var ref: DocumentReference!
+          ref = try db.collection("users").addDocument(from: userModel) { error in
             if let error = error {
               print(error.localizedDescription)
               return
             }
+            userModel.docID = ref.documentID
             user = userModel
             isUpdating = false
             if self.userTypePicker.selectedSegmentIndex == 0 {
-              let profileModel = PatientModel(id: user.id,
+              var profileModel = PatientModel(id: user.id,
                                               nickname: "",
                                               dateOfBirth: nil,
                                               imageURL: "",
                                               description: "",
                                               answers: [])
               do {
-                _ = try db.collection("patients").addDocument(from: profileModel) { error in
+                var ref: DocumentReference!
+                ref = try db.collection("patients").addDocument(from: profileModel) { error in
                   if let error = error {
                     print(error.localizedDescription)
                     return
                   }
-                  
+                  profileModel.docID = ref.documentID
                   patientProfile = profileModel
                   self.performSegue(withIdentifier: "userSignupToQuestions", sender: nil)
                 }
@@ -85,7 +89,7 @@ class SignUpViewController: UIViewController {
                 print(error.localizedDescription)
               }
             } else {
-              let profileModel = DoctorModel(id: user.id,
+              var profileModel = DoctorModel(id: user.id,
                                              firstName: "",
                                              lastName: "",
                                              mobileNumber: "",
@@ -97,13 +101,18 @@ class SignUpViewController: UIViewController {
                                              availableDates: [], description: "",
                                              answers: [])
               do {
-                _ = try db.collection("doctors").addDocument(from: profileModel) { error in
+                var ref: DocumentReference!
+                ref = try db.collection("doctors").addDocument(from: profileModel) { error in
                   if let error = error {
                     print(error.localizedDescription)
                     return
                   }
+                  profileModel.docID = ref.documentID
                   doctorProfile = profileModel
-                  self.performSegue(withIdentifier: "userSignupToQuestions", sender: nil)
+                  let controller = self.storyboard?.instantiateViewController(identifier: "DoctorHomeVC") as! DoctorHomeViewController
+                  controller.modalPresentationStyle = .fullScreen
+                  controller.modalTransitionStyle = .flipHorizontal
+                  self.present(controller, animated: false, completion: nil)
                 }
               } catch {
                 print(error.localizedDescription)
@@ -158,3 +167,4 @@ class SignUpViewController: UIViewController {
   }
   
 }
+

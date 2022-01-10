@@ -23,7 +23,7 @@ class InformationVC: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    self.dismissKeyboard()
     
   }
   
@@ -47,8 +47,7 @@ class InformationVC: UIViewController {
   
   
   
-  
-  
+ 
   
   @IBAction func saveAction(_ sender: Any) {
     
@@ -56,10 +55,18 @@ class InformationVC: UIViewController {
     guard let lastName = lastNameField.text else {return}
     guard let mobileNumber = mobileNumberField.text else {return}
     guard let zoom = zoomField.text else {return}
-    //guard let languages = languagesField.text else {return}
     guard let experience = experienceField.text else {return}
     guard let experienceInt = Int(experience) else { return }
     guard let description = descriptionField.text else { return }
+    
+    guard !firstName.isEmpty ,
+          !lastName.isEmpty ,
+          !mobileNumber.isEmpty ,
+          !zoom.isEmpty ,
+          !experience.isEmpty,
+          !description.isEmpty else{
+            return
+          }
     
     let updatedProfile = DoctorModel(docID: doctorProfile.docID,
       id: doctorProfile.id,
