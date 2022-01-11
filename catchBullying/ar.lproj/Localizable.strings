@@ -1,0 +1,18 @@
+
+//ProfileViewController
+"Information" = "المعلومات";
+"Change Email" = "تغيير الايميل";
+"Change Password" = "تغير كلمة ";
+"Change Language" = "تغيير اللغة";
+"Logout"   = "تسجيل خروج";
+"Delete Account" = "حذف الحساب";
+"Important Numbers for You" = "ارقام تهمك";
+"Manage My Profile" = "إدارة ملفي الشخصي";
+"Contact Customer Service" = "تواصل مع خدمة العملا؟";
+"Gender" = " الجنس";
+"Do you currentiy have a job?" = "هل لديك عمل حالياًً؟";
+"Have you taken a psychiatric medication befor?" = "هل استخدمت أدوية نفسية من قبل؟";
+"Does your family have a history of psychiatrist counseling?"="هل راجعت الأسرة طبيب نفسي؟";
+"Were you subjected to domestic violence (verbal , psychological, physical, sexual , negligence ...)?" = "هل تعرضت لعنف الاسري ونحوه (لفضي، جسدي ، جنسي، اهمال ....)؟";
+"Do you think of hurting yourself or have suicidal thoughts?" = "هل تفكر بإذاء نفسك أو تراودك أفكار بالانتحار؟";
+"Do you plan on committing suicide?" = "هل لديك خطة للانتحار؟";

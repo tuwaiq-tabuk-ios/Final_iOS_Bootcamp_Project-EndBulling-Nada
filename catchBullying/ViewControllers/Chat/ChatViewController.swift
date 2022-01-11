@@ -20,6 +20,8 @@ class ChatViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+
+
     self.dismissKeyboard()
     tableView.delegate = self
     tableView.dataSource = self

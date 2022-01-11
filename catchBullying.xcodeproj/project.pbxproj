@@ -22,7 +22,7 @@
 		180DB1B02783D34E00FC309C /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180DB1AF2783D34E00FC309C /* ConversationModel.swift */; };
 		181CD8562777225300E0C105 /* UserHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CD8552777225300E0C105 /* UserHomeViewController.swift */; };
 		181CD8582777248200E0C105 /* DoctorHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CD8572777248200E0C105 /* DoctorHomeViewController.swift */; };
-		181CD85A2777341C00E0C105 /* PsicologistQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CD8592777341C00E0C105 /* PsicologistQuestions.swift */; };
+		181CD85A2777341C00E0C105 /* PsicologistQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CD8592777341C00E0C105 /* PsicologistQuestion.swift */; };
 		181CD880277792A300E0C105 /* DoctorProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CD87F277792A300E0C105 /* DoctorProfileViewController.swift */; };
 		181CD88227785CBB00E0C105 /* PageOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CD88127785CBB00E0C105 /* PageOnboarding.swift */; };
 		181CD88427785DA600E0C105 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CD88327785DA600E0C105 /* OnboardingViewController.swift */; };
@@ -66,6 +66,7 @@
 		18CD74C12786DFAE001120C1 /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CD74C02786DFAE001120C1 /* ChangeEmailViewController.swift */; };
 		18CD74C32786E573001120C1 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CD74C22786E573001120C1 /* ChangePasswordViewController.swift */; };
 		18CD74C6278A967F001120C1 /* ViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CD74C5278A967F001120C1 /* ViewController+.swift */; };
+		18CD74C9278C0CA1001120C1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18CD74CB278C0CA1001120C1 /* Localizable.strings */; };
 		18E915EE2767E86B005772AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E915ED2767E86B005772AB /* AppDelegate.swift */; };
 		18E915F02767E86B005772AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E915EF2767E86B005772AB /* SceneDelegate.swift */; };
 		18E915F52767E86B005772AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E915F32767E86B005772AB /* Main.storyboard */; };
@@ -90,7 +91,7 @@
 		180DB1AF2783D34E00FC309C /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
 		181CD8552777225300E0C105 /* UserHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeViewController.swift; sourceTree = "<group>"; };
 		181CD8572777248200E0C105 /* DoctorHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorHomeViewController.swift; sourceTree = "<group>"; };
-		181CD8592777341C00E0C105 /* PsicologistQuestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsicologistQuestions.swift; sourceTree = "<group>"; };
+		181CD8592777341C00E0C105 /* PsicologistQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsicologistQuestion.swift; sourceTree = "<group>"; };
 		181CD87F277792A300E0C105 /* DoctorProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorProfileViewController.swift; sourceTree = "<group>"; };
 		181CD88127785CBB00E0C105 /* PageOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageOnboarding.swift; sourceTree = "<group>"; };
 		181CD88327785DA600E0C105 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +132,8 @@
 		18CD74C02786DFAE001120C1 /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
 		18CD74C22786E573001120C1 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		18CD74C5278A967F001120C1 /* ViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+.swift"; sourceTree = "<group>"; };
+		18CD74CA278C0CA1001120C1 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		18CD74CC278C0CA3001120C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18E915EA2767E86B005772AB /* catchBullying.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = catchBullying.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18E915ED2767E86B005772AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18E915EF2767E86B005772AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -189,28 +192,28 @@
 				181CD88127785CBB00E0C105 /* PageOnboarding.swift */,
 				1807421B277C3F710090BDCC /* ProfileCellModel.swift */,
 				18893EA3278113EB00C258D7 /* InformationCellModel.swift */,
-				181CD8592777341C00E0C105 /* PsicologistQuestions.swift */,
+				181CD8592777341C00E0C105 /* PsicologistQuestion.swift */,
 				1807421F277C805A0090BDCC /* ImportantNumbers.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		184D60AF278516AC009AE8CE /* Calendar */ = {
+		184D60AF278516AC009AE8CE /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				184D60B027851714009AE8CE /* DoctorAvailableDatesViewController.swift */,
-				184D60B227851789009AE8CE /* DateSelectorViewController.swift */,
-				184D60B427852337009AE8CE /* AppointmentSelectorViewController.swift */,
-				184D60B827857078009AE8CE /* CalendarViewController.swift */,
-				184D60BA2785772D009AE8CE /* CalendarCell.swift */,
+				181CD8552777225300E0C105 /* UserHomeViewController.swift */,
+				187BA30F2768D73C00CBB7CC /* LandingViewController.swift */,
+				18CD74C02786DFAE001120C1 /* ChangeEmailViewController.swift */,
+				18CD74C22786E573001120C1 /* ChangePasswordViewController.swift */,
+				189207102769F95F0008B4B7 /* SignUpViewController.swift */,
+				187BA3112768EBC400CBB7CC /* LoginViewControllerUser.swift */,
 			);
-			path = Calendar;
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		18893E992780CD2200C258D7 /* Patient */ = {
 			isa = PBXGroup;
 			children = (
-				181CD8552777225300E0C105 /* UserHomeViewController.swift */,
 				18893EA12781127D00C258D7 /* PatientInformtionViewController.swift */,
 				18C6A91D276F1C670056240D /* ProfileViewController.swift */,
 				18074217277AEDB40090BDCC /* DoctorsListCell.swift */,
@@ -222,6 +225,9 @@
 				184D60AD27850BEA009AE8CE /* PatientProfileDetailsViewController.swift */,
 				184D60AB2785028D009AE8CE /* VideoPlayerViewController.swift */,
 				18C6A917276F19F10056240D /* QuestionsViewController.swift */,
+				184D60B427852337009AE8CE /* AppointmentSelectorViewController.swift */,
+				184D60B827857078009AE8CE /* CalendarViewController.swift */,
+				184D60BA2785772D009AE8CE /* CalendarCell.swift */,
 			);
 			path = Patient;
 			sourceTree = "<group>";
@@ -238,6 +244,8 @@
 				184D60A927844AF9009AE8CE /* PatientsListCell.swift */,
 				184D60A7278443FD009AE8CE /* PatientsListViewController.swift */,
 				18893EAB27818A3000C258D7 /* DoctorInformtionCell.swift */,
+				184D60B027851714009AE8CE /* DoctorAvailableDatesViewController.swift */,
+				184D60B227851789009AE8CE /* DateSelectorViewController.swift */,
 			);
 			path = Doctor;
 			sourceTree = "<group>";
@@ -301,6 +309,7 @@
 				182BD462276DBAB200FA32BC /* Models */,
 				18E916042767ECD9005772AB /* ViewControllers */,
 				18C6A929276F41440056240D /* Extension */,
+				18CD74CB278C0CA1001120C1 /* Localizable.strings */,
 				1892070E2769F8810008B4B7 /* View */,
 				1892070F2769F8A10008B4B7 /* Support */,
 				18E915F92767E86C005772AB /* Assets.xcassets */,
@@ -319,12 +328,7 @@
 				18893E9A2780CE0800C258D7 /* Doctor */,
 				180DB1A1278256FA00FC309C /* Chat */,
 				18CD74C4278705E9001120C1 /* Onboarding */,
-				184D60AF278516AC009AE8CE /* Calendar */,
-				187BA30F2768D73C00CBB7CC /* LandingViewController.swift */,
-				187BA3112768EBC400CBB7CC /* LoginViewControllerUser.swift */,
-				189207102769F95F0008B4B7 /* SignUpViewController.swift */,
-				18CD74C22786E573001120C1 /* ChangePasswordViewController.swift */,
-				18CD74C02786DFAE001120C1 /* ChangeEmailViewController.swift */,
+				184D60AF278516AC009AE8CE /* Auth */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -397,6 +401,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18CD74C9278C0CA1001120C1 /* Localizable.strings in Resources */,
 				18E915FD2767E86C005772AB /* LaunchScreen.storyboard in Resources */,
 				18E915FA2767E86C005772AB /* Assets.xcassets in Resources */,
 				18798171276B4F2000FD4F8C /* GoogleService-Info.plist in Resources */,
@@ -414,7 +419,7 @@
 				1807421A277C39EE0090BDCC /* SettingViewController.swift in Sources */,
 				18893EAC27818A3000C258D7 /* DoctorInformtionCell.swift in Sources */,
 				184D60B327851789009AE8CE /* DateSelectorViewController.swift in Sources */,
-				181CD85A2777341C00E0C105 /* PsicologistQuestions.swift in Sources */,
+				181CD85A2777341C00E0C105 /* PsicologistQuestion.swift in Sources */,
 				184D60B727852A74009AE8CE /* AppoinmentModel.swift in Sources */,
 				18C6A918276F19F10056240D /* QuestionsViewController.swift in Sources */,
 				184D60B927857078009AE8CE /* CalendarViewController.swift in Sources */,
@@ -473,6 +478,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		18CD74CB278C0CA1001120C1 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				18CD74CA278C0CA1001120C1 /* ar */,
+				18CD74CC278C0CA3001120C1 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		18E915F32767E86B005772AB /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

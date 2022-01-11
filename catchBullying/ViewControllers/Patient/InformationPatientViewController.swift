@@ -12,7 +12,8 @@ import FirebaseFirestoreSwift
 class InformationPatientViewController: UIViewController, UINavigationControllerDelegate {
   
 
-  @IBOutlet weak var imagePickerButton: UIButton!
+  
+  @IBOutlet weak var profileImageView: UIImageView!
   @IBOutlet weak var nicknameField: UITextField!
   @IBOutlet weak var dateOfBirthField: UITextField!
   @IBOutlet weak var decriptionField: UITextView!
@@ -23,9 +24,17 @@ class InformationPatientViewController: UIViewController, UINavigationController
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     self.dismissKeyboard()
     createDatePiker()
     imagePicker.delegate = self
+    
+    profileImageView.layer.cornerRadius = profileImageView.frame.size.height / 2
+    profileImageView.clipsToBounds = true
+    
+    let tap = UITapGestureRecognizer(target: self, action: #selector(pickImage))
+    profileImageView.addGestureRecognizer(tap)
+    profileImageView.isUserInteractionEnabled = true
     
     if !patientProfile.imageURL.isEmpty {
       let ref = Storage.storage().reference(forURL: patientProfile.imageURL)
@@ -33,13 +42,13 @@ class InformationPatientViewController: UIViewController, UINavigationController
               if let error = error {
                   print(error.localizedDescription)
               } else if let data = data, let image = UIImage(data: data) {
-                self.imagePickerButton.setImage(image, for: .normal)
+                self.profileImageView.image = image
               }
           }
     }
   }
   
-  @IBAction func pickImageAction(_ sender: UIButton) {
+  @objc func pickImage() {
     
     let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
     alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
@@ -57,8 +66,8 @@ class InformationPatientViewController: UIViewController, UINavigationController
      otherwise app will crash on iPad */
     switch UIDevice.current.userInterfaceIdiom {
     case .pad:
-      alert.popoverPresentationController?.sourceView = sender
-      alert.popoverPresentationController?.sourceRect = sender.bounds
+      alert.popoverPresentationController?.sourceView = view
+      alert.popoverPresentationController?.sourceRect = view.bounds
       alert.popoverPresentationController?.permittedArrowDirections = .up
     default:
       break
@@ -196,8 +205,8 @@ class InformationPatientViewController: UIViewController, UINavigationController
 
 extension InformationPatientViewController: UIImagePickerControllerDelegate {
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-    if let image = info[.originalImage] as? UIImage, let imageData = image.pngData() {
-      imagePickerButton.setImage(image, for: .normal)
+    if let image = info[.originalImage] as? UIImage, let imageData = image.jpegData(compressionQuality: 0.1) {
+      profileImageView.image = image
       let storageRef = Storage.storage().reference().child("profileImages").child("\(user.id).jpeg")
       let metaData = StorageMetadata()
       metaData.contentType = "image/jpeg"

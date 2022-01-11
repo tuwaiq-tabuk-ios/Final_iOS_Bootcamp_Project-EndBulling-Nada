@@ -28,6 +28,7 @@ class SettingViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+
     tabelView.delegate = self
     tabelView.dataSource = self
   }
@@ -130,7 +131,7 @@ extension SettingViewController : UITableViewDelegate , UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
     cell.imageView?.image = UIImage(systemName: data[indexPath.row].icon)
-    cell.textLabel?.text = data[indexPath.row].title
+    cell.textLabel?.text = NSLocalizedString(data[indexPath.row].title, comment: "") 
     cell.textLabel?.textColor = data[indexPath.row].color
     
     return cell

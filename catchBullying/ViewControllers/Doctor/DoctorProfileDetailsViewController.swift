@@ -10,6 +10,8 @@ import Firebase
 
 class DoctorProfileDetailsViewController: UIViewController {
   
+  
+  @IBOutlet weak var imageView: UIImageView!
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var informationLabel: UILabel!
   @IBOutlet weak var providesAdviceLabel: UILabel!
@@ -23,7 +25,22 @@ class DoctorProfileDetailsViewController: UIViewController {
   var selectedProfile: DoctorModel?
   
   override func viewDidLoad() {
+  
     super.viewDidLoad()
+    
+    imageView.layer.cornerRadius = imageView.frame.size.height / 2
+    imageView.clipsToBounds = true
+    
+    if !selectedProfile!.imageURL.isEmpty {
+      let ref = Storage.storage().reference(forURL: selectedProfile!.imageURL)
+          ref.getData(maxSize: 1 * 1024 * 1024) { data, error in
+              if let error = error {
+                  print(error.localizedDescription)
+              } else if let data = data, let image = UIImage(data: data) {
+                self.imageView.image = image
+              }
+          }
+    }
   }
   
   @IBAction func closeAction(_ sender: Any) {

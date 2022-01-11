@@ -13,6 +13,8 @@ class PatientsListCell: UITableViewCell {
   @IBOutlet weak var nickname: UILabel!
   override func awakeFromNib() {
         super.awakeFromNib()
+
+
       
     }
 

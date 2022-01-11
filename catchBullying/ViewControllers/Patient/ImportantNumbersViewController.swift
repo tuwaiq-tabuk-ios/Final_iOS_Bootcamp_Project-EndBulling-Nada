@@ -22,6 +22,8 @@ class ImportantNumbersViewController: UIViewController {
    
   override func viewDidLoad() {
         super.viewDidLoad()
+    
+ 
 
     tabelView.dataSource = self
     tabelView.delegate = self
@@ -46,6 +48,7 @@ extension ImportantNumbersViewController : UITableViewDelegate , UITableViewData
     cell.textLabel?.text = importantNumbersarray[indexPath.row].title
     cell.detailTextLabel?.text = importantNumbersarray[indexPath.row].phoneNumber
     cell.imageView?.image = UIImage(systemName:importantNumbersarray[indexPath.row].icon)
+   
     return cell
   }
   

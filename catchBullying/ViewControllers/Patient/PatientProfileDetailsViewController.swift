@@ -19,7 +19,23 @@ class PatientProfileDetailsViewController: UIViewController {
   var selectedProfile: PatientModel?
   
   override func viewDidLoad() {
+   
+
     super.viewDidLoad()
+    
+    profileImageView.layer.cornerRadius = profileImageView.frame.size.height / 2
+    profileImageView.clipsToBounds = true
+    
+    if !selectedProfile!.imageURL.isEmpty {
+      let ref = Storage.storage().reference(forURL: selectedProfile!.imageURL)
+          ref.getData(maxSize: 1 * 1024 * 1024) { data, error in
+              if let error = error {
+                  print(error.localizedDescription)
+              } else if let data = data, let image = UIImage(data: data) {
+                self.profileImageView.image = image
+              }
+          }
+    }
   }
   
   
