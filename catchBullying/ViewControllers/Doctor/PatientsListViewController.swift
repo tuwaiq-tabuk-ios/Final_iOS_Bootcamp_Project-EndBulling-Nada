@@ -80,6 +80,8 @@ class PatientsListViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+
+
     tabelView.delegate = self
     tabelView.dataSource = self
   }
@@ -105,6 +107,7 @@ extension PatientsListViewController : UITableViewDelegate , UITableViewDataSour
     dateFormatter.timeStyle = .none
     
     cell.birtDay.text = dateFormatter.string(from: patients[indexPath.row].dateOfBirth!)
+    
     return cell
   }
   

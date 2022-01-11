@@ -22,7 +22,9 @@ class DoctorProfileViewController: UIViewController {
   @IBOutlet weak var zoomLabel: UILabel!
   @IBOutlet weak var providesAdvice: UILabel!
   
-  
+  override func viewDidLoad() {
+
+  }
   
   override func viewDidAppear(_ animated: Bool) {
     Auth.auth().addStateDidChangeListener { auth, user in

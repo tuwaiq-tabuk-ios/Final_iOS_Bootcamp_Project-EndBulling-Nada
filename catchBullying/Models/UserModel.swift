@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
-struct UserModel: Codable {
+struct UserModel: Codable, Equatable {
+  @DocumentID var docID: String?
   var id: String
   var email: String
   var isDoctor: Bool

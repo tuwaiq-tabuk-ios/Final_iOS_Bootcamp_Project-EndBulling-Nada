@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 var user: UserModel!
 var patientProfile: PatientModel!
 var doctorProfile: DoctorModel!
+var profileImage: UIImage?
 var isUpdating: Bool = false

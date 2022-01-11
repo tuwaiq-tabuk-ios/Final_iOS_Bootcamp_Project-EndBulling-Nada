@@ -16,6 +16,8 @@ class VideoPlayerViewController: UIViewController {
   var url: URL?
   
   override func viewDidLoad() {
+    
+
     super.viewDidLoad()
     
     guard let url = url else {

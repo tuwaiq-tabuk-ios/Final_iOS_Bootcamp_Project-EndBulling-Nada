@@ -19,6 +19,8 @@ class ChatTableViewCell: UITableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
+ 
+
     // Initialization code
     unreadCounterViewOutlet.layer.cornerRadius = unreadCounterViewOutlet.frame.width/2
   }
@@ -38,7 +40,7 @@ class ChatTableViewCell: UITableViewCell {
     dateMessageLabelOutlet.text = timeElapsed(date: conversation.messages.last?.sentAt ?? Date())
     unreadCounterLabelOutlet.text = "\(conversation.messages.filter({ $0.received == false }).count)"
     usernameLabelOutlet.minimumScaleFactor = 0.9
-    
+    avatarImagwOutLet.layer.cornerRadius = unreadCounterViewOutlet.frame.width/2
     //    dateMessageLabelOutlet.text = timeElapsed(timeElapsed.data ?? Date())
 //    if chatRoom.unreadCounter != 0 {
 //      self.unreadCounterLabelOutlet.text = "\(chatRoom.unreadCounter)"
