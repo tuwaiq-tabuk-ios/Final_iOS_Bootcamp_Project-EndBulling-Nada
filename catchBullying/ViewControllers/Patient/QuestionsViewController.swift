@@ -44,10 +44,11 @@ class QuestionsViewController: UIViewController {
     self.navigationItem.setHidesBackButton(true, animated: false)
     configureButtons()
     setupQuestion()
+
   }
   
   func setupQuestion() {
-    questionLabel.text = questions[current].question
+    questionLabel.text = NSLocalizedString(questions[current].question, comment: "") 
     yesButton.setTitle(questions[current].answers[0], for: .normal)
     noButton.setTitle(questions[current].answers[1], for: .normal)
     otherButton.setTitle(questions[current].answers[2], for: .normal)
@@ -118,6 +119,7 @@ class QuestionsViewController: UIViewController {
     otherButton.layer.borderWidth = 3
     otherButton.layer.borderColor = CGColor(red: 225, green:255, blue: 255, alpha: 1)
   }
+  
   
   
   

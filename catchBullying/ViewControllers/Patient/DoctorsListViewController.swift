@@ -29,6 +29,9 @@ class DoctorsListViewController: UIViewController {
     dismissKeyboard()
   }
   
+  @IBAction func editAction(_ sender: Any) {
+    tableView.isEditing = !tableView.isEditing
+  }
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     fetchData()
@@ -104,6 +107,41 @@ extension DoctorsListViewController : UITableViewDelegate , UITableViewDataSourc
   //
   //}
   
+  func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+    return true
+  }
+
+  func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+    data.swapAt(sourceIndexPath.row, destinationIndexPath.row)
+  }
+
+//
+//  func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//    let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { action, view, CompletionHandler in
+//      self.data.remove(at: indexPath.row)
+//      tableView.beginUpdates()
+//      tableView.deleteRows(at: [indexPath], with: .automatic)
+//      tableView.endUpdates()
+//      CompletionHandler(true)
+//
+//    }
+//    return UISwipeActionsConfiguration(actions: [deleteAction])
+//  }
+ 
+  func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+    return .delete
+  }
   
+  
+  
+  
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      tableView.beginUpdates()
+      data.remove(at: indexPath.row)
+      tableView.deleteRows(at: [indexPath], with: .fade)
+      tableView.endUpdates()
+    }
+  }
   
 }
