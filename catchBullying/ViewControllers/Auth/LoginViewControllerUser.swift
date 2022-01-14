@@ -7,8 +7,6 @@
 
 import UIKit
 import FirebaseAuth
-import Firebase
-import FirebaseFirestoreSwift
 
 class LoginViewController: UIViewController {
   
@@ -96,65 +94,25 @@ class LoginViewController: UIViewController {
         return
       }
       
-      print("LOGGED IN")
-      
-      let db = Firestore.firestore()
-      
-      db.collection("users").whereField("id", isEqualTo: authResult!.user.uid).getDocuments { snapshot, error in
-        if let error = error {
-          fatalError()
-        }
-        
-        if let docs = snapshot?.documents {
-          do {
-            try user = docs.first!.data(as: UserModel.self)
-            print("done", user.email)
-            
-            if user.isDoctor {
-              
-              db.collection("doctors").whereField("id", isEqualTo: user.id).getDocuments { snapshot, error in
-                if let error = error {
-                  fatalError()
-                }
-                
-                if let docs = snapshot?.documents {
-                  do {
-                    try doctorProfile = docs.first!.data(as: DoctorModel.self)
-                    sender.isEnabled = true
-                    let controller = self.storyboard?.instantiateViewController(identifier: "DoctorHomeVC") as! DoctorHomeViewController
-                    controller.modalPresentationStyle = .fullScreen
-                    controller.modalTransitionStyle = .flipHorizontal
-                    self.present(controller, animated: false, completion: nil)
-                  } catch {
-                    fatalError()
-                  }
-                }
-              }
-              
-            } else {
-              
-              db.collection("patients").whereField("id", isEqualTo: user.id).getDocuments { snapshot, error in
-                if let error = error {
-                  fatalError()
-                }
-                
-                if let docs = snapshot?.documents {
-                  do {
-                    try patientProfile = docs.first!.data(as: PatientModel.self)
-                    sender.isEnabled = true
-                    let controller = self.storyboard?.instantiateViewController(identifier: "UserHomeVC") as! UserHomeViewController
-                    controller.modalPresentationStyle = .fullScreen
-                    controller.modalTransitionStyle = .flipHorizontal
-                    self.present(controller, animated: false, completion: nil)
-                  } catch {
-                    fatalError()
-                  }
-                }
-              }
-            }
-          } catch {
+      FirestoreRepository.read(collection: "users", field: "id", value: authResult!.user.uid) { (doc: UserModel) in
+        user = doc
+        if user.isDoctor {
+          FirestoreRepository.read(collection: "doctors", field: "id", value: user.id) { (doc: DoctorModel) in
+            doctorProfile = doc
             sender.isEnabled = true
-            print(error.localizedDescription)
+            let controller = self.storyboard?.instantiateViewController(identifier: "DoctorHomeVC") as! DoctorHomeTabBarController
+            controller.modalPresentationStyle = .fullScreen
+            controller.modalTransitionStyle = .flipHorizontal
+            self.present(controller, animated: false, completion: nil)
+          }
+        } else {
+          FirestoreRepository.read(collection: "patients", field: "id", value: user.id) { (doc: PatientModel) in
+            patientProfile = doc
+            sender.isEnabled = true
+            let controller = self.storyboard?.instantiateViewController(identifier: "UserHomeVC") as! PatientHomeTabBarController
+            controller.modalPresentationStyle = .fullScreen
+            controller.modalTransitionStyle = .flipHorizontal
+            self.present(controller, animated: false, completion: nil)
           }
         }
       }

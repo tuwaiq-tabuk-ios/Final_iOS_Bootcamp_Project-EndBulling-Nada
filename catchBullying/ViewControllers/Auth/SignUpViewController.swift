@@ -51,86 +51,53 @@ class SignUpViewController: UIViewController {
           }
           return
         }
-        print("user created")
-        // create user file in firestore
-        // seague to questions
+  
         var userModel = UserModel(id: authResult!.user.uid,
                              email: self.emailTextField.text!,
                                   isDoctor: self.userTypePicker.selectedSegmentIndex == 1)
         
-        let db = Firestore.firestore()
-        do {
-          var ref: DocumentReference!
-          ref = try db.collection("users").addDocument(from: userModel) { error in
-            if let error = error {
-              print(error.localizedDescription)
-              return
+        FirestoreRepository.create(collection: "users", document: userModel) { userDocID in
+          userModel.docID = userDocID
+          user = userModel
+          isUpdating = false
+          
+          if self.userTypePicker.selectedSegmentIndex == 0 {
+            var profileModel = PatientModel(id: user.id,
+                                            nickname: "",
+                                            dateOfBirth: nil,
+                                            imageURL: "",
+                                            description: "",
+                                            answers: [])
+            
+            FirestoreRepository.create(collection: "patients", document: profileModel) { patientDocID in
+              profileModel.docID = patientDocID
+              patientProfile = profileModel
+              self.performSegue(withIdentifier: "userSignupToQuestions", sender: nil)
             }
-            userModel.docID = ref.documentID
-            user = userModel
-            isUpdating = false
-            if self.userTypePicker.selectedSegmentIndex == 0 {
-              var profileModel = PatientModel(id: user.id,
-                                              nickname: "",
-                                              dateOfBirth: nil,
-                                              imageURL: "",
-                                              description: "",
-                                              answers: [])
-              do {
-                var ref: DocumentReference!
-                ref = try db.collection("patients").addDocument(from: profileModel) { error in
-                  if let error = error {
-                    print(error.localizedDescription)
-                    return
-                  }
-                  profileModel.docID = ref.documentID
-                  patientProfile = profileModel
-                  self.performSegue(withIdentifier: "userSignupToQuestions", sender: nil)
-                }
-              } catch {
-                print(error.localizedDescription)
-              }
-            } else {
-              var profileModel = DoctorModel(id: user.id,
-                                             firstName: "",
-                                             lastName: "",
-                                             mobileNumber: "",
-                                             
-                                             imageURL: "",
-                                             zoom: "",
-                                             experience: 0,
-                                             languages: [],
-                                             availableDates: [], description: "",
-                                             answers: [])
-              do {
-                var ref: DocumentReference!
-                ref = try db.collection("doctors").addDocument(from: profileModel) { error in
-                  if let error = error {
-                    print(error.localizedDescription)
-                    return
-                  }
-                  profileModel.docID = ref.documentID
-                  doctorProfile = profileModel
-                  let controller = self.storyboard?.instantiateViewController(identifier: "DoctorHomeVC") as! DoctorHomeViewController
-                  controller.modalPresentationStyle = .fullScreen
-                  controller.modalTransitionStyle = .flipHorizontal
-                  self.present(controller, animated: false, completion: nil)
-                }
-              } catch {
-                print(error.localizedDescription)
-              }
+          } else {
+            var profileModel = DoctorModel(id: user.id,
+                                           firstName: "",
+                                           lastName: "",
+                                           mobileNumber: "",
+                                           imageURL: "",
+                                           zoom: "",
+                                           experience: 0,
+                                           languages: [],
+                                           availableDates: [], description: "",
+                                           answers: [])
+            
+            FirestoreRepository.create(collection: "doctors", document: profileModel) { doctorDocID in
+              profileModel.docID = doctorDocID
+              doctorProfile = profileModel
+              let controller = self.storyboard?.instantiateViewController(identifier: "DoctorHomeVC") as! DoctorHomeTabBarController
+              controller.modalPresentationStyle = .fullScreen
+              controller.modalTransitionStyle = .flipHorizontal
+              self.present(controller, animated: false, completion: nil)
             }
           }
-        } catch {
-          print(error.localizedDescription)
         }
-        
-        
-        
       }
-
     }
-    
   }
   
   

@@ -13,20 +13,20 @@ class QuestionsViewController: UIViewController {
   var current: Int = 0
   var answers: [Int] = []
   
-  let questions: [PsicologistQuestion] = [
-    PsicologistQuestion(question: "Gender",
+  let questions: [PsicologistQuestionModel] = [
+    PsicologistQuestionModel(question: "Gender",
                         answers:["Male" , "Female" ,"Other"]),
-    PsicologistQuestion(question: "Do you currentiy have a job?",
+    PsicologistQuestionModel(question: "Do you currentiy have a job?",
                         answers:["Yes" , "No" ,"Prefer not answer"]),
-    PsicologistQuestion(question: "Have you taken a psychiatric medication befor?",
+    PsicologistQuestionModel(question: "Have you taken a psychiatric medication befor?",
                         answers: ["Yes" , "No" ,"Prefer not answer"]),
-    PsicologistQuestion(question: "Does your family have a history of psychiatrist counseling?",
+    PsicologistQuestionModel(question: "Does your family have a history of psychiatrist counseling?",
                         answers: ["Yes" , "No" ,"Prefer not answer"]),
-    PsicologistQuestion(question: "Were you subjected to domestic violence (verbal , psychological, physical, sexual , negligence ...)?",
+    PsicologistQuestionModel(question: "Were you subjected to domestic violence (verbal , psychological, physical, sexual , negligence ...)?",
                         answers: ["Yes" , "No" ,"Prefer not answer"]),
-    PsicologistQuestion(question: "Do you think of hurting yourself or have suicidal thoughts?",
+    PsicologistQuestionModel(question: "Do you think of hurting yourself or have suicidal thoughts?",
                         answers: ["Yes" , "No" ,"Prefer not answer"]),
-    PsicologistQuestion(question: "Do you plan on committing suicide?",
+    PsicologistQuestionModel(question: "Do you plan on committing suicide?",
                         answers: ["Yes" , "No" ,"Prefer not answer"])
     
   ]
@@ -48,10 +48,11 @@ class QuestionsViewController: UIViewController {
   }
   
   func setupQuestion() {
-    questionLabel.text = NSLocalizedString(questions[current].question, comment: "") 
+    questionLabel.text = NSLocalizedString(questions[current].question, comment: "")
     yesButton.setTitle(questions[current].answers[0], for: .normal)
     noButton.setTitle(questions[current].answers[1], for: .normal)
     otherButton.setTitle(questions[current].answers[2], for: .normal)
+
   }
   
   func nextQuestion() {
@@ -63,28 +64,16 @@ class QuestionsViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
       } else {
         patientProfile.answers = answers
-        let db = Firestore.firestore()
-        do {
-          try db.collection("patients").document(patientProfile.docID!).setData(from: patientProfile,
-                                                                                merge: true) { error in
-                if let error = error {
-                  fatalError(error.localizedDescription)
-                }
-                
-                let controller = self.storyboard?.instantiateViewController(identifier: "UserHomeVC") as! UserHomeViewController
-                controller.modalPresentationStyle = .fullScreen
-                controller.modalTransitionStyle = .flipHorizontal
-                self.present(controller, animated: false, completion: nil)
-              }
-        } catch {
-          fatalError(error.localizedDescription)
+        
+        FirestoreRepository.update(collection: "patients",
+                                   documentID: patientProfile.docID!,
+                                   document: patientProfile) {
+          let controller = self.storyboard?.instantiateViewController(identifier: "UserHomeVC") as! PatientHomeTabBarController
+          controller.modalPresentationStyle = .fullScreen
+          controller.modalTransitionStyle = .flipHorizontal
+          self.present(controller, animated: false, completion: nil)
         }
-        
-        
-        
       }
-      
-      
     }
   }
   
