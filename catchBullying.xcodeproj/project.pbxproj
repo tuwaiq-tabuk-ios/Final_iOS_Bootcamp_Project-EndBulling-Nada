@@ -38,6 +38,7 @@
 		187BA3102768D73C00CBB7CC /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BA30F2768D73C00CBB7CC /* LandingViewController.swift */; };
 		187BA3122768EBC400CBB7CC /* LoginViewControllerUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187BA3112768EBC400CBB7CC /* LoginViewControllerUser.swift */; };
 		18853F6227918A4500A450D4 /* FirestoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18853F6127918A4500A450D4 /* FirestoreRepository.swift */; };
+		18853F642792F1AD00A450D4 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18853F632792F1AD00A450D4 /* UIImageView+.swift */; };
 		18893E9C2781056900C258D7 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18893E9B2781056900C258D7 /* MessageModel.swift */; };
 		18893E9E2781059C00C258D7 /* PatientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18893E9D2781059C00C258D7 /* PatientModel.swift */; };
 		18893EA0278106CA00C258D7 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18893E9F278106CA00C258D7 /* GlobalVariables.swift */; };
@@ -57,8 +58,6 @@
 		18CD74C32786E573001120C1 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CD74C22786E573001120C1 /* ChangePasswordViewController.swift */; };
 		18CD74C6278A967F001120C1 /* ViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CD74C5278A967F001120C1 /* ViewController+.swift */; };
 		18CD74C9278C0CA1001120C1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18CD74CB278C0CA1001120C1 /* Localizable.strings */; };
-		18CD74D92790514A001120C1 /* HomeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CD74D82790514A001120C1 /* HomeeViewController.swift */; };
-		18CD74DB27905170001120C1 /* HomeeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CD74DA27905170001120C1 /* HomeeCollectionViewCell.swift */; };
 		18E915EE2767E86B005772AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E915ED2767E86B005772AB /* AppDelegate.swift */; };
 		18E915F02767E86B005772AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E915EF2767E86B005772AB /* SceneDelegate.swift */; };
 		18E915F52767E86B005772AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E915F32767E86B005772AB /* Main.storyboard */; };
@@ -101,6 +100,7 @@
 		187BA30F2768D73C00CBB7CC /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		187BA3112768EBC400CBB7CC /* LoginViewControllerUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerUser.swift; sourceTree = "<group>"; };
 		18853F6127918A4500A450D4 /* FirestoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreRepository.swift; sourceTree = "<group>"; };
+		18853F632792F1AD00A450D4 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		18893E9B2781056900C258D7 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		18893E9D2781059C00C258D7 /* PatientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientModel.swift; sourceTree = "<group>"; };
 		18893E9F278106CA00C258D7 /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
@@ -116,8 +116,6 @@
 		18CD74C5278A967F001120C1 /* ViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+.swift"; sourceTree = "<group>"; };
 		18CD74CA278C0CA1001120C1 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		18CD74CC278C0CA3001120C1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		18CD74D82790514A001120C1 /* HomeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeeViewController.swift; sourceTree = "<group>"; };
-		18CD74DA27905170001120C1 /* HomeeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeeCollectionViewCell.swift; sourceTree = "<group>"; };
 		18E915EA2767E86B005772AB /* catchBullying.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = catchBullying.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18E915ED2767E86B005772AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18E915EF2767E86B005772AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -173,6 +171,7 @@
 				184D60B627852A74009AE8CE /* AppoinmentModel.swift */,
 				182BD463276DBAE600FA32BC /* UserModel.swift */,
 				1807421B277C3F710090BDCC /* ProfileCellModel.swift */,
+				18853F6027918A2500A450D4 /* Repositories */,
 				181CD8592777341C00E0C105 /* PsicologistQuestionModel.swift */,
 				1807421F277C805A0090BDCC /* ImportantNumberModel.swift */,
 			);
@@ -244,6 +243,7 @@
 			children = (
 				18893EA72781174100C258D7 /* UIView+.swift */,
 				18CD74C5278A967F001120C1 /* ViewController+.swift */,
+				18853F632792F1AD00A450D4 /* UIImageView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -334,9 +334,8 @@
 		18E915EC2767E86B005772AB /* catchBullying */ = {
 			isa = PBXGroup;
 			children = (
-				18853F6027918A2500A450D4 /* Repositories */,
 				182BD462276DBAB200FA32BC /* Models */,
-				18E916042767ECD9005772AB /* ViewControllers */,
+				18E916042767ECD9005772AB /* Controllers */,
 				18C6A929276F41440056240D /* Extension */,
 				1892070E2769F8810008B4B7 /* View */,
 				1892070F2769F8A10008B4B7 /* Support */,
@@ -350,11 +349,9 @@
 			path = catchBullying;
 			sourceTree = "<group>";
 		};
-		18E916042767ECD9005772AB /* ViewControllers */ = {
+		18E916042767ECD9005772AB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				18CD74D82790514A001120C1 /* HomeeViewController.swift */,
-				18CD74DA27905170001120C1 /* HomeeCollectionViewCell.swift */,
 				187BA30F2768D73C00CBB7CC /* LandingViewController.swift */,
 				18CD74D4278F5902001120C1 /* Calendar */,
 				18893E992780CD2200C258D7 /* Patient */,
@@ -362,7 +359,7 @@
 				180DB1A1278256FA00FC309C /* Chat */,
 				184D60AF278516AC009AE8CE /* Auth */,
 			);
-			path = ViewControllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -450,7 +447,6 @@
 			files = (
 				1807421A277C39EE0090BDCC /* SettingsViewController.swift in Sources */,
 				184D60B327851789009AE8CE /* DateSelectorViewController.swift in Sources */,
-				18CD74DB27905170001120C1 /* HomeeCollectionViewCell.swift in Sources */,
 				181CD85A2777341C00E0C105 /* PsicologistQuestionModel.swift in Sources */,
 				184D60B727852A74009AE8CE /* AppoinmentModel.swift in Sources */,
 				18C6A918276F19F10056240D /* QuestionsViewController.swift in Sources */,
@@ -459,7 +455,7 @@
 				184D60AE27850BEA009AE8CE /* PatientProfileDetailsViewController.swift in Sources */,
 				18074222277C81000090BDCC /* ImportantNumbersViewController.swift in Sources */,
 				187BA3122768EBC400CBB7CC /* LoginViewControllerUser.swift in Sources */,
-				18CD74D92790514A001120C1 /* HomeeViewController.swift in Sources */,
+				18853F642792F1AD00A450D4 /* UIImageView+.swift in Sources */,
 				184D60BB2785772D009AE8CE /* CalendarCell.swift in Sources */,
 				18893E9E2781059C00C258D7 /* PatientModel.swift in Sources */,
 				18CD74C12786DFAE001120C1 /* ChangeEmailViewController.swift in Sources */,
