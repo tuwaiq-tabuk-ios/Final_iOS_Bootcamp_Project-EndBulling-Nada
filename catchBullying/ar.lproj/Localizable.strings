@@ -2,7 +2,7 @@
 //ProfileViewController
 "Information" = "المعلومات";
 "Change Email" = "تغيير الايميل";
-"Change Password" = "تغير كلمة ";
+"Change Password" = "تغير كلمة المرور ";
 "Change Language" = "تغيير اللغة";
 "Logout"   = "تسجيل خروج";
 "Delete Account" = "حذف الحساب";
@@ -16,3 +16,20 @@
 "Were you subjected to domestic violence (verbal , psychological, physical, sexual , negligence ...)?" = "هل تعرضت لعنف الاسري ونحوه (لفضي، جسدي ، جنسي، اهمال ....)؟";
 "Do you think of hurting yourself or have suicidal thoughts?" = "هل تفكر بإذاء نفسك أو تراودك أفكار بالانتحار؟";
 "Do you plan on committing suicide?" = "هل لديك خطة للانتحار؟";
+"Male" = "ذكر";
+"Female" = "انثى";
+"Yes" = "نعم";
+"No" = "لا";
+"Other" = "اخرى";
+"Prefer not answer" = "لا افضل الاجابة";
+"ChangePassword" = "تغيير كلمة المرور";
+"ChangeEmail" = "تغيير الاميل";
+"oldPassword" = "كلمة المرور السابقة";
+"newPassword" = "كلمة المرورة الجديدة";
+"emailAlreadyInUse" = "الايميل مستخدم";
+"wrongPassword" = "كلمة المرور خطائة";
+"userNotFound" = "المستخدم غير موجود";
+"invalidEmail" = "الايميل فارغ";
+"userNotFound" = "المستخدم غير موجود";
+"Password too short!" = "كلمة المرور قصيرة";
+"Password Does Not Match" = "كلمة المرور غير متطابقة";

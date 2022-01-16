@@ -14,6 +14,7 @@ import FirebaseFirestoreSwift
 struct ConversationUser: Codable {
   var id: String
   var name: String
+  var imageURL: String?
 }
 struct ConversationModel: Codable {
   @DocumentID var docID: String?

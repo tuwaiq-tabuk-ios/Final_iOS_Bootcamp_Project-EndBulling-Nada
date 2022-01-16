@@ -17,13 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image2" translatesAutoresizingMaskIntoConstraints="NO" id="NwS-7K-3R8">
-                                <rect key="frame" x="87" y="360" width="240" height="186"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="186" id="G74-cx-GX0"/>
-                                </constraints>
+                                <rect key="frame" x="36.5" y="277.5" width="341" height="341"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EndBullying" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VyE-OI-Qsa">
-                                <rect key="frame" x="150" y="544" width="214" height="41.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EndBullying" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VyE-OI-Qsa">
+                                <rect key="frame" x="20" y="618.5" width="374" height="41.5"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="38"/>
                                 <color key="textColor" red="0.9355601616" green="0.19835099580000001" blue="0.33317389460000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -32,12 +29,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="NwS-7K-3R8" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="9Yz-em-Tuf"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VyE-OI-Qsa" secondAttribute="trailing" constant="50" id="NNc-jX-n3z"/>
-                            <constraint firstItem="VyE-OI-Qsa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="500" id="PlG-dh-kkm"/>
-                            <constraint firstItem="VyE-OI-Qsa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="150" id="QJ9-cE-Oe1"/>
-                            <constraint firstItem="NwS-7K-3R8" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="15:56" id="mt5-BI-KzX"/>
-                            <constraint firstItem="NwS-7K-3R8" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerXWithinMargins" id="tOR-n2-TP6"/>
+                            <constraint firstItem="VyE-OI-Qsa" firstAttribute="top" secondItem="NwS-7K-3R8" secondAttribute="bottom" id="Pox-kJ-tCI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VyE-OI-Qsa" secondAttribute="trailing" constant="20" id="X2n-fx-39S"/>
+                            <constraint firstItem="VyE-OI-Qsa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="dDY-Tu-O7X"/>
+                            <constraint firstItem="NwS-7K-3R8" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="eIA-aj-m9m"/>
+                            <constraint firstItem="NwS-7K-3R8" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="nHR-lg-Vad"/>
                         </constraints>
                     </view>
                 </viewController>
