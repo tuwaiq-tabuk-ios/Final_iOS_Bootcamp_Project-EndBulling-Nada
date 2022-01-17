@@ -11,14 +11,17 @@ class PatientsListViewController: UIViewController {
   // MARK: - IBOutlets
   @IBOutlet weak var tabelView: UITableView!
   
+  // MARK: - Properties
   var patients: [PatientModel] = []
   var selectedProfile: PatientModel?
   
+  
+  // MARK: - Methods
   func getIds(_ completion: @escaping ([String]) -> ()) {
     var conversations: [ConversationModel] = []
     var ids: Set<String> = []
     
-    FirestoreRepository.read(collection: "conversations", field: "usersIDs", valueAny: [user.id]) { (items: [ConversationModel]) in
+    FirestoreRepository.shared.read(collection: "conversations", field: "usersIDs", valueAny: [user.id]) { (items: [ConversationModel]) in
       conversations = items
       
       for conversation in conversations {
@@ -41,7 +44,7 @@ class PatientsListViewController: UIViewController {
     getIds { ids in
       if ids.count == 0 { return }
       self.patients.removeAll()
-      FirestoreRepository.read(collection: "patients", field: "id", values: ids) { (items: [PatientModel]) in
+      FirestoreRepository.shared.read(collection: "patients", field: "id", values: ids) { (items: [PatientModel]) in
         self.patients = items
         self.tabelView.reloadData()
       }
@@ -69,7 +72,7 @@ class PatientsListViewController: UIViewController {
 
 }
 
-// MARK: - extension
+// MARK: - Delegats , DataSource
 extension PatientsListViewController : UITableViewDelegate , UITableViewDataSource {
   
   func numberOfSections(in tableView: UITableView) -> Int {

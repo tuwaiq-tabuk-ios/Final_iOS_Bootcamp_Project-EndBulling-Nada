@@ -19,7 +19,7 @@ class DateSelectorViewController: UIViewController {
     
   
   // MARK: - IBAction
-  @IBAction func addAction(_ sender: Any) {
+  @IBAction func addPressed(_ sender: Any) {
     print(datePicker.date)
     if doctorProfile.availableDates.contains(where: { d in
 //     compare year and month and day and time
@@ -29,7 +29,7 @@ class DateSelectorViewController: UIViewController {
     }
     doctorProfile.availableDates.append(datePicker.date)
     
-    FirestoreRepository.update(collection: "doctors",
+    FirestoreRepository.shared.update(collection: "doctors",
                                documentID: doctorProfile.docID!,
                                document: doctorProfile) {
       self.navigationController?.popViewController(animated: true)

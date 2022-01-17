@@ -27,11 +27,11 @@ class SettingsViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-
+    // MARK: - Properties
     tabelView.delegate = self
     tabelView.dataSource = self
   }
-  
+  // MARK: - View controller lifecycle
   override func viewDidAppear(_ animated: Bool) {
     Auth.auth().addStateDidChangeListener { auth, user in
       if let user = user {
@@ -46,11 +46,12 @@ class SettingsViewController: UIViewController {
     }
   }
   
+  // MARK: - Methods
   private func deleteAppointments(field: String, id: String ,completion: @escaping () -> ()) {
     var total: Int = 0
     var deleted: Int = 0
     
-    FirestoreRepository.read(collection: "appointments",
+    FirestoreRepository.shared.read(collection: "appointments",
                              field: field, value: id) { (items: [AppointmentModel]) in
       if items.count == 0 {
         completion()
@@ -58,7 +59,7 @@ class SettingsViewController: UIViewController {
       }
       total = items.count
       for item in items {
-        FirestoreRepository.delete(collection: "appointments",
+        FirestoreRepository.shared.delete(collection: "appointments",
                                    documentID: item.docID!) {
           deleted += 1
           if total == deleted {
@@ -77,8 +78,8 @@ class SettingsViewController: UIViewController {
     let profileDocID: String = user.isDoctor ? doctorProfile.docID! : patientProfile.docID!
     let field: String = user.isDoctor ? "doctorID" : "patientID"
     
-    FirestoreRepository.delete(collection: "users", documentID: user.docID!) {
-      FirestoreRepository.delete(collection: profileFolder, documentID: profileDocID) {
+    FirestoreRepository.shared.delete(collection: "users", documentID: user.docID!) {
+      FirestoreRepository.shared.delete(collection: profileFolder, documentID: profileDocID) {
         self.deleteAppointments(field: field, id: user.id) {
           Auth.auth().currentUser?.delete(completion: { error in
             if let error = error { fatalError() }
@@ -94,13 +95,7 @@ class SettingsViewController: UIViewController {
 }
 
 
-
-
-
-
-
-
-// MARK: - extension
+// MARK: - Table   Delegate, Datasource
 extension SettingsViewController : UITableViewDelegate , UITableViewDataSource {
   
   

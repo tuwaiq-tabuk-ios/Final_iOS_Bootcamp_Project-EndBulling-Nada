@@ -27,7 +27,7 @@ class DoctorAvailableDatesViewController: UIViewController {
   }
   
   func fetchData() {
-    FirestoreRepository.read(collection: "doctors",
+    FirestoreRepository.shared.read(collection: "doctors",
                              documentID: doctorProfile.docID!) { (item: DoctorModel) in
       doctorProfile = item
       self.tableView.reloadData()
@@ -35,7 +35,7 @@ class DoctorAvailableDatesViewController: UIViewController {
   }
   
   func saveData() {
-    FirestoreRepository.update(collection: "doctors",
+    FirestoreRepository.shared.update(collection: "doctors",
                                documentID: doctorProfile.docID!,
                                document: doctorProfile) {
     }
@@ -43,14 +43,14 @@ class DoctorAvailableDatesViewController: UIViewController {
   
   
   // MARK: - IBOutlets
-  @IBAction func newDate(_ sender: Any) {
+  @IBAction func newDatePressed(_ sender: Any) {
     performSegue(withIdentifier: "dateSelector", sender: self)
   }
   
 }
 
 
-// MARK: - Table data source
+// MARK: - Table Delegate , DataSource
 extension DoctorAvailableDatesViewController: UITableViewDelegate, UITableViewDataSource {
   
   func numberOfSections(in tableView: UITableView) -> Int {

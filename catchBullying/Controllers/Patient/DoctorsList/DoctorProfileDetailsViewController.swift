@@ -45,7 +45,7 @@ class DoctorProfileDetailsViewController: UIViewController {
   
   
 //  MARK: - IBAction
-  @IBAction func closeAction(_ sender: Any) {
+  @IBAction func closePressed(_ sender: Any) {
     dismiss(animated: true, completion: nil)
   }
   
@@ -83,13 +83,13 @@ class DoctorProfileDetailsViewController: UIViewController {
   
   //  MARK: - IBAction
   
-  @IBAction func appointmentAction(_ sender: Any) {
+  @IBAction func appointmentPressed(_ sender: Any) {
     performSegue(withIdentifier: "appointmentSelect", sender: self)
   }
   
-  @IBAction func chatAction(_ sender: Any) {
+  @IBAction func chatPressed(_ sender: Any) {
     
-    FirestoreRepository.read(collection: "conversations", field: "usersIDs", valueAny: [user.id]) { (items: [ConversationModel]) in
+    FirestoreRepository.shared.read(collection: "conversations", field: "usersIDs", valueAny: [user.id]) { (items: [ConversationModel]) in
       for item in items {
         if item.users.contains(where: { $0.id == self.selectedProfile!.id }) {
           self.gotoChat(conversation: item)
@@ -108,7 +108,7 @@ class DoctorProfileDetailsViewController: UIViewController {
                                                              imageURL: self.selectedProfile!.imageURL)
                                            ])
       
-      FirestoreRepository.create(collection: "conversations", document: conversation) { docID in
+      FirestoreRepository.shared.create(collection: "conversations", document: conversation) { docID in
         conversation.docID = docID
         self.gotoChat(conversation: conversation)
       }

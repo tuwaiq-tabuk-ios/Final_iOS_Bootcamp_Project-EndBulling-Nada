@@ -22,29 +22,31 @@ class LandingViewController: UIViewController {
     
     
     if let usr = Auth.auth().currentUser {
-      
-      FirestoreRepository.read(collection: "users", field: "id", value: usr.uid) { (doc: UserModel) in
+      print(usr.uid)
+      FirestoreRepository.shared.read(collection: "users", field: "id", value: usr.uid) { (doc: UserModel) in
         user = doc
         if user.isDoctor {
-          FirestoreRepository.read(collection: "doctors", field: "id", value: user.id) { (doc: DoctorModel) in
-            doctorProfile = doc
+          print("doctor", user.id)
+          FirestoreRepository.shared.read(collection: "doctors", field: "id", value: user.id) { (doctorDoc: DoctorModel) in
+            doctorProfile = doctorDoc
             let controller = self.storyboard?.instantiateViewController(identifier: "DoctorHomeVC") as! DoctorHomeTabBarController
             controller.modalPresentationStyle = .fullScreen
             controller.modalTransitionStyle = .flipHorizontal
             self.present(controller, animated: false, completion: nil)
           }
         } else {
-          FirestoreRepository.read(collection: "patients", field: "id", value: user.id) { (doc: PatientModel) in
-            patientProfile = doc
+          print("patient", user.id)
+          FirestoreRepository.shared.read(collection: "patients", field: "id", value: user.id) { (patientDoc: PatientModel) in
+            patientProfile = patientDoc
             let controller = self.storyboard?.instantiateViewController(identifier: "UserHomeVC") as! PatientHomeTabBarController
             controller.modalPresentationStyle = .fullScreen
             controller.modalTransitionStyle = .flipHorizontal
             self.present(controller, animated: false, completion: nil)
           }
-          
         }
       }
     }
+    
   }
   
   

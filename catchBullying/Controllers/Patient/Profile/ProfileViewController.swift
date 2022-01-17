@@ -11,6 +11,8 @@ import Firebase
 
 class ProfileViewController: UIViewController {
   
+  
+  // MARK: - Properties
   private var deleting: Bool = false
   
   let data: [[ProfileCellModel]] = [
@@ -35,8 +37,13 @@ class ProfileViewController: UIViewController {
     
   ]
   
+  // MARK: - IBOutlets
   @IBOutlet weak var tableView: UITableView!
   
+  
+  
+  
+  // MARK: - View controller lifecycle
   override func viewDidAppear(_ animated: Bool) {
     Auth.auth().addStateDidChangeListener { auth, user in
       if let user = user {
@@ -70,19 +77,21 @@ class ProfileViewController: UIViewController {
     
   }
   
+  
+  // MARK: - Methods
   private func deleteAppointments(field: String, id: String ,completion: @escaping () -> ()) {
     let db = Firestore.firestore()
     var total: Int = 0
     var deleted: Int = 0
     
-    FirestoreRepository.read(collection: "appointments", field: field, value: id) { (items: [AppointmentModel]) in
+    FirestoreRepository.shared.read(collection: "appointments", field: field, value: id) { (items: [AppointmentModel]) in
       if items.count == 0 {
         completion()
         return
       }
       total = items.count
       for item in items {
-        FirestoreRepository.delete(collection: "appointments", documentID: item.docID!) {
+        FirestoreRepository.shared.delete(collection: "appointments", documentID: item.docID!) {
           deleted += 1
           if total == deleted {
             completion()
@@ -100,8 +109,8 @@ class ProfileViewController: UIViewController {
     let profileDocID: String = user.isDoctor ? doctorProfile.docID! : patientProfile.docID!
     let field: String = user.isDoctor ? "doctorID" : "patientID"
     
-    FirestoreRepository.delete(collection: "users", documentID: user.docID!) {
-      FirestoreRepository.delete(collection: profileFolder, documentID: profileDocID) {
+    FirestoreRepository.shared.delete(collection: "users", documentID: user.docID!) {
+      FirestoreRepository.shared.delete(collection: profileFolder, documentID: profileDocID) {
         self.deleteAppointments(field: field, id: user.id) {
           Auth.auth().currentUser?.delete(completion: { error in
             if let error = error { fatalError() }
@@ -115,6 +124,8 @@ class ProfileViewController: UIViewController {
   }
 }
 
+
+// MARK: - Table   Delegate, Datasource
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
   
   func numberOfSections(in tableView: UITableView) -> Int {
@@ -132,21 +143,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     return cell
   }
   
-  //  [
-  //    ProfileCellModel(title: "Information",                            icon: "person",
-  //
-  //                     color: .black),
-  //    ProfileCellModel(title: "Manage My Profile",          icon: "person.crop.circle.badge.checkmark.fill",                     color: .black),
-  //    ProfileCellModel(title: "Change Language",            icon: "Editor placeholder in source file",                                    color: .black)
-  //  ],
-  //  [
-  //    ProfileCellModel(title: "Contact Customer Service",   icon: "person", color: .black),
-  //    ProfileCellModel(title: "Important Numbers for You",  icon: "phone",                                                   color: .black),
-  //    ProfileCellModel(title: "Logout",                     icon: "power", color: .black)
-  //  ],
-  //  [
-  //    ProfileCellModel(title: "Delete Account",           icon: "delete", color: .red)
-  //  ]
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)

@@ -10,6 +10,7 @@ import Firebase
 
 class InformationViewController: UIViewController, UINavigationControllerDelegate {
   
+  // MARK: - IBOutlets
   @IBOutlet weak var imageView:         UIImageView!
   @IBOutlet weak var firstNameField:    UITextField!
   @IBOutlet weak var lastNameField:     UITextField!
@@ -22,6 +23,8 @@ class InformationViewController: UIViewController, UINavigationControllerDelegat
   
   let imagePicker = UIImagePickerController()
   
+  
+  // MARK: - View controller lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     self.dismissKeyboard()
@@ -46,6 +49,8 @@ class InformationViewController: UIViewController, UINavigationControllerDelegat
     }
 
   }
+  
+  
   
   @objc func pickImage() {
     
@@ -100,7 +105,7 @@ class InformationViewController: UIViewController, UINavigationControllerDelegat
     print("SAVE ")
     doctorProfile.imageURL = url
     
-    FirestoreRepository.update(collection: "doctors",
+    FirestoreRepository.shared.update(collection: "doctors",
                                documentID: doctorProfile.docID!,
                                document: doctorProfile) {
     }
@@ -117,6 +122,8 @@ class InformationViewController: UIViewController, UINavigationControllerDelegat
     descriptionField.text = doctorProfile.description
   }
  
+  // MARK: -IBActions
+  
   @IBAction func closeAction(_ sender: Any) {
     navigationController?.dismiss(animated: true, completion: nil)
   }
@@ -152,7 +159,7 @@ class InformationViewController: UIViewController, UINavigationControllerDelegat
                                      availableDates: [], description: description,
                                      answers: doctorProfile.answers)
     
-    FirestoreRepository.update(collection: "doctors",
+    FirestoreRepository.shared.update(collection: "doctors",
                                documentID: doctorProfile.docID!,
                                document: updatedProfile) {
       doctorProfile = updatedProfile
@@ -161,6 +168,8 @@ class InformationViewController: UIViewController, UINavigationControllerDelegat
   }
 }
 
+
+// MARK: - Table   Delegate, Datasource
 extension InformationViewController: UIImagePickerControllerDelegate {
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     if let image = info[.originalImage] as? UIImage, let imageData = image.jpegData(compressionQuality: 0.1) {

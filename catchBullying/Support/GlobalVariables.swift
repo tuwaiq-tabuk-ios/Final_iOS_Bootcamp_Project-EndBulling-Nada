@@ -13,3 +13,9 @@ var patientProfile: PatientModel!
 var doctorProfile: DoctorModel!
 var profileImage: UIImage?
 var isUpdating: Bool = false
+
+let gotoUserHomeSegue = ""
+
+enum Segues: String {
+  case gotoUserHome = "gotoUserHome"
+}

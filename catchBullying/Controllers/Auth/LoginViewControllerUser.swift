@@ -71,7 +71,7 @@ class LoginViewController: UIViewController {
     passwordField.text = "12345678"
   }
   
-  @IBAction func login(_ sender: UIButton) {
+  @IBAction func LoginButtonPressed(_ sender: UIButton) {
     sender.isEnabled = false
     if !validate() {
       sender.isEnabled = true
@@ -97,10 +97,10 @@ class LoginViewController: UIViewController {
         return
       }
       
-      FirestoreRepository.read(collection: "users", field: "id", value: authResult!.user.uid) { (doc: UserModel) in
+      FirestoreRepository.shared.read(collection: "users", field: "id", value: authResult!.user.uid) { (doc: UserModel) in
         user = doc
         if user.isDoctor {
-          FirestoreRepository.read(collection: "doctors", field: "id", value: user.id) { (doc: DoctorModel) in
+          FirestoreRepository.shared.read(collection: "doctors", field: "id", value: user.id) { (doc: DoctorModel) in
             doctorProfile = doc
             sender.isEnabled = true
             let controller = self.storyboard?.instantiateViewController(identifier: "DoctorHomeVC") as! DoctorHomeTabBarController
@@ -109,7 +109,7 @@ class LoginViewController: UIViewController {
             self.present(controller, animated: false, completion: nil)
           }
         } else {
-          FirestoreRepository.read(collection: "patients", field: "id", value: user.id) { (doc: PatientModel) in
+          FirestoreRepository.shared.read(collection: "patients", field: "id", value: user.id) { (doc: PatientModel) in
             patientProfile = doc
             sender.isEnabled = true
             let controller = self.storyboard?.instantiateViewController(identifier: "UserHomeVC") as! PatientHomeTabBarController

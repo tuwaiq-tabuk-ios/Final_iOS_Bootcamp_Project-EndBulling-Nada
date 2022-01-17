@@ -26,7 +26,7 @@ class ChangePasswordViewController: UIViewController {
   
   
   // MARK: - IBAction
-  @IBAction func changePasswordAction(_ sender: Any) {
+  @IBAction func changePasswordPressed(_ sender: Any) {
     guard let password = newPassword.text ,
           let oldpassword = oldPassword.text ,
           password == oldpassword

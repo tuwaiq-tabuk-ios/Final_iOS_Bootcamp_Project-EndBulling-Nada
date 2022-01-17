@@ -9,6 +9,7 @@ import UIKit
 
 class ChatTableViewCell: UITableViewCell {
   
+  // MARK: - IBOutlets
   @IBOutlet weak var avatarImagwOutLet: UIImageView!
   @IBOutlet weak var usernameLabelOutlet: UILabel!
   @IBOutlet weak var lastMessageLabelOutlet: UILabel!
@@ -23,6 +24,7 @@ class ChatTableViewCell: UITableViewCell {
     super.setSelected(selected, animated: animated)
   }
   
+  // MARK: - Methods
   func configure (conversation: ConversationModel) {
     usernameLabelOutlet.text = conversation.users.first(where: { $0.id != user.id })?.name
     usernameLabelOutlet.minimumScaleFactor = 0.9
@@ -50,6 +52,7 @@ class ChatTableViewCell: UITableViewCell {
 }
 
 
+// MARK: - extension
 
 extension Date {
   

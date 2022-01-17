@@ -9,8 +9,11 @@ import UIKit
 
 class ImportantNumbersViewController: UIViewController {
 
+  
+  // MARK: - IBOutlets
   @IBOutlet weak var tabelView: UITableView!
 
+  // MARK: - Properties
   var importantNumbersarray : [ImportantNumberModel] = [
     ImportantNumberModel( title: "Child HelpLine " ,                            phoneNumber: "116111"     ,     icon: "phone"),
     ImportantNumberModel( title: "Center Against Violence and Abuse" ,          phoneNumber: "1919"       ,      icon: "phone"),
@@ -20,16 +23,17 @@ class ImportantNumbersViewController: UIViewController {
     ImportantNumberModel( title: "Protection Committee in Al-Baha Province"  ,  phoneNumber: "146629932"  ,      icon: "phone")
   ]
    
+  
+  
   override func viewDidLoad() {
         super.viewDidLoad()
     
- 
-
     tabelView.dataSource = self
     tabelView.delegate = self
     }
 
-  @IBAction func closeAction(_ sender: Any) {
+  // MARK: - IBActions
+  @IBAction func closePressed(_ sender: Any) {
   dismiss(animated: true, completion: nil)
   }
   
@@ -37,6 +41,7 @@ class ImportantNumbersViewController: UIViewController {
   
 }
 
+// MARK: - Delegate , DataSource
 extension ImportantNumbersViewController : UITableViewDelegate , UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return importantNumbersarray.count

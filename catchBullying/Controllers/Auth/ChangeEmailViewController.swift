@@ -24,7 +24,7 @@ class ChangeEmailViewController: UIViewController {
     
 
   // MARK: - IBAction
-  @IBAction func changeEmailActione(_ sender: Any) {
+  @IBAction func changeEmailPressed(_ sender: Any) {
     guard let email = emailField.text else { return }
     
     Auth.auth().currentUser?.updateEmail(to: email, completion: { error in

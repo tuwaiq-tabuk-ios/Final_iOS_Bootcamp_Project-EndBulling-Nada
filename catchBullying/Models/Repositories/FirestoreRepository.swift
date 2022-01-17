@@ -19,9 +19,10 @@ import FirebaseFirestoreSwift
 
 class FirestoreRepository {
   
-  static let db = Firestore.firestore()
+  let db = Firestore.firestore()
+  static let shared = FirestoreRepository()
   
-  public static func create<T: Encodable>(collection: String, document: T, completion: @escaping (String) -> ()) {
+  public func create<T: Encodable>(collection: String, document: T, completion: @escaping (String) -> ()) {
     do {
       var ref: DocumentReference!
       try ref = db.collection(collection).addDocument(from: document) { error in
@@ -35,7 +36,7 @@ class FirestoreRepository {
     }
   }
   
-  public static func read<T: Decodable>(collection: String,
+  public func read<T: Decodable>(collection: String,
                                         field: String,
                                         value: Any, completion: @escaping (T) -> ()) {
     db.collection(collection).whereField(field, isEqualTo: value).getDocuments { snapshot, error in
@@ -54,7 +55,7 @@ class FirestoreRepository {
     }
   }
   
-  public static func read<T: Decodable>(collection: String,
+  public func read<T: Decodable>(collection: String,
                                         field: String,
                                         value: Any, completion: @escaping ([T]) -> ()) {
     db.collection(collection).whereField(field, isEqualTo: value).getDocuments { snapshot, error in
@@ -76,7 +77,7 @@ class FirestoreRepository {
     }
   }
   
-  public static func read<T: Decodable>(collection: String,
+  public func read<T: Decodable>(collection: String,
                                         field: String,
                                         valueAny: [Any], completion: @escaping ([T]) -> ()) {
     db.collection(collection).whereField(field, arrayContainsAny: valueAny).getDocuments { snapshot, error in
@@ -98,7 +99,7 @@ class FirestoreRepository {
     }
   }
   
-  public static func read<T: Decodable>(collection: String,
+  public func read<T: Decodable>(collection: String,
                                         field: String,
                                         values: [Any], completion: @escaping ([T]) -> ()) {
     db.collection(collection).whereField(field, in: values).getDocuments { snapshot, error in
@@ -120,7 +121,7 @@ class FirestoreRepository {
     }
   }
   
-  public static func read<T: Decodable>(collection: String,
+  public func read<T: Decodable>(collection: String,
                                         completion: @escaping ([T]) -> ()) {
     db.collection(collection).getDocuments { snapshot, error in
       if let error = error {
@@ -141,7 +142,7 @@ class FirestoreRepository {
     }
   }
   
-  public static func read<T: Decodable>(collection: String, documentID: String,
+  public func read<T: Decodable>(collection: String, documentID: String,
                                         completion: @escaping (T) -> ()) {
     db.collection(collection).document(documentID).getDocument { snapshot, error in
       if let error = error {
@@ -159,7 +160,7 @@ class FirestoreRepository {
     }
   }
   
-  public static func listen<T: Decodable>(collection: String, documentID: String, completion: @escaping (T) -> ()) {
+  public func listen<T: Decodable>(collection: String, documentID: String, completion: @escaping (T) -> ()) {
     db.collection(collection).document(documentID).addSnapshotListener { snapshot, error in
       if let error = error {
         fatalError(error.localizedDescription)
@@ -173,7 +174,7 @@ class FirestoreRepository {
     }
   }
   
-  public static func update<T: Encodable>(collection: String,
+  public func update<T: Encodable>(collection: String,
                                           documentID: String,
                                           document: T, completion: @escaping () -> ()) {
     do {
@@ -188,7 +189,7 @@ class FirestoreRepository {
     }
   }
   
-  public static func delete(collection: String,
+  public func delete(collection: String,
                             documentID: String,
                             completion: @escaping () -> ()) {
     db.collection(collection).document(documentID).delete { error in
