@@ -17,7 +17,6 @@ class InformationViewController: UIViewController, UINavigationControllerDelegat
   @IBOutlet weak var mobileNumberField: UITextField!
   @IBOutlet weak var emailField:        UITextField!
   @IBOutlet weak var zoomField:         UITextField!
-  @IBOutlet weak var languagesField:    UITextField!
   @IBOutlet weak var experienceField:   UITextField!
   @IBOutlet weak var descriptionField:  UITextView!
   

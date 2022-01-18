@@ -16,7 +16,6 @@ class DoctorProfileDetailsViewController: UIViewController {
   @IBOutlet weak var informationLabel: UILabel!
   @IBOutlet weak var providesAdviceLabel: UILabel!
   @IBOutlet weak var experienceLabel: UILabel!
-  @IBOutlet weak var emailLabel: UILabel!
   @IBOutlet weak var zommLabel: UILabel!
   
   
@@ -28,7 +27,7 @@ class DoctorProfileDetailsViewController: UIViewController {
     
     super.viewDidLoad()
     
-    //    imageView.layer.cornerRadius = imageView.frame.size.height / 2
+        imageView.layer.cornerRadius = imageView.frame.size.height / 2
     imageView.clipsToBounds = true
     
     if !selectedProfile!.imageURL.isEmpty {
