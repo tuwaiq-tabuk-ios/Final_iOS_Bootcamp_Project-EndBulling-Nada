@@ -35,7 +35,7 @@ class CalendarViewController: UIViewController {
   // MARK: - Methods
   func fetchData() {
     appointments.removeAll()
-    FirestoreRepository.read(collection: "appointments",
+    FirestoreRepository.shared.read(collection: "appointments",
                              field: user.isDoctor ? "doctorID" : "patientID",
                              value: user.id) { (items: [AppointmentModel]) in
       self.appointments = items
@@ -52,7 +52,7 @@ class CalendarViewController: UIViewController {
 }
 
 
-// MARK: - Table data source
+// MARK: - Table   Delegate, Datasource
 extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
   
   func numberOfSections(in tableView: UITableView) -> Int {

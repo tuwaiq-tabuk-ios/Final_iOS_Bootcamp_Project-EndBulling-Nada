@@ -55,7 +55,7 @@ class DoctorsListViewController: UIViewController {
   private func fetchData() {
     data.removeAll()
     
-    FirestoreRepository.read(collection: "doctors") { (items: [DoctorModel]) in
+    FirestoreRepository.shared.read(collection: "doctors") { (items: [DoctorModel]) in
       self.data = items
       self.tableView.reloadData()
     }
@@ -63,7 +63,7 @@ class DoctorsListViewController: UIViewController {
   
 }
 
-// MARK: - Table data source
+// MARK: - Table Delegate, Data Source
 extension DoctorsListViewController : UITableViewDelegate , UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

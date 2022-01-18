@@ -42,6 +42,7 @@ class QuestionsViewController: UIViewController {
   @IBOutlet weak var otherButton: UIButton!
   @IBOutlet weak var nextButton: UIButton!
   
+  // MARK: - View controller lifecycle
   override func viewDidLoad() {
     
     super.viewDidLoad()
@@ -71,7 +72,7 @@ class QuestionsViewController: UIViewController {
       } else {
         patientProfile.answers = answers
         
-        FirestoreRepository.update(collection: "patients",
+        FirestoreRepository.shared.update(collection: "patients",
                                    documentID: patientProfile.docID!,
                                    document: patientProfile) {
           let controller = self.storyboard?.instantiateViewController(identifier: "UserHomeVC") as! PatientHomeTabBarController
@@ -86,7 +87,7 @@ class QuestionsViewController: UIViewController {
   
   // MARK: - IBOAction
   
-  @IBAction func nextButton(_ sender: Any) {
+  @IBAction func nextButtonPressed(_ sender: Any) {
     answers.append(-1)
     nextQuestion()
   }

@@ -17,7 +17,11 @@ class PatientsListCell: UITableViewCell {
   override func awakeFromNib() {
         super.awakeFromNib()
     }
+  
+  // MARK: - Properties
   var selectedProfile: PatientModel?
+  
+  // MARK: - View controller lifecycle
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -28,7 +32,7 @@ class PatientsListCell: UITableViewCell {
     }
 
   
-  
+  // MARK: - Methods
   func listTableViewCell( nikcname:String , birtDay: Int){
     nickname.text = nikcname
    

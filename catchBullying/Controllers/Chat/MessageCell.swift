@@ -9,9 +9,11 @@ import UIKit
 
 class MessageCell: UITableViewCell {
 
+  // MARK: - IBOutlets
   @IBOutlet weak var messageLabel: UILabel!
   @IBOutlet weak var messageBubble: UIView!
   
+  // MARK: - View controller lifecycle
   override func awakeFromNib() {
         super.awakeFromNib()
     }

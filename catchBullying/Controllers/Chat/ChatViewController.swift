@@ -9,13 +9,17 @@ import UIKit
 
 class ChatViewController: UIViewController {
   
-  var conversation: ConversationModel?
   
+  // MARK: -IBOutleta
   @IBOutlet weak var senderName: UILabel!
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var messageTextField: UITextField!
   
   
+  // MARK: - Properties
+  var conversation: ConversationModel?
+  
+  // MARK: - View controller lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -31,8 +35,10 @@ class ChatViewController: UIViewController {
     senderName.text = conversation?.users.first(where: { $0.id != user.id })!.name
   }
   
+  
+  // MARK: - Methods
   func fetchData() {
-    FirestoreRepository.listen(collection: "conversations",
+    FirestoreRepository.shared.listen(collection: "conversations",
                                documentID: conversation!.docID!) { (item: ConversationModel) in
       self.conversation = item
       //      self.messages.sort(by: { $0.sentAt > $1.sentAt })
@@ -40,7 +46,8 @@ class ChatViewController: UIViewController {
     }
   }
   
-  @IBAction func closeAction(_ sender: Any) {
+  // MARK: -IBActions
+  @IBAction func closeButtonPressed(_ sender: Any) {
     dismiss(animated: true, completion: nil)
   }
   
@@ -56,7 +63,7 @@ class ChatViewController: UIViewController {
     
     conversation?.messages.append(messageModel)
     
-    FirestoreRepository.update(collection: "conversations",
+    FirestoreRepository.shared.update(collection: "conversations",
                                documentID: conversation!.docID!,
                                document: conversation) {
       self.messageTextField.text = ""
@@ -66,8 +73,7 @@ class ChatViewController: UIViewController {
 }
 
 
-// MARK: - Table view data source
-
+// MARK: - Table   Delegate, Datasource
 extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
   
   func numberOfSections(in tableView: UITableView) -> Int {

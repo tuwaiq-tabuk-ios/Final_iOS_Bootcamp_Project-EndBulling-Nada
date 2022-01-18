@@ -34,10 +34,10 @@ class ChatTableViewController: UITableViewController {
     }
   }
   
-  
+  // MARK: - Methods
   func fetchData() {
     conversations.removeAll()
-    FirestoreRepository.read(collection: "conversations",
+    FirestoreRepository.shared.read(collection: "conversations",
                              field: "usersIDs",
                              valueAny: [user.id]) { (items: [ConversationModel]) in
       self.conversations = items
@@ -45,7 +45,7 @@ class ChatTableViewController: UITableViewController {
     }
   }
   
-  // MARK: - Table view data source
+  // MARK: - Table   Delegate, Datasource
   
   override func numberOfSections(in tableView: UITableView) -> Int {
     return 1

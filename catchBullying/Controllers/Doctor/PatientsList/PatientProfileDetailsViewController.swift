@@ -16,8 +16,11 @@ class PatientProfileDetailsViewController: UIViewController {
   @IBOutlet weak var dateOfbirthLabel: UILabel!
   @IBOutlet weak var descriptionField: UITextView!
   
+  
   var selectedProfile: PatientModel?
   
+  
+  // MARK: - View controller lifecycle
   override func viewDidLoad() {
    
 
@@ -53,10 +56,13 @@ class PatientProfileDetailsViewController: UIViewController {
     descriptionField.text = profile.description
   }
   
+  // MARK: - IBActions
   @IBAction func closeAction(_ sender: Any) {
     dismiss(animated: true, completion: nil)
   }
   
+  
+  // MARK: - Methods
   func gotoChat(conversation: ConversationModel) {
     let controller = self.storyboard?.instantiateViewController(identifier: "ChatVC") as! ChatViewController
     controller.conversation = conversation

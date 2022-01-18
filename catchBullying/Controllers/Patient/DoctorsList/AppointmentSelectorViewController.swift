@@ -27,7 +27,7 @@ class AppointmentSelectorViewController: UIViewController {
     }
 }
 
-// MARK: - Table data source
+// MARK: - Table   Delegate, Datasource
 
 
 extension AppointmentSelectorViewController : UITableViewDelegate , UITableViewDataSource{
@@ -81,7 +81,7 @@ extension AppointmentSelectorViewController : UITableViewDelegate , UITableViewD
                                        zoom: true
     )
     
-    FirestoreRepository.create(collection: "appointments", document: appointment) { _ in
+    FirestoreRepository.shared.create(collection: "appointments", document: appointment) { _ in
       self.booking = false
       self.dismiss(animated: true, completion: nil)
       
@@ -97,7 +97,7 @@ extension AppointmentSelectorViewController : UITableViewDelegate , UITableViewD
                                        zoom: false
     )
     
-    FirestoreRepository.create(collection: "appointments", document: appointment) { _ in
+    FirestoreRepository.shared.create(collection: "appointments", document: appointment) { _ in
       self.booking = false
       self.dismiss(animated: true, completion: nil)
       //self.navigationController?.dismiss(animated: true, completion: nil)

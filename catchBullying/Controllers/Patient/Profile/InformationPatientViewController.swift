@@ -12,16 +12,18 @@ import FirebaseFirestoreSwift
 class InformationPatientViewController: UIViewController, UINavigationControllerDelegate {
   
 
-  
+  // MARK: - IBOutlets
   @IBOutlet weak var profileImageView: UIImageView!
   @IBOutlet weak var nicknameField: UITextField!
   @IBOutlet weak var dateOfBirthField: UITextField!
   @IBOutlet weak var decriptionField: UITextView!
   
+  // MARK: - Properties
   let datePicker = UIDatePicker()
   let imagePicker = UIImagePickerController()
   
   
+  // MARK: - View controller lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -48,6 +50,8 @@ class InformationPatientViewController: UIViewController, UINavigationController
     }
   }
   
+  
+  // MARK: - Methods
   @objc func pickImage() {
     
     let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
@@ -130,12 +134,12 @@ class InformationPatientViewController: UIViewController, UINavigationController
     dateOfBirthField.inputAccessoryView = createToolbar()
   }
   
-  
-  @IBAction func closeAction(_ sender: Any) {
+  // MARK: - IBAction
+  @IBAction func closePressed(_ sender: Any) {
     navigationController?.dismiss(animated: true, completion: nil)
   }
   
-  @IBAction func saveAction(_ sender: Any) {
+  @IBAction func savePressed(_ sender: Any) {
     guard let nickname = nicknameField.text else { return }
     guard let dateOfBirth = dateOfBirthField.text else { return }
     guard let description = decriptionField.text else { return }
@@ -153,7 +157,7 @@ class InformationPatientViewController: UIViewController, UINavigationController
                                       description: description,
                                       answers: [])
     
-    FirestoreRepository.update(collection: "patients", documentID: patientProfile.docID!, document: updatedProfile) {
+    FirestoreRepository.shared.update(collection: "patients", documentID: patientProfile.docID!, document: updatedProfile) {
       patientProfile = updatedProfile
       self.navigationController?.dismiss(animated: true, completion: nil)
     }
@@ -172,12 +176,12 @@ class InformationPatientViewController: UIViewController, UINavigationController
   private func saveProfileImageUrlInUserDetails(url: String) {
     patientProfile.imageURL = url
     
-    FirestoreRepository.update(collection: "patients", documentID: patientProfile.docID!, document: patientProfile) {
+    FirestoreRepository.shared.update(collection: "patients", documentID: patientProfile.docID!, document: patientProfile) {
     }
   }
   
 }
-
+// MARK: - Table   Delegate, Datasource
 extension InformationPatientViewController: UIImagePickerControllerDelegate {
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     if let image = info[.originalImage] as? UIImage, let imageData = image.jpegData(compressionQuality: 0.1) {

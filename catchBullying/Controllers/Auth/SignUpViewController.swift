@@ -13,9 +13,14 @@ class SignUpViewController: UIViewController {
   @IBOutlet weak var confirmPasswordText: UITextField!
   @IBOutlet weak var errorLabel: UILabel!
   
+  
+  // MARK: - Properties
   var errorMessage: String = ""
   
   
+  
+  
+  // MARK: - View controller lifecycle
   override func viewDidLoad() {
     
     super.viewDidLoad()
@@ -27,8 +32,8 @@ class SignUpViewController: UIViewController {
   }
   
   
-  // MARK: - IBIBAction
-  @IBAction func signUpButton(_ sender: Any) {
+  // MARK: - IBAction
+  @IBAction func signUpButtonPressed(_ sender: Any) {
     
     if validateForm() {
     
@@ -58,7 +63,7 @@ class SignUpViewController: UIViewController {
                              email: self.emailTextField.text!,
                                   isDoctor: self.userTypePicker.selectedSegmentIndex == 1)
         
-        FirestoreRepository.create(collection: "users", document: userModel) { userDocID in
+        FirestoreRepository.shared.create(collection: "users", document: userModel) { userDocID in
           userModel.docID = userDocID
           user = userModel
           isUpdating = false
@@ -71,7 +76,7 @@ class SignUpViewController: UIViewController {
                                             description: "",
                                             answers: [])
             
-            FirestoreRepository.create(collection: "patients", document: profileModel) { patientDocID in
+            FirestoreRepository.shared.create(collection: "patients", document: profileModel) { patientDocID in
               profileModel.docID = patientDocID
               patientProfile = profileModel
               self.performSegue(withIdentifier: "userSignupToQuestions", sender: nil)
@@ -88,7 +93,7 @@ class SignUpViewController: UIViewController {
                                            availableDates: [], description: "",
                                            answers: [])
             
-            FirestoreRepository.create(collection: "doctors", document: profileModel) { doctorDocID in
+            FirestoreRepository.shared.create(collection: "doctors", document: profileModel) { doctorDocID in
               profileModel.docID = doctorDocID
               doctorProfile = profileModel
               let controller = self.storyboard?.instantiateViewController(identifier: "DoctorHomeVC") as! DoctorHomeTabBarController
@@ -103,6 +108,7 @@ class SignUpViewController: UIViewController {
   }
   
   
+  // MARK: - Methods
   func validateForm() ->Bool {
     if emailTextField.text!.isEmpty {
       errorLabel.text = "Email Addressis Missing!"
