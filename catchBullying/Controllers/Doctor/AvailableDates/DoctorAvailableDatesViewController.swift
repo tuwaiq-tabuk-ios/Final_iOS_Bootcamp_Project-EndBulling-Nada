@@ -27,15 +27,17 @@ class DoctorAvailableDatesViewController: UIViewController {
   }
   
   func fetchData() {
-    FirestoreRepository.shared.read(collection: "doctors",
+    self.startLoading()
+    FirestoreRepository.shared.read(collection: K.collections.doctors.rawValue,
                              documentID: doctorProfile.docID!) { (item: DoctorModel) in
       doctorProfile = item
       self.tableView.reloadData()
+      self.stopLoading()
     }
   }
   
   func saveData() {
-    FirestoreRepository.shared.update(collection: "doctors",
+    FirestoreRepository.shared.update(collection: K.collections.doctors.rawValue,
                                documentID: doctorProfile.docID!,
                                document: doctorProfile) {
     }
@@ -44,7 +46,7 @@ class DoctorAvailableDatesViewController: UIViewController {
   
   // MARK: - IBOutlets
   @IBAction func newDatePressed(_ sender: Any) {
-    performSegue(withIdentifier: "dateSelector", sender: self)
+    performSegue(withIdentifier:  K.segues.go_to_DateSelectorViewController.rawValue, sender: self)
   }
   
 }

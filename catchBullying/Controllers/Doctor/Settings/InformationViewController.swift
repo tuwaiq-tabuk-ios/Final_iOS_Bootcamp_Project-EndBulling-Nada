@@ -22,6 +22,8 @@ class InformationViewController: UIViewController, UINavigationControllerDelegat
   
   let imagePicker = UIImagePickerController()
   
+  var imageURL: String?
+  
   
   // MARK: - View controller lifecycle
   override func viewDidLoad() {
@@ -37,14 +39,7 @@ class InformationViewController: UIViewController, UINavigationControllerDelegat
     imageView.isUserInteractionEnabled = true
     
     if !doctorProfile.imageURL.isEmpty {
-      let ref = Storage.storage().reference(forURL: doctorProfile.imageURL)
-          ref.getData(maxSize: 1 * 1024 * 1024) { data, error in
-              if let error = error {
-                  print(error.localizedDescription)
-              } else if let data = data, let image = UIImage(data: data) {
-                self.imageView.image = image
-              }
-          }
+      imageView.load(url: URL(string: doctorProfile!.imageURL)!)
     }
 
   }
@@ -100,16 +95,6 @@ class InformationViewController: UIViewController, UINavigationControllerDelegat
     self.present(imagePicker, animated: true, completion: nil)
   }
   
-  private func saveProfileImageUrlInUserDetails(url: String) {
-    print("SAVE ")
-    doctorProfile.imageURL = url
-    
-    FirestoreRepository.shared.update(collection: "doctors",
-                               documentID: doctorProfile.docID!,
-                               document: doctorProfile) {
-    }
-  }
-  
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
@@ -151,14 +136,14 @@ class InformationViewController: UIViewController, UINavigationControllerDelegat
                                      firstName: firstName,
                                      lastName: lastName,
                                      mobileNumber: mobileNumber,
-                                     imageURL: "",
+                                     imageURL: imageURL ?? "",
                                      zoom: zoom,
                                      experience: experienceInt,
                                      languages: [],
                                      availableDates: [], description: description,
                                      answers: doctorProfile.answers)
     
-    FirestoreRepository.shared.update(collection: "doctors",
+    FirestoreRepository.shared.update(collection: K.collections.doctors.rawValue,
                                documentID: doctorProfile.docID!,
                                document: updatedProfile) {
       doctorProfile = updatedProfile
@@ -171,6 +156,7 @@ class InformationViewController: UIViewController, UINavigationControllerDelegat
 // MARK: - Table   Delegate, Datasource
 extension InformationViewController: UIImagePickerControllerDelegate {
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    self.startLoading()
     if let image = info[.originalImage] as? UIImage, let imageData = image.jpegData(compressionQuality: 0.1) {
       imageView.image = image
       let storageRef = Storage.storage().reference().child("profileImages").child("\(user.id).jpeg")
@@ -181,7 +167,8 @@ extension InformationViewController: UIImagePickerControllerDelegate {
           storageRef.downloadURL { url, error in
             if let url = url {
               print(url)//URL of the profile image
-              self.saveProfileImageUrlInUserDetails(url: url.absoluteString)
+              self.imageURL = url.absoluteString
+              self.stopLoading()
             }
           }
         } else {

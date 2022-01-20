@@ -6,7 +6,7 @@ import FirebaseFirestoreSwift
 class SignUpViewController: UIViewController {
   
   // MARK: - IBOutlets
-  @IBOutlet weak var emailLabel: UILabel!
+
   @IBOutlet weak var userTypePicker: UISegmentedControl!
   @IBOutlet weak var emailTextField: UITextField!
   @IBOutlet weak var passwordTextField: UITextField!
@@ -36,70 +36,58 @@ class SignUpViewController: UIViewController {
   @IBAction func signUpButtonPressed(_ sender: Any) {
     
     if validateForm() {
-    
-
-      Auth
-        .auth()
-        .createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { authResult, error in
+      self.startLoading()
+      AuthRepository.shared.createUser(email: emailTextField.text!,
+                                       password: passwordTextField.text!) { error, usr in
         if let error = error {
-          if let errCode = AuthErrorCode(rawValue: error._code) {
-            switch errCode {
-            case .emailAlreadyInUse:
-              self.errorLabel.text = "emailAlreadyInUse"
-            case .wrongPassword:
-              self.errorLabel.text = "wrongPassword"
-            case .userNotFound:
-              self.errorLabel.text = "userNotFound"
-            case .invalidEmail:
-              self.errorLabel.text = "invalidEmail"
-            default:
-              self.errorLabel.text = "Error: \(errCode.rawValue)"
-            }
-          }
-          return
-        }
-  
-        var userModel = UserModel(id: authResult!.user.uid,
-                             email: self.emailTextField.text!,
-                                  isDoctor: self.userTypePicker.selectedSegmentIndex == 1)
-        
-        FirestoreRepository.shared.create(collection: "users", document: userModel) { userDocID in
-          userModel.docID = userDocID
-          user = userModel
-          isUpdating = false
+          self.errorLabel.text = error
+          self.stopLoading()
+        } else {
+          guard let usr = usr else { return }
+          var userModel = UserModel(id: usr.uid,
+                               email: self.emailTextField.text!,
+                                    isDoctor: self.userTypePicker.selectedSegmentIndex == 1)
           
-          if self.userTypePicker.selectedSegmentIndex == 0 {
-            var profileModel = PatientModel(id: user.id,
-                                            nickname: "",
-                                            dateOfBirth: nil,
-                                            imageURL: "",
-                                            description: "",
-                                            answers: [])
+          FirestoreRepository.shared.create(collection: K.collections.users.rawValue, document: userModel) { userDocID in
+            userModel.docID = userDocID
+            user = userModel
+            isUpdating = false
             
-            FirestoreRepository.shared.create(collection: "patients", document: profileModel) { patientDocID in
-              profileModel.docID = patientDocID
-              patientProfile = profileModel
-              self.performSegue(withIdentifier: "userSignupToQuestions", sender: nil)
-            }
-          } else {
-            var profileModel = DoctorModel(id: user.id,
-                                           firstName: "",
-                                           lastName: "",
-                                           mobileNumber: "",
-                                           imageURL: "",
-                                           zoom: "",
-                                           experience: 0,
-                                           languages: [],
-                                           availableDates: [], description: "",
-                                           answers: [])
-            
-            FirestoreRepository.shared.create(collection: "doctors", document: profileModel) { doctorDocID in
-              profileModel.docID = doctorDocID
-              doctorProfile = profileModel
-              let controller = self.storyboard?.instantiateViewController(identifier: "DoctorHomeVC") as! DoctorHomeTabBarController
-              controller.modalPresentationStyle = .fullScreen
-              controller.modalTransitionStyle = .flipHorizontal
-              self.present(controller, animated: false, completion: nil)
+            if self.userTypePicker.selectedSegmentIndex == 0 {
+              var profileModel = PatientModel(id: user.id,
+                                              nickname: "",
+                                              dateOfBirth: nil,
+                                              imageURL: "",
+                                              description: "",
+                                              answers: [])
+              
+              FirestoreRepository.shared.create(collection: K.collections.patients.rawValue, document: profileModel) { patientDocID in
+                profileModel.docID = patientDocID
+                patientProfile = profileModel
+                self.stopLoading()
+                self.performSegue(withIdentifier: K.segues.go_to_QuestionsViewController.rawValue, sender: nil)
+              }
+            } else {
+              var profileModel = DoctorModel(id: user.id,
+                                             firstName: "",
+                                             lastName: "",
+                                             mobileNumber: "",
+                                             imageURL: "",
+                                             zoom: "",
+                                             experience: 0,
+                                             languages: [],
+                                             availableDates: [], description: "",
+                                             answers: [])
+              
+              FirestoreRepository.shared.create(collection: K.collections.doctors.rawValue, document: profileModel) { doctorDocID in
+                profileModel.docID = doctorDocID
+                doctorProfile = profileModel
+                self.stopLoading()
+                let controller = self.storyboard?.instantiateViewController(identifier: "DoctorHomeVC") as! DoctorHomeTabBarController
+                controller.modalPresentationStyle = .fullScreen
+                controller.modalTransitionStyle = .flipHorizontal
+                self.present(controller, animated: false, completion: nil)
+              }
             }
           }
         }

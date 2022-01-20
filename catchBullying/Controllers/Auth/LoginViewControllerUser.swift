@@ -72,50 +72,38 @@ class LoginViewController: UIViewController {
   }
   
   @IBAction func LoginButtonPressed(_ sender: UIButton) {
-    sender.isEnabled = false
     if !validate() {
-      sender.isEnabled = true
       return
     }
-    
-    Auth
-      .auth().signIn(withEmail: emailField.text!, password: passwordField.text!) { authResult, error in
+    self.startLoading()
+    AuthRepository.shared.signIn(email: emailField.text!, password: passwordField.text!) { error, usr in
       if let error = error {
-        if let errCode = AuthErrorCode(rawValue: error._code) {
-          switch errCode {
-          case .wrongPassword:
-            self.errorLabel.text = "wrongPassword"
-          case .userNotFound:
-            self.errorLabel.text = "userNotFound"
-          case .invalidEmail:
-            self.errorLabel.text = "invalidEmail"
-          default:
-            self.errorLabel.text = "Error: \(errCode.rawValue)"
-          }
-        }
-        sender.isEnabled = true
+        self.errorLabel.text = NSLocalizedString(error, comment: "") 
+        self.stopLoading()
         return
-      }
-      
-      FirestoreRepository.shared.read(collection: "users", field: "id", value: authResult!.user.uid) { (doc: UserModel) in
-        user = doc
-        if user.isDoctor {
-          FirestoreRepository.shared.read(collection: "doctors", field: "id", value: user.id) { (doc: DoctorModel) in
-            doctorProfile = doc
-            sender.isEnabled = true
-            let controller = self.storyboard?.instantiateViewController(identifier: "DoctorHomeVC") as! DoctorHomeTabBarController
-            controller.modalPresentationStyle = .fullScreen
-            controller.modalTransitionStyle = .flipHorizontal
-            self.present(controller, animated: false, completion: nil)
-          }
-        } else {
-          FirestoreRepository.shared.read(collection: "patients", field: "id", value: user.id) { (doc: PatientModel) in
-            patientProfile = doc
-            sender.isEnabled = true
-            let controller = self.storyboard?.instantiateViewController(identifier: "UserHomeVC") as! PatientHomeTabBarController
-            controller.modalPresentationStyle = .fullScreen
-            controller.modalTransitionStyle = .flipHorizontal
-            self.present(controller, animated: false, completion: nil)
+      } else {
+        guard let usr = usr else { return }
+        
+        FirestoreRepository.shared.read(collection: K.collections.users.rawValue, field: "id", value: usr.uid) { (doc: UserModel) in
+          user = doc
+          if user.isDoctor {
+            FirestoreRepository.shared.read(collection: K.collections.doctors.rawValue, field: "id", value: user.id) { (doc: DoctorModel) in
+              doctorProfile = doc
+              self.stopLoading()
+              let controller = self.storyboard?.instantiateViewController(identifier: "DoctorHomeVC") as! DoctorHomeTabBarController
+              controller.modalPresentationStyle = .fullScreen
+              controller.modalTransitionStyle = .flipHorizontal
+              self.present(controller, animated: false, completion: nil)
+            }
+          } else {
+            FirestoreRepository.shared.read(collection: K.collections.patients.rawValue, field: "id", value: user.id) { (doc: PatientModel) in
+              patientProfile = doc
+              self.stopLoading()
+              let controller = self.storyboard?.instantiateViewController(identifier: "UserHomeVC") as! PatientHomeTabBarController
+              controller.modalPresentationStyle = .fullScreen
+              controller.modalTransitionStyle = .flipHorizontal
+              self.present(controller, animated: false, completion: nil)
+            }
           }
         }
       }

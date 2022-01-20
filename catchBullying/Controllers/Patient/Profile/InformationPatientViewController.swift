@@ -22,6 +22,8 @@ class InformationPatientViewController: UIViewController, UINavigationController
   let datePicker = UIDatePicker()
   let imagePicker = UIImagePickerController()
   
+  var imageURL: String?
+  
   
   // MARK: - View controller lifecycle
   override func viewDidLoad() {
@@ -153,11 +155,11 @@ class InformationPatientViewController: UIViewController, UINavigationController
     let updatedProfile = PatientModel(id: patientProfile.id,
                                       nickname: nickname,
                                       dateOfBirth: datePicker.date,
-                                      imageURL: "",
+                                      imageURL: imageURL ?? "",
                                       description: description,
                                       answers: [])
     
-    FirestoreRepository.shared.update(collection: "patients", documentID: patientProfile.docID!, document: updatedProfile) {
+    FirestoreRepository.shared.update(collection: K.collections.patients.rawValue, documentID: patientProfile.docID!, document: updatedProfile) {
       patientProfile = updatedProfile
       self.navigationController?.dismiss(animated: true, completion: nil)
     }
@@ -174,16 +176,19 @@ class InformationPatientViewController: UIViewController, UINavigationController
   }
   
   private func saveProfileImageUrlInUserDetails(url: String) {
-    patientProfile.imageURL = url
-    
-    FirestoreRepository.shared.update(collection: "patients", documentID: patientProfile.docID!, document: patientProfile) {
-    }
+    imageURL = url
+//    patientProfile.imageURL = url
+//
+//    FirestoreRepository.shared.update(collection: K.collections.patients.rawValue, documentID: patientProfile.docID!, document: patientProfile) {
+//      self.stopLoading()
+//    }
   }
   
 }
 // MARK: - Table   Delegate, Datasource
 extension InformationPatientViewController: UIImagePickerControllerDelegate {
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    self.startLoading()
     if let image = info[.originalImage] as? UIImage, let imageData = image.jpegData(compressionQuality: 0.1) {
       profileImageView.image = image
       let storageRef = Storage.storage().reference().child("profileImages").child("\(user.id).jpeg")
@@ -195,6 +200,7 @@ extension InformationPatientViewController: UIImagePickerControllerDelegate {
             if let url = url {
               print(url)//URL of the profile image
               self.saveProfileImageUrlInUserDetails(url: url.absoluteString)
+              self.stopLoading()
             }
           }
         } else {

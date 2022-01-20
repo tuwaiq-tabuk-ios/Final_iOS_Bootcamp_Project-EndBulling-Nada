@@ -32,7 +32,7 @@ class ProfileViewController: UIViewController {
     ],
     [
       ProfileCellModel(title: "Logout",                     icon: "power", color: .systemRed),
-      ProfileCellModel(title: "Delete Account",           icon: "trash.square", color: .red)
+      ProfileCellModel(title: "Delete Account",             icon: "trash.square", color: .red)
     ]
     
   ]
@@ -84,14 +84,14 @@ class ProfileViewController: UIViewController {
     var total: Int = 0
     var deleted: Int = 0
     
-    FirestoreRepository.shared.read(collection: "appointments", field: field, value: id) { (items: [AppointmentModel]) in
+    FirestoreRepository.shared.read(collection:  K.collections.appointments.rawValue, field: field, value: id) { (items: [AppointmentModel]) in
       if items.count == 0 {
         completion()
         return
       }
       total = items.count
       for item in items {
-        FirestoreRepository.shared.delete(collection: "appointments", documentID: item.docID!) {
+        FirestoreRepository.shared.delete(collection:  K.collections.appointments.rawValue, documentID: item.docID!) {
           deleted += 1
           if total == deleted {
             completion()
@@ -105,11 +105,11 @@ class ProfileViewController: UIViewController {
     if deleting { return }
     deleting = true
     
-    let profileFolder: String = user.isDoctor ? "doctors" : "patients"
+    let profileFolder: String = user.isDoctor ? K.collections.doctors.rawValue : K.collections.patients.rawValue
     let profileDocID: String = user.isDoctor ? doctorProfile.docID! : patientProfile.docID!
     let field: String = user.isDoctor ? "doctorID" : "patientID"
     
-    FirestoreRepository.shared.delete(collection: "users", documentID: user.docID!) {
+    FirestoreRepository.shared.delete(collection: K.collections.users.rawValue, documentID: user.docID!) {
       FirestoreRepository.shared.delete(collection: profileFolder, documentID: profileDocID) {
         self.deleteAppointments(field: field, id: user.id) {
           Auth.auth().currentUser?.delete(completion: { error in
@@ -148,20 +148,20 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     tableView.deselectRow(at: indexPath, animated: true)
     switch data[indexPath.section][indexPath.row].title {
     case "Information":
-      self.performSegue(withIdentifier: "information", sender: nil)
+      self.performSegue(withIdentifier: K.segues.go_to_InformationPatientViewController.rawValue, sender: nil)
     case "Manage My Profile":
-      self.performSegue(withIdentifier: "PatientToQuestions", sender: nil)
+      self.performSegue(withIdentifier: K.segues.go_to_QuestionsViewController.rawValue, sender: nil)
     case "Change Email":
-      self.performSegue(withIdentifier: "ChangeEmail", sender: nil)
+      self.performSegue(withIdentifier: K.segues.go_to_ChangeEmailViewController.rawValue, sender: nil)
     case "Change Password":
-      self.performSegue(withIdentifier: "ChangePassword", sender: nil)
+      self.performSegue(withIdentifier:  K.segues.go_to_ChangePasswordViewController.rawValue, sender: nil)
     case "Change Language":
       let url = URL(string: UIApplication.openSettingsURLString)!
       UIApplication.shared.open(url)
     case "Contact Customer Service":
       print("Contact Customer Service")
     case "Important Numbers for You":
-      self.performSegue(withIdentifier: "phone", sender: nil)
+      self.performSegue(withIdentifier: K.segues.go_to_ImportantNumbersViewController.rawValue, sender: nil)
     case "Logout":
       do {
         try Auth.auth().signOut()

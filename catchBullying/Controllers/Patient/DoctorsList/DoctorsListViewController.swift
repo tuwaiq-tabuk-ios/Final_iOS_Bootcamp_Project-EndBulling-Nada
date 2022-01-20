@@ -42,7 +42,7 @@ class DoctorsListViewController: UIViewController {
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "doctorDetails" {
+    if segue.identifier == K.segues.go_to_DoctorProfileDetailsViewController.rawValue {
       if let detailsVC = segue.destination as? DoctorProfileDetailsViewController {
         detailsVC.selectedProfile = selectedProfile
       }
@@ -53,11 +53,13 @@ class DoctorsListViewController: UIViewController {
   
   // MARK: - Methods
   private func fetchData() {
+    self.startLoading()
     data.removeAll()
     
-    FirestoreRepository.shared.read(collection: "doctors") { (items: [DoctorModel]) in
+    FirestoreRepository.shared.read(collection: K.collections.doctors.rawValue) { (items: [DoctorModel]) in
       self.data = items
       self.tableView.reloadData()
+      self.stopLoading()
     }
   }
   
@@ -72,8 +74,10 @@ extension DoctorsListViewController : UITableViewDelegate , UITableViewDataSourc
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "list", for: indexPath) as! DoctorsListCell
-    cell.listTableViewCell(name: data[indexPath.row].firstName, email: "email", zoom: "zoom")
+    cell.listTableViewCell(name: data[indexPath.row].firstName, email: ""  , zoom: data[indexPath.row].zoom)
+  
     cell.imageViewDoctor.layer.cornerRadius = cell.imageViewDoctor.frame.width/2
+    
     
     if data[indexPath.row].imageURL != "" {
       cell.imageViewDoctor.load(url: URL(string: data[indexPath.row].imageURL)!)
@@ -89,7 +93,7 @@ extension DoctorsListViewController : UITableViewDelegate , UITableViewDataSourc
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     selectedProfile = data[indexPath.row]
-    self.performSegue(withIdentifier: "doctorDetails", sender: self)
+    self.performSegue(withIdentifier: K.segues.go_to_DoctorProfileDetailsViewController.rawValue, sender: self)
   }
   
   func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {

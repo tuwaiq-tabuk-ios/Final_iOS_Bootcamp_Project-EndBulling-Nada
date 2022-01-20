@@ -31,14 +31,7 @@ class DoctorProfileDetailsViewController: UIViewController {
     imageView.clipsToBounds = true
     
     if !selectedProfile!.imageURL.isEmpty {
-      let ref = Storage.storage().reference(forURL: selectedProfile!.imageURL)
-      ref.getData(maxSize: 1 * 1024 * 1024) { data, error in
-        if let error = error {
-          print(error.localizedDescription)
-        } else if let data = data, let image = UIImage(data: data) {
-          self.imageView.image = image
-        }
-      }
+      self.imageView.load(url: URL(string: selectedProfile!.imageURL)!)
     }
   }
   
@@ -64,7 +57,7 @@ class DoctorProfileDetailsViewController: UIViewController {
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "appointmentSelect" {
+    if segue.identifier == K.segues.go_to_AppointmentSelectorViewController.rawValue {
       let vc = segue.destination as! AppointmentSelectorViewController
       vc.selectedProfile = selectedProfile
     }
@@ -83,12 +76,12 @@ class DoctorProfileDetailsViewController: UIViewController {
   //  MARK: - IBAction
   
   @IBAction func appointmentPressed(_ sender: Any) {
-    performSegue(withIdentifier: "appointmentSelect", sender: self)
+    performSegue(withIdentifier: K.segues.go_to_AppointmentSelectorViewController.rawValue, sender: self)
   }
   
   @IBAction func chatPressed(_ sender: Any) {
     
-    FirestoreRepository.shared.read(collection: "conversations", field: "usersIDs", valueAny: [user.id]) { (items: [ConversationModel]) in
+    FirestoreRepository.shared.read(collection: K.collections.conversations.rawValue, field: "usersIDs", valueAny: [user.id]) { (items: [ConversationModel]) in
       for item in items {
         if item.users.contains(where: { $0.id == self.selectedProfile!.id }) {
           self.gotoChat(conversation: item)
@@ -107,7 +100,7 @@ class DoctorProfileDetailsViewController: UIViewController {
                                                              imageURL: self.selectedProfile!.imageURL)
                                            ])
       
-      FirestoreRepository.shared.create(collection: "conversations", document: conversation) { docID in
+      FirestoreRepository.shared.create(collection: K.collections.conversations.rawValue, document: conversation) { docID in
         conversation.docID = docID
         self.gotoChat(conversation: conversation)
       }

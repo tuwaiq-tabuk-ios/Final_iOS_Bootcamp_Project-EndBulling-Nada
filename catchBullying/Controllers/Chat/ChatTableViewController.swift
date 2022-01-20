@@ -28,7 +28,7 @@ class ChatTableViewController: UITableViewController {
   
   // MARK: - View controller lifecycle
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "ChatTableToChat" {
+    if segue.identifier == K.segues.go_to_ChatViewController.rawValue {
       let vc = segue.destination as! ChatViewController
       vc.conversation = selectedConversation
     }
@@ -36,12 +36,14 @@ class ChatTableViewController: UITableViewController {
   
   // MARK: - Methods
   func fetchData() {
+    self.startLoading()
     conversations.removeAll()
-    FirestoreRepository.shared.read(collection: "conversations",
+    FirestoreRepository.shared.read(collection: K.collections.conversations.rawValue,
                              field: "usersIDs",
                              valueAny: [user.id]) { (items: [ConversationModel]) in
       self.conversations = items
       self.tableView.reloadData()
+      self.stopLoading()
     }
   }
   
@@ -69,7 +71,7 @@ class ChatTableViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
     selectedConversation = conversations[indexPath.row]
-    performSegue(withIdentifier: "ChatTableToChat", sender: self)
+    performSegue(withIdentifier: K.segues.go_to_ChatViewController.rawValue, sender: self)
   }
 
 }

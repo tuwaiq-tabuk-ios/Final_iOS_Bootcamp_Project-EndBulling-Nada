@@ -17,18 +17,16 @@ class LandingViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-   
 
-    
-    
     if let usr = Auth.auth().currentUser {
-      print(usr.uid)
-      FirestoreRepository.shared.read(collection: "users", field: "id", value: usr.uid) { (doc: UserModel) in
+      self.startLoading()
+      FirestoreRepository.shared.read(collection: K.collections.users.rawValue , field: "id", value: usr.uid) { (doc: UserModel) in
         user = doc
         if user.isDoctor {
           print("doctor", user.id)
-          FirestoreRepository.shared.read(collection: "doctors", field: "id", value: user.id) { (doctorDoc: DoctorModel) in
+          FirestoreRepository.shared.read(collection: K.collections.doctors.rawValue, field: "id", value: user.id) { (doctorDoc: DoctorModel) in
             doctorProfile = doctorDoc
+            self.stopLoading()
             let controller = self.storyboard?.instantiateViewController(identifier: "DoctorHomeVC") as! DoctorHomeTabBarController
             controller.modalPresentationStyle = .fullScreen
             controller.modalTransitionStyle = .flipHorizontal
@@ -36,8 +34,9 @@ class LandingViewController: UIViewController {
           }
         } else {
           print("patient", user.id)
-          FirestoreRepository.shared.read(collection: "patients", field: "id", value: user.id) { (patientDoc: PatientModel) in
+          FirestoreRepository.shared.read(collection: K.collections.patients.rawValue, field: "id", value: user.id) { (patientDoc: PatientModel) in
             patientProfile = patientDoc
+            self.stopLoading()
             let controller = self.storyboard?.instantiateViewController(identifier: "UserHomeVC") as! PatientHomeTabBarController
             controller.modalPresentationStyle = .fullScreen
             controller.modalTransitionStyle = .flipHorizontal

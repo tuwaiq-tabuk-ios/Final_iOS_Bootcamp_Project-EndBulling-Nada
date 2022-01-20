@@ -19,6 +19,9 @@
 		180DB1AB2783720A00FC309C /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180DB1AA2783720A00FC309C /* InformationViewController.swift */; };
 		180DB1AD27837DED00FC309C /* DoctorProfileDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180DB1AC27837DED00FC309C /* DoctorProfileDetailsViewController.swift */; };
 		180DB1B02783D34E00FC309C /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180DB1AF2783D34E00FC309C /* ConversationModel.swift */; };
+		1813AD2E27987E8600F8E49D /* FSUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813AD2D27987E8600F8E49D /* FSUserManager.swift */; };
+		1813AD302798829100F8E49D /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813AD2F2798829100F8E49D /* AuthRepository.swift */; };
+		1813AD322798901000F8E49D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813AD312798901000F8E49D /* Constants.swift */; };
 		181CD8562777225300E0C105 /* PatientHomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CD8552777225300E0C105 /* PatientHomeTabBarController.swift */; };
 		181CD8582777248200E0C105 /* DoctorHomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CD8572777248200E0C105 /* DoctorHomeTabBarController.swift */; };
 		181CD85A2777341C00E0C105 /* PsicologistQuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CD8592777341C00E0C105 /* PsicologistQuestionModel.swift */; };
@@ -41,7 +44,6 @@
 		18853F642792F1AD00A450D4 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18853F632792F1AD00A450D4 /* UIImageView+.swift */; };
 		18893E9C2781056900C258D7 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18893E9B2781056900C258D7 /* MessageModel.swift */; };
 		18893E9E2781059C00C258D7 /* PatientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18893E9D2781059C00C258D7 /* PatientModel.swift */; };
-		18893EA0278106CA00C258D7 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18893E9F278106CA00C258D7 /* GlobalVariables.swift */; };
 		18893EA82781174100C258D7 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18893EA72781174100C258D7 /* UIView+.swift */; };
 		189207112769F95F0008B4B7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189207102769F95F0008B4B7 /* SignUpViewController.swift */; };
 		189A29B3276DB1D800AE434C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 189A29B2276DB1D800AE434C /* FirebaseAuth */; };
@@ -79,6 +81,9 @@
 		180DB1AA2783720A00FC309C /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		180DB1AC27837DED00FC309C /* DoctorProfileDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorProfileDetailsViewController.swift; sourceTree = "<group>"; };
 		180DB1AF2783D34E00FC309C /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
+		1813AD2D27987E8600F8E49D /* FSUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSUserManager.swift; sourceTree = "<group>"; };
+		1813AD2F2798829100F8E49D /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		1813AD312798901000F8E49D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		181CD8552777225300E0C105 /* PatientHomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientHomeTabBarController.swift; sourceTree = "<group>"; };
 		181CD8572777248200E0C105 /* DoctorHomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorHomeTabBarController.swift; sourceTree = "<group>"; };
 		181CD8592777341C00E0C105 /* PsicologistQuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsicologistQuestionModel.swift; sourceTree = "<group>"; };
@@ -103,7 +108,6 @@
 		18853F632792F1AD00A450D4 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		18893E9B2781056900C258D7 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
 		18893E9D2781059C00C258D7 /* PatientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientModel.swift; sourceTree = "<group>"; };
-		18893E9F278106CA00C258D7 /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		18893EA72781174100C258D7 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		189207102769F95F0008B4B7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		18C6A915276F08100056240D /* DoctorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorModel.swift; sourceTree = "<group>"; };
@@ -193,6 +197,8 @@
 			isa = PBXGroup;
 			children = (
 				18853F6127918A4500A450D4 /* FirestoreRepository.swift */,
+				1813AD2D27987E8600F8E49D /* FSUserManager.swift */,
+				1813AD2F2798829100F8E49D /* AuthRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -233,7 +239,7 @@
 			children = (
 				18E915EF2767E86B005772AB /* SceneDelegate.swift */,
 				18E915ED2767E86B005772AB /* AppDelegate.swift */,
-				18893E9F278106CA00C258D7 /* GlobalVariables.swift */,
+				1813AD312798901000F8E49D /* Constants.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -446,6 +452,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1807421A277C39EE0090BDCC /* SettingsViewController.swift in Sources */,
+				1813AD2E27987E8600F8E49D /* FSUserManager.swift in Sources */,
 				184D60B327851789009AE8CE /* DateSelectorViewController.swift in Sources */,
 				181CD85A2777341C00E0C105 /* PsicologistQuestionModel.swift in Sources */,
 				184D60B727852A74009AE8CE /* AppoinmentModel.swift in Sources */,
@@ -455,6 +462,7 @@
 				184D60AE27850BEA009AE8CE /* PatientProfileDetailsViewController.swift in Sources */,
 				18074222277C81000090BDCC /* ImportantNumbersViewController.swift in Sources */,
 				187BA3122768EBC400CBB7CC /* LoginViewControllerUser.swift in Sources */,
+				1813AD322798901000F8E49D /* Constants.swift in Sources */,
 				18853F642792F1AD00A450D4 /* UIImageView+.swift in Sources */,
 				184D60BB2785772D009AE8CE /* CalendarCell.swift in Sources */,
 				18893E9E2781059C00C258D7 /* PatientModel.swift in Sources */,
@@ -488,8 +496,8 @@
 				18074226277DA00D0090BDCC /* ChatTableViewCell.swift in Sources */,
 				18893E9C2781056900C258D7 /* MessageModel.swift in Sources */,
 				18CD74C6278A967F001120C1 /* ViewController+.swift in Sources */,
-				18893EA0278106CA00C258D7 /* GlobalVariables.swift in Sources */,
 				182BD464276DBAE600FA32BC /* UserModel.swift in Sources */,
+				1813AD302798829100F8E49D /* AuthRepository.swift in Sources */,
 				184D60AC2785028D009AE8CE /* VideoPlayerViewController.swift in Sources */,
 				18E915F82767E86B005772AB /* catchBullying.xcdatamodeld in Sources */,
 			);

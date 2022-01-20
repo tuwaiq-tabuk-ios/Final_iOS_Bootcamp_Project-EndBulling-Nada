@@ -20,7 +20,7 @@ class SupportViewController: UIViewController {
     }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "showVideo" {
+    if segue.identifier == K.segues.go_to_VideoPlayerViewController.rawValue {
       let vc = segue.destination as! VideoPlayerViewController
       vc.url = URL(string: selectedURL!)!
     }
@@ -30,7 +30,7 @@ class SupportViewController: UIViewController {
   // MARK: - Methods
   func playVideo(urlString: String) {
     selectedURL = urlString
-    performSegue(withIdentifier: "showVideo", sender: self)
+    performSegue(withIdentifier: K.segues.go_to_VideoPlayerViewController.rawValue, sender: self)
   }
     
   
