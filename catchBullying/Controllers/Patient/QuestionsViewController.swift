@@ -56,9 +56,9 @@ class QuestionsViewController: UIViewController {
   // MARK: - Methods
   func setupQuestion() {
     questionLabel.text = NSLocalizedString(questions[current].question, comment: "")
-    yesButton.setTitle(questions[current].answers[0], for: .normal)
-    noButton.setTitle(questions[current].answers[1], for: .normal)
-    otherButton.setTitle(questions[current].answers[2], for: .normal)
+    yesButton.setTitle(NSLocalizedString(questions[current].answers[0],comment: ""), for: .normal)
+    noButton.setTitle(NSLocalizedString(questions[current].answers[1],comment: ""), for: .normal)
+    otherButton.setTitle(NSLocalizedString(questions[current].answers[2],comment: ""), for: .normal)
 
   }
   
@@ -72,7 +72,7 @@ class QuestionsViewController: UIViewController {
       } else {
         patientProfile.answers = answers
         
-        FirestoreRepository.shared.update(collection: "patients",
+        FirestoreRepository.shared.update(collection: K.collections.patients.rawValue,
                                    documentID: patientProfile.docID!,
                                    document: patientProfile) {
           let controller = self.storyboard?.instantiateViewController(identifier: "UserHomeVC") as! PatientHomeTabBarController

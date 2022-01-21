@@ -9,14 +9,6 @@ import Foundation
 import Firebase
 import FirebaseFirestoreSwift
 
-// create
-
-// read
-
-// update
-
-// delete
-
 class FirestoreRepository {
   
   let db = Firestore.firestore()

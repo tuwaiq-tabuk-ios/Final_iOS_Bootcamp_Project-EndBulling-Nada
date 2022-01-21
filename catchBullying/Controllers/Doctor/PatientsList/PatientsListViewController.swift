@@ -21,7 +21,7 @@ class PatientsListViewController: UIViewController {
     var conversations: [ConversationModel] = []
     var ids: Set<String> = []
     
-    FirestoreRepository.shared.read(collection: "conversations", field: "usersIDs", valueAny: [user.id]) { (items: [ConversationModel]) in
+    FirestoreRepository.shared.read(collection: K.collections.conversations.rawValue, field: "usersIDs", valueAny: [user.id]) { (items: [ConversationModel]) in
       conversations = items
       
       for conversation in conversations {
@@ -40,13 +40,14 @@ class PatientsListViewController: UIViewController {
   // MARK: - View controller lifecycle
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    
+    self.startLoading()
     getIds { ids in
       if ids.count == 0 { return }
       self.patients.removeAll()
-      FirestoreRepository.shared.read(collection: "patients", field: "id", values: ids) { (items: [PatientModel]) in
+      FirestoreRepository.shared.read(collection: K.collections.patients.rawValue, field: "id", values: ids) { (items: [PatientModel]) in
         self.patients = items
         self.tabelView.reloadData()
+        self.stopLoading()
       }
     }
     
@@ -58,11 +59,14 @@ class PatientsListViewController: UIViewController {
 
     tabelView.delegate = self
     tabelView.dataSource = self
+    
+    
+    
   }
   
   // MARK: - Navigation
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "patientDetails" {
+    if segue.identifier == K.segues.go_to_PatientProfileDetailsViewController.rawValue {
       let vc = segue.destination as! PatientProfileDetailsViewController
       vc.selectedProfile = selectedProfile
     }
@@ -91,7 +95,9 @@ extension PatientsListViewController : UITableViewDelegate , UITableViewDataSour
     dateFormatter.dateStyle = .medium
     dateFormatter.timeStyle = .none
     
-    cell.birtDay.text = dateFormatter.string(from: patients[indexPath.row].dateOfBirth!)
+    if let dob = patients[indexPath.row].dateOfBirth {
+      cell.birtDay.text = dateFormatter.string(from: dob)
+    }
     
     if patients[indexPath.row].imageURL != "" {
       cell.profileImageView.load(url: URL(string: patients[indexPath.row].imageURL)!)
@@ -102,6 +108,6 @@ extension PatientsListViewController : UITableViewDelegate , UITableViewDataSour
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     selectedProfile = patients[indexPath.row]
-    self.performSegue(withIdentifier: "patientDetails", sender: self)
+    self.performSegue(withIdentifier: K.segues.go_to_PatientProfileDetailsViewController.rawValue, sender: self)
   }
 }

@@ -81,7 +81,7 @@ extension AppointmentSelectorViewController : UITableViewDelegate , UITableViewD
                                        zoom: true
     )
     
-    FirestoreRepository.shared.create(collection: "appointments", document: appointment) { _ in
+    FirestoreRepository.shared.create(collection: K.collections.appointments.rawValue, document: appointment) { _ in
       self.booking = false
       self.dismiss(animated: true, completion: nil)
       
@@ -97,7 +97,7 @@ extension AppointmentSelectorViewController : UITableViewDelegate , UITableViewD
                                        zoom: false
     )
     
-    FirestoreRepository.shared.create(collection: "appointments", document: appointment) { _ in
+    FirestoreRepository.shared.create(collection:  K.collections.appointments.rawValue, document: appointment) { _ in
       self.booking = false
       self.dismiss(animated: true, completion: nil)
       //self.navigationController?.dismiss(animated: true, completion: nil)

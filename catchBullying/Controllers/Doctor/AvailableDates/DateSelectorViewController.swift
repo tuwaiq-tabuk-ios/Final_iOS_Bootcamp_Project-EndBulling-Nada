@@ -15,6 +15,7 @@ class DateSelectorViewController: UIViewController {
   
   override func viewDidLoad() {
         super.viewDidLoad()
+      datePicker.minimumDate = Date()
     }
     
   
@@ -29,7 +30,7 @@ class DateSelectorViewController: UIViewController {
     }
     doctorProfile.availableDates.append(datePicker.date)
     
-    FirestoreRepository.shared.update(collection: "doctors",
+    FirestoreRepository.shared.update(collection: K.collections.doctors.rawValue,
                                documentID: doctorProfile.docID!,
                                document: doctorProfile) {
       self.navigationController?.popViewController(animated: true)

@@ -34,8 +34,9 @@ class CalendarViewController: UIViewController {
   
   // MARK: - Methods
   func fetchData() {
+    self.startLoading()
     appointments.removeAll()
-    FirestoreRepository.shared.read(collection: "appointments",
+    FirestoreRepository.shared.read(collection: K.collections.appointments.rawValue,
                              field: user.isDoctor ? "doctorID" : "patientID",
                              value: user.id) { (items: [AppointmentModel]) in
       self.appointments = items
@@ -43,6 +44,7 @@ class CalendarViewController: UIViewController {
         return a1.date > a2.date
       }
       self.tableView.reloadData()
+      self.stopLoading()
       if self.appointments.count > 0 {
         self.tabBarItem.badgeValue = "\(self.appointments.count)"
       }
