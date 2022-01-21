@@ -44,3 +44,9 @@ Voluntier psychotherapist: Who aims through his work to build a society with goo
    - The doctor has access to a calendar to inform about his/her disponibility.
    - The doctor recieves a notification  with the appointement with the bullied adolescent indicating the hour of the appointment and kind of appointement, chat or video with Zoom. 
 
+
+
+https://user-images.githubusercontent.com/91885048/150605076-d0e8365d-ecb8-4ee1-adc2-027e63d84805.mov
+
+
+
