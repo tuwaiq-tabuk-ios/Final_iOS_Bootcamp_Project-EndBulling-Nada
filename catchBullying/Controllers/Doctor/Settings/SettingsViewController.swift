@@ -135,10 +135,6 @@ extension SettingsViewController : UITableViewDelegate , UITableViewDataSource {
     case "Change Language":
       let url = URL(string: UIApplication.openSettingsURLString)!
       UIApplication.shared.open(url)
-    case "Contact Customer Service":
-      print("Contact Customer Service")
-    case "Important Numbers for You":
-      self.performSegue(withIdentifier: "phone", sender: nil)
     case "Logout":
       do {
         try Auth.auth().signOut()
