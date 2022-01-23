@@ -30,7 +30,7 @@ class FirestoreRepository {
   
   public func read<T: Decodable>(collection: String,
                                         field: String,
-                                        value: Any, completion: @escaping (T) -> ()) {
+                                        value: Any, completion: @escaping (T?) -> ()) {
     db.collection(collection).whereField(field, isEqualTo: value).getDocuments { snapshot, error in
       if let error = error {
         fatalError(error.localizedDescription)
@@ -42,7 +42,8 @@ class FirestoreRepository {
         } catch {
           fatalError(error.localizedDescription)
         }
-        
+      } else {
+        completion(nil)
       }
     }
   }

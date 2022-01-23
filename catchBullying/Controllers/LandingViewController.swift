@@ -20,11 +20,15 @@ class LandingViewController: UIViewController {
 
     if let usr = Auth.auth().currentUser {
       self.startLoading()
-      FirestoreRepository.shared.read(collection: K.collections.users.rawValue , field: "id", value: usr.uid) { (doc: UserModel) in
+      FirestoreRepository.shared.read(collection: K.collections.users.rawValue , field: "id", value: usr.uid) { (doc: UserModel?) in
+        if doc == nil {
+          self.stopLoading()
+          return
+        }
         user = doc
         if user.isDoctor {
           print("doctor", user.id)
-          FirestoreRepository.shared.read(collection: K.collections.doctors.rawValue, field: "id", value: user.id) { (doctorDoc: DoctorModel) in
+          FirestoreRepository.shared.read(collection: K.collections.doctors.rawValue, field: "id", value: user.id) { (doctorDoc: DoctorModel?) in
             doctorProfile = doctorDoc
             self.stopLoading()
             let controller = self.storyboard?.instantiateViewController(identifier: "DoctorHomeVC") as! DoctorHomeTabBarController
@@ -34,7 +38,7 @@ class LandingViewController: UIViewController {
           }
         } else {
           print("patient", user.id)
-          FirestoreRepository.shared.read(collection: K.collections.patients.rawValue, field: "id", value: user.id) { (patientDoc: PatientModel) in
+          FirestoreRepository.shared.read(collection: K.collections.patients.rawValue, field: "id", value: user.id) { (patientDoc: PatientModel?) in
             patientProfile = patientDoc
             self.stopLoading()
             let controller = self.storyboard?.instantiateViewController(identifier: "UserHomeVC") as! PatientHomeTabBarController

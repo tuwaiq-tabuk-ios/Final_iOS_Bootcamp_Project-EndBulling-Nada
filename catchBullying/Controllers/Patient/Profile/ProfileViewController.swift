@@ -113,7 +113,7 @@ class ProfileViewController: UIViewController {
       FirestoreRepository.shared.delete(collection: profileFolder, documentID: profileDocID) {
         self.deleteAppointments(field: field, id: user.id) {
           Auth.auth().currentUser?.delete(completion: { error in
-            if let error = error { fatalError() }
+            if let error = error { fatalError( error.localizedDescription ) }
             else {
               self.deleting = false
             }
