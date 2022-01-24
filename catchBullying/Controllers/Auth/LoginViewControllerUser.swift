@@ -84,10 +84,10 @@ class LoginViewController: UIViewController {
       } else {
         guard let usr = usr else { return }
         
-        FirestoreRepository.shared.read(collection: K.collections.users.rawValue, field: "id", value: usr.uid) { (doc: UserModel) in
+        FirestoreRepository.shared.read(collection: K.collections.users.rawValue, field: "id", value: usr.uid) { (doc: UserModel?) in
           user = doc
           if user.isDoctor {
-            FirestoreRepository.shared.read(collection: K.collections.doctors.rawValue, field: "id", value: user.id) { (doc: DoctorModel) in
+            FirestoreRepository.shared.read(collection: K.collections.doctors.rawValue, field: "id", value: user.id) { (doc: DoctorModel?) in
               doctorProfile = doc
               self.stopLoading()
               let controller = self.storyboard?.instantiateViewController(identifier: "DoctorHomeVC") as! DoctorHomeTabBarController
@@ -96,7 +96,7 @@ class LoginViewController: UIViewController {
               self.present(controller, animated: false, completion: nil)
             }
           } else {
-            FirestoreRepository.shared.read(collection: K.collections.patients.rawValue, field: "id", value: user.id) { (doc: PatientModel) in
+            FirestoreRepository.shared.read(collection: K.collections.patients.rawValue, field: "id", value: user.id) { (doc: PatientModel?) in
               patientProfile = doc
               self.stopLoading()
               let controller = self.storyboard?.instantiateViewController(identifier: "UserHomeVC") as! PatientHomeTabBarController

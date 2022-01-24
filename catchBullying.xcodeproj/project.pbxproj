@@ -19,7 +19,6 @@
 		180DB1AB2783720A00FC309C /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180DB1AA2783720A00FC309C /* InformationViewController.swift */; };
 		180DB1AD27837DED00FC309C /* DoctorProfileDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180DB1AC27837DED00FC309C /* DoctorProfileDetailsViewController.swift */; };
 		180DB1B02783D34E00FC309C /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180DB1AF2783D34E00FC309C /* ConversationModel.swift */; };
-		1813AD2E27987E8600F8E49D /* FSUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813AD2D27987E8600F8E49D /* FSUserManager.swift */; };
 		1813AD302798829100F8E49D /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813AD2F2798829100F8E49D /* AuthRepository.swift */; };
 		1813AD322798901000F8E49D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813AD312798901000F8E49D /* Constants.swift */; };
 		181CD8562777225300E0C105 /* PatientHomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CD8552777225300E0C105 /* PatientHomeTabBarController.swift */; };
@@ -81,7 +80,6 @@
 		180DB1AA2783720A00FC309C /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		180DB1AC27837DED00FC309C /* DoctorProfileDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorProfileDetailsViewController.swift; sourceTree = "<group>"; };
 		180DB1AF2783D34E00FC309C /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
-		1813AD2D27987E8600F8E49D /* FSUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSUserManager.swift; sourceTree = "<group>"; };
 		1813AD2F2798829100F8E49D /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		1813AD312798901000F8E49D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		181CD8552777225300E0C105 /* PatientHomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientHomeTabBarController.swift; sourceTree = "<group>"; };
@@ -175,7 +173,6 @@
 				184D60B627852A74009AE8CE /* AppoinmentModel.swift */,
 				182BD463276DBAE600FA32BC /* UserModel.swift */,
 				1807421B277C3F710090BDCC /* ProfileCellModel.swift */,
-				18853F6027918A2500A450D4 /* Repositories */,
 				181CD8592777341C00E0C105 /* PsicologistQuestionModel.swift */,
 				1807421F277C805A0090BDCC /* ImportantNumberModel.swift */,
 			);
@@ -197,7 +194,6 @@
 			isa = PBXGroup;
 			children = (
 				18853F6127918A4500A450D4 /* FirestoreRepository.swift */,
-				1813AD2D27987E8600F8E49D /* FSUserManager.swift */,
 				1813AD2F2798829100F8E49D /* AuthRepository.swift */,
 			);
 			path = Repositories;
@@ -340,6 +336,7 @@
 		18E915EC2767E86B005772AB /* catchBullying */ = {
 			isa = PBXGroup;
 			children = (
+				18853F6027918A2500A450D4 /* Repositories */,
 				182BD462276DBAB200FA32BC /* Models */,
 				18E916042767ECD9005772AB /* Controllers */,
 				18C6A929276F41440056240D /* Extension */,
@@ -452,7 +449,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1807421A277C39EE0090BDCC /* SettingsViewController.swift in Sources */,
-				1813AD2E27987E8600F8E49D /* FSUserManager.swift in Sources */,
 				184D60B327851789009AE8CE /* DateSelectorViewController.swift in Sources */,
 				181CD85A2777341C00E0C105 /* PsicologistQuestionModel.swift in Sources */,
 				184D60B727852A74009AE8CE /* AppoinmentModel.swift in Sources */,

@@ -46,7 +46,3 @@ Voluntier psychotherapist: Who aims through his work to build a society with goo
 
 
 
-https://user-images.githubusercontent.com/91885048/150605076-d0e8365d-ecb8-4ee1-adc2-027e63d84805.mov
-
-
-
