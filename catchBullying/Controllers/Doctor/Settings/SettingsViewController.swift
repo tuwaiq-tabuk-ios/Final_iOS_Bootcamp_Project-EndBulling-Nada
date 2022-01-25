@@ -11,16 +11,16 @@ import FirebaseAuth
 class SettingsViewController: UIViewController {
   @IBOutlet weak var tabelView: UITableView!
   
-  var  data : [[ProfileCellModel]] = [
+  var  data : [[ProfileCell]] = [
     [
-    ProfileCellModel(title: "Information", icon: "person", color: .systemBlue),
-    ProfileCellModel(title: "Change Email", icon:"envelope", color: .systemBlue),
-    ProfileCellModel(title: "Change Password", icon:"lock.rectangle.fill", color: .systemBlue),
-    ProfileCellModel(title: "Change Language", icon:"textformat.size.smaller.ja", color: .systemBlue)
+    ProfileCell(title: "Information", icon: "person", color: .systemBlue),
+    ProfileCell(title: "Change Email", icon:"envelope", color: .systemBlue),
+    ProfileCell(title: "Change Password", icon:"lock.rectangle.fill", color: .systemBlue),
+    ProfileCell(title: "Change Language", icon:"textformat.size.smaller.ja", color: .systemBlue)
   ],
   [
-    ProfileCellModel(title: "Logout", icon: "power", color: .systemRed),
-    ProfileCellModel(title: "Delete Account",           icon: "trash.square", color: .red)
+    ProfileCell(title: "Logout", icon: "power", color: .systemRed),
+    ProfileCell(title: "Delete Account",           icon: "trash.square", color: .red)
   ]
 ]
   
@@ -56,15 +56,15 @@ class SettingsViewController: UIViewController {
     var total: Int = 0
     var deleted: Int = 0
     
-    FirestoreRepository.shared.read(collection: K.collections.doctors.rawValue,
-                             field: field, value: id) { (items: [AppointmentModel]) in
+    FirestoreRepository.shared.read(collection: K.Collections.doctors,
+                             field: field, value: id) { (items: [Appointment]) in
       if items.count == 0 {
         completion()
         return
       }
       total = items.count
       for item in items {
-        FirestoreRepository.shared.delete(collection: K.collections.doctors.rawValue,
+        FirestoreRepository.shared.delete(collection: K.Collections.doctors,
                                    documentID: item.docID!) {
           deleted += 1
           if total == deleted {
@@ -78,11 +78,11 @@ class SettingsViewController: UIViewController {
   private func deleteAccount() {
     self.startLoading()
     
-    let profileFolder: String = user.isDoctor ? K.collections.doctors.rawValue : K.collections.patients.rawValue
+    let profileFolder: String = user.isDoctor ? K.Collections.doctors : K.Collections.patients
     let profileDocID: String = user.isDoctor ? doctorProfile.docID! : patientProfile.docID!
     let field: String = user.isDoctor ? "doctorID" : "patientID"
     
-    FirestoreRepository.shared.delete(collection: K.collections.users.rawValue, documentID: user.docID!) {
+    FirestoreRepository.shared.delete(collection: K.Collections.users, documentID: user.docID!) {
       FirestoreRepository.shared.delete(collection: profileFolder, documentID: profileDocID) {
         self.deleteAppointments(field: field, id: user.id) {
           Auth.auth().currentUser?.delete(completion: { error in
@@ -127,11 +127,11 @@ extension SettingsViewController : UITableViewDelegate , UITableViewDataSource {
     
     switch data[indexPath.section][indexPath.row].title {
     case "Information":
-      self.performSegue(withIdentifier: K.segues.go_to_InformationViewController.rawValue, sender: nil)
+      self.performSegue(withIdentifier: K.Segues.go_to_InformationViewController, sender: nil)
     case "Change Email":
-      self.performSegue(withIdentifier: K.segues.go_to_ChangeEmailViewController.rawValue, sender: nil)
+      self.performSegue(withIdentifier: K.Segues.go_to_ChangeEmailViewController, sender: nil)
     case "Change Password":
-      self.performSegue(withIdentifier: K.segues.go_to_ChangePasswordViewController.rawValue, sender: nil)
+      self.performSegue(withIdentifier: K.Segues.go_to_ChangePasswordViewController, sender: nil)
     case "Change Language":
       let url = URL(string: UIApplication.openSettingsURLString)!
       UIApplication.shared.open(url)

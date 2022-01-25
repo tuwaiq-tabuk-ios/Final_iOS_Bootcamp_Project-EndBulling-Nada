@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestoreSwift
 
-struct PatientModel: Codable {
+struct Patient: Codable {
   @DocumentID var docID: String?
   var id :String
   var nickname: String

@@ -17,10 +17,10 @@ class DoctorsListViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   
   // MARK: - Properties
-  var data : [DoctorModel] = []
+  var data : [Doctor] = []
   
   var currentDescription: String = ""
-  var selectedProfile: DoctorModel?
+  var selectedProfile: Doctor?
   
   
   
@@ -42,7 +42,7 @@ class DoctorsListViewController: UIViewController {
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == K.segues.go_to_DoctorProfileDetailsViewController.rawValue {
+    if segue.identifier == K.Segues.go_to_DoctorProfileDetailsViewController {
       if let detailsVC = segue.destination as? DoctorProfileDetailsViewController {
         detailsVC.selectedProfile = selectedProfile
       }
@@ -56,7 +56,7 @@ class DoctorsListViewController: UIViewController {
     self.startLoading()
     data.removeAll()
     
-    FirestoreRepository.shared.read(collection: K.collections.doctors.rawValue) { (items: [DoctorModel]) in
+    FirestoreRepository.shared.read(collection: K.Collections.doctors) { (items: [Doctor]) in
       self.data = items
       self.tableView.reloadData()
       self.stopLoading()
@@ -93,7 +93,7 @@ extension DoctorsListViewController : UITableViewDelegate , UITableViewDataSourc
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     selectedProfile = data[indexPath.row]
-    self.performSegue(withIdentifier: K.segues.go_to_DoctorProfileDetailsViewController.rawValue, sender: self)
+    self.performSegue(withIdentifier: K.Segues.go_to_DoctorProfileDetailsViewController, sender: self)
   }
   
   func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {

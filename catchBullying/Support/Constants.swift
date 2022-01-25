@@ -8,36 +8,35 @@
 import UIKit
 import SwiftUI
 
-var user: UserModel!
-var patientProfile: PatientModel!
-var doctorProfile: DoctorModel!
+var user: FirestoreUser!
+var patientProfile: Patient!
+var doctorProfile: Doctor!
 var profileImage: UIImage?
 var isUpdating: Bool = false
 
 struct K {
   
-  enum collections: String {
-    case users
-    case patients
-    case doctors
-    case conversations
-    case appointments
+  struct Collections {
+    static var users = "users"
+    static var patients = "patients"
+    static var doctors = "doctors"
+    static var conversations = "conversations"
+    static var appointments = "appointments"
   }
   
-  enum segues: String {
-    case go_to_PatientProfileDetailsViewController
-    case go_to_DoctorProfileDetailsViewController
-    case go_to_AppointmentSelectorViewController
-    case go_to_VideoPlayerViewController
-    case go_to_QuestionsViewController
-    case go_to_InformationPatientViewController
-    case go_to_ChangeEmailViewController
-    case go_to_ChangePasswordViewController
-    case go_to_ImportantNumbersViewController
-    case go_to_DateSelectorViewController
-    case go_to_InformationViewController
-    case go_to_ChatViewController
-   
+  struct Segues {
+    static var go_to_PatientProfileDetailsViewController = "go_to_PatientProfileDetailsViewController"
+    static var go_to_DoctorProfileDetailsViewController = "go_to_DoctorProfileDetailsViewController"
+    static var go_to_AppointmentSelectorViewController = "go_to_AppointmentSelectorViewController"
+    static var go_to_VideoPlayerViewController = "go_to_VideoPlayerViewController"
+    static var go_to_QuestionsViewController = "go_to_QuestionsViewController"
+    static var go_to_InformationPatientViewController = "go_to_InformationPatientViewController"
+    static var go_to_ChangeEmailViewController = "go_to_ChangeEmailViewController"
+    static var go_to_ChangePasswordViewController = "go_to_ChangePasswordViewController"
+    static var go_to_ImportantNumbersViewController = "go_to_ImportantNumbersViewController"
+    static var go_to_DateSelectorViewController = "go_to_DateSelectorViewController"
+    static var go_to_InformationViewController = "go_to_InformationViewController"
+    static var go_to_ChatViewController = "go_to_ChatViewController"
   }
   
 }

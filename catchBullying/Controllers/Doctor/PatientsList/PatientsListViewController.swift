@@ -12,8 +12,8 @@ class PatientsListViewController: UIViewController {
   @IBOutlet weak var tabelView: UITableView!
   
   // MARK: - Properties
-  var patients: [PatientModel] = []
-  var selectedProfile: PatientModel?
+  var patients: [Patient] = []
+  var selectedProfile: Patient?
   
   
   // MARK: - Methods
@@ -21,7 +21,7 @@ class PatientsListViewController: UIViewController {
     var conversations: [ConversationModel] = []
     var ids: Set<String> = []
     
-    FirestoreRepository.shared.read(collection: K.collections.conversations.rawValue, field: "usersIDs", valueAny: [user.id]) { (items: [ConversationModel]) in
+    FirestoreRepository.shared.read(collection: K.Collections.conversations, field: "usersIDs", valueAny: [user.id]) { (items: [ConversationModel]) in
       conversations = items
       
       for conversation in conversations {
@@ -44,7 +44,7 @@ class PatientsListViewController: UIViewController {
     getIds { ids in
       if ids.count == 0 { return }
       self.patients.removeAll()
-      FirestoreRepository.shared.read(collection: K.collections.patients.rawValue, field: "id", values: ids) { (items: [PatientModel]) in
+      FirestoreRepository.shared.read(collection: K.Collections.patients, field: "id", values: ids) { (items: [Patient]) in
         self.patients = items
         self.tabelView.reloadData()
         self.stopLoading()
@@ -66,7 +66,7 @@ class PatientsListViewController: UIViewController {
   
   // MARK: - Navigation
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == K.segues.go_to_PatientProfileDetailsViewController.rawValue {
+    if segue.identifier == K.Segues.go_to_PatientProfileDetailsViewController {
       let vc = segue.destination as! PatientProfileDetailsViewController
       vc.selectedProfile = selectedProfile
     }
@@ -108,6 +108,6 @@ extension PatientsListViewController : UITableViewDelegate , UITableViewDataSour
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     selectedProfile = patients[indexPath.row]
-    self.performSegue(withIdentifier: K.segues.go_to_PatientProfileDetailsViewController.rawValue, sender: self)
+    self.performSegue(withIdentifier: K.Segues.go_to_PatientProfileDetailsViewController, sender: self)
   }
 }

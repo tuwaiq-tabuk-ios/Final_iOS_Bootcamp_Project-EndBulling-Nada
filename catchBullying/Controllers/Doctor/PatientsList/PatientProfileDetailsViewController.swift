@@ -17,7 +17,7 @@ class PatientProfileDetailsViewController: UIViewController {
   @IBOutlet weak var descriptionField: UITextView!
   
   
-  var selectedProfile: PatientModel?
+  var selectedProfile: Patient?
   
   
   // MARK: - View controller lifecycle

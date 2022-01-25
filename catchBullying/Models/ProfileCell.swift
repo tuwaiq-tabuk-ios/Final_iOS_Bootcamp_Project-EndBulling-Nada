@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct ProfileCellModel {
+struct ProfileCell {
   var title: String
   var icon: String
   var color: UIColor

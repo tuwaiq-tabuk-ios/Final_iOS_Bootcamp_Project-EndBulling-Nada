@@ -18,7 +18,7 @@ struct ConversationUser: Codable {
 }
 struct ConversationModel: Codable {
   @DocumentID var docID: String?
-  var messages: [MessageModel]
+  var messages: [Message]
   var usersIDs: [String]
   var users: [ConversationUser]
 }

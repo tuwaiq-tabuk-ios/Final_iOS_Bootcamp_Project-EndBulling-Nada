@@ -152,14 +152,14 @@ class InformationPatientViewController: UIViewController, UINavigationController
         return
       }
 
-    let updatedProfile = PatientModel(id: patientProfile.id,
+    let updatedProfile = Patient(id: patientProfile.id,
                                       nickname: nickname,
                                       dateOfBirth: datePicker.date,
                                       imageURL: imageURL ?? "",
                                       description: description,
                                       answers: [])
     
-    FirestoreRepository.shared.update(collection: K.collections.patients.rawValue, documentID: patientProfile.docID!, document: updatedProfile) {
+    FirestoreRepository.shared.update(collection: K.Collections.patients, documentID: patientProfile.docID!, document: updatedProfile) {
       patientProfile = updatedProfile
       self.navigationController?.dismiss(animated: true, completion: nil)
     }
@@ -177,11 +177,6 @@ class InformationPatientViewController: UIViewController, UINavigationController
   
   private func saveProfileImageUrlInUserDetails(url: String) {
     imageURL = url
-//    patientProfile.imageURL = url
-//
-//    FirestoreRepository.shared.update(collection: K.collections.patients.rawValue, documentID: patientProfile.docID!, document: patientProfile) {
-//      self.stopLoading()
-//    }
   }
   
 }

@@ -48,7 +48,7 @@ class DateSelectorViewController: UIViewController {
     }
     doctorProfile.availableDates.append(datePicker.date)
     
-    FirestoreRepository.shared.update(collection: K.collections.doctors.rawValue,
+    FirestoreRepository.shared.update(collection: K.Collections.doctors,
                                documentID: doctorProfile.docID!,
                                document: doctorProfile) {
       self.navigationController?.popViewController(animated: true)

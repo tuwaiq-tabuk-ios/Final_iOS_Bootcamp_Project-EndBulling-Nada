@@ -14,13 +14,13 @@ class ImportantNumbersViewController: UIViewController {
   @IBOutlet weak var tabelView: UITableView!
 
   // MARK: - Properties
-  var importantNumbersarray : [ImportantNumberModel] = [
-    ImportantNumberModel( title: "Child HelpLine " ,                            phoneNumber: "116111"     ,     icon: "phone"),
-    ImportantNumberModel( title: "Center Against Violence and Abuse" ,          phoneNumber: "1919"       ,      icon: "phone"),
-    ImportantNumberModel( title: "ProtectCommittee in Riyadh Province" ,        phoneNumber: "0112075242" ,      icon: "phone"),
-    ImportantNumberModel( title: "ProtectCommittee in Makkah ",                 phoneNumber: "144235048"  ,      icon: "phone"),
-    ImportantNumberModel( title: "ProtectCommittee in Tabuk",                   phoneNumber: "14423504845",      icon: "phone"),
-    ImportantNumberModel( title: "Protection Committee in Al-Baha Province"  ,  phoneNumber: "146629932"  ,      icon: "phone")
+  var importantNumbersarray : [ImportantNumber] = [
+    ImportantNumber( title: "Child HelpLine " ,                            phoneNumber: "116111"     ,     icon: "phone"),
+    ImportantNumber( title: "Center Against Violence and Abuse" ,          phoneNumber: "1919"       ,      icon: "phone"),
+    ImportantNumber( title: "ProtectCommittee in Riyadh Province" ,        phoneNumber: "0112075242" ,      icon: "phone"),
+    ImportantNumber( title: "ProtectCommittee in Makkah ",                 phoneNumber: "144235048"  ,      icon: "phone"),
+    ImportantNumber( title: "ProtectCommittee in Tabuk",                   phoneNumber: "14423504845",      icon: "phone"),
+    ImportantNumber( title: "Protection Committee in Al-Baha Province"  ,  phoneNumber: "146629932"  ,      icon: "phone")
   ]
    
   

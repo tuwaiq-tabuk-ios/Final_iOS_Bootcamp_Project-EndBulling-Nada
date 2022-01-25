@@ -11,7 +11,7 @@ import FirebaseFirestoreSwift
 
 class AppointmentSelectorViewController: UIViewController {
   
-  var selectedProfile: DoctorModel?
+  var selectedProfile: Doctor?
   var booking: Bool = false
   
   
@@ -75,13 +75,13 @@ extension AppointmentSelectorViewController : UITableViewDelegate , UITableViewD
   
   private func createZoom(date: Date) {
     booking = true
-    let appointment = AppointmentModel(patientID: patientProfile.id, patientName: patientProfile.nickname,
+    let appointment = Appointment(patientID: patientProfile.id, patientName: patientProfile.nickname,
                                        doctorID: selectedProfile!.id,doctorName: selectedProfile!.fullName,
                                        date: date,
                                        zoom: true
     )
     
-    FirestoreRepository.shared.create(collection: K.collections.appointments.rawValue, document: appointment) { _ in
+    FirestoreRepository.shared.create(collection: K.Collections.appointments, document: appointment) { _ in
       self.booking = false
       self.dismiss(animated: true, completion: nil)
       
@@ -91,13 +91,13 @@ extension AppointmentSelectorViewController : UITableViewDelegate , UITableViewD
   
   private func createChat(date: Date) {
     booking = true
-    let appointment = AppointmentModel(patientID: patientProfile.id, patientName: patientProfile.nickname,
+    let appointment = Appointment(patientID: patientProfile.id, patientName: patientProfile.nickname,
                                        doctorID: selectedProfile!.id,doctorName: selectedProfile!.fullName,
                                        date: date,
                                        zoom: false
     )
     
-    FirestoreRepository.shared.create(collection:  K.collections.appointments.rawValue, document: appointment) { _ in
+    FirestoreRepository.shared.create(collection:  K.Collections.appointments, document: appointment) { _ in
       self.booking = false
       self.dismiss(animated: true, completion: nil)
       //self.navigationController?.dismiss(animated: true, completion: nil)

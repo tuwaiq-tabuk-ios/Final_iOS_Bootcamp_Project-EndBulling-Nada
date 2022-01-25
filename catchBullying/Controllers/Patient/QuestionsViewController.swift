@@ -15,20 +15,20 @@ class QuestionsViewController: UIViewController {
   // MARK: - Properties
   var current: Int = 0
   var answers: [Int] = []
-  let questions: [PsicologistQuestionModel] = [
-    PsicologistQuestionModel(question: "Gender",
+  let questions: [PsicologistQuestion] = [
+    PsicologistQuestion(question: "Gender",
                         answers:["Male" , "Female" ,"Other"]),
-    PsicologistQuestionModel(question: "Do you currentiy have a job?",
+    PsicologistQuestion(question: "Do you currentiy have a job?",
                         answers:["Yes" , "No" ,"Prefer not answer"]),
-    PsicologistQuestionModel(question: "Have you taken a psychiatric medication befor?",
+    PsicologistQuestion(question: "Have you taken a psychiatric medication befor?",
                         answers: ["Yes" , "No" ,"Prefer not answer"]),
-    PsicologistQuestionModel(question: "Does your family have a history of psychiatrist counseling?",
+    PsicologistQuestion(question: "Does your family have a history of psychiatrist counseling?",
                         answers: ["Yes" , "No" ,"Prefer not answer"]),
-    PsicologistQuestionModel(question: "Were you subjected to domestic violence (verbal , psychological, physical, sexual , negligence ...)?",
+    PsicologistQuestion(question: "Were you subjected to domestic violence (verbal , psychological, physical, sexual , negligence ...)?",
                         answers: ["Yes" , "No" ,"Prefer not answer"]),
-    PsicologistQuestionModel(question: "Do you think of hurting yourself or have suicidal thoughts?",
+    PsicologistQuestion(question: "Do you think of hurting yourself or have suicidal thoughts?",
                         answers: ["Yes" , "No" ,"Prefer not answer"]),
-    PsicologistQuestionModel(question: "Do you plan on committing suicide?",
+    PsicologistQuestion(question: "Do you plan on committing suicide?",
                         answers: ["Yes" , "No" ,"Prefer not answer"])
     
   ]
@@ -72,7 +72,7 @@ class QuestionsViewController: UIViewController {
       } else {
         patientProfile.answers = answers
         
-        FirestoreRepository.shared.update(collection: K.collections.patients.rawValue,
+        FirestoreRepository.shared.update(collection: K.Collections.patients,
                                    documentID: patientProfile.docID!,
                                    document: patientProfile) {
           let controller = self.storyboard?.instantiateViewController(identifier: "UserHomeVC") as! PatientHomeTabBarController

@@ -131,7 +131,7 @@ class InformationViewController: UIViewController, UINavigationControllerDelegat
             return
           }
     
-    let updatedProfile = DoctorModel(docID: doctorProfile.docID,
+    let updatedProfile = Doctor(docID: doctorProfile.docID,
       id: doctorProfile.id,
                                      firstName: firstName,
                                      lastName: lastName,
@@ -143,7 +143,7 @@ class InformationViewController: UIViewController, UINavigationControllerDelegat
                                      availableDates: [], description: description,
                                      answers: doctorProfile.answers)
     
-    FirestoreRepository.shared.update(collection: K.collections.doctors.rawValue,
+    FirestoreRepository.shared.update(collection: K.Collections.doctors,
                                documentID: doctorProfile.docID!,
                                document: updatedProfile) {
       doctorProfile = updatedProfile
