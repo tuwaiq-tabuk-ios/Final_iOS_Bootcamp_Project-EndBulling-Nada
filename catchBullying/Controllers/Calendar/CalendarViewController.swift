@@ -14,7 +14,7 @@ class CalendarViewController: UIViewController {
   @IBOutlet var tableView: UITableView!
   
   // MARK: - Properties
-  var appointments: [AppointmentModel] = []
+  var appointments: [Appointment] = []
   
 
   
@@ -36,9 +36,9 @@ class CalendarViewController: UIViewController {
   func fetchData() {
     self.startLoading()
     appointments.removeAll()
-    FirestoreRepository.shared.read(collection: K.collections.appointments.rawValue,
+    FirestoreRepository.shared.read(collection: K.Collections.appointments,
                              field: user.isDoctor ? "doctorID" : "patientID",
-                             value: user.id) { (items: [AppointmentModel]) in
+                             value: user.id) { (items: [Appointment]) in
       self.appointments = items
       self.appointments.sort { a1, a2 in
         return a1.date > a2.date

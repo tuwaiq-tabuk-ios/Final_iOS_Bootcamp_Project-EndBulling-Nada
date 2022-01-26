@@ -15,24 +15,24 @@ class ProfileViewController: UIViewController {
   // MARK: - Properties
   private var deleting: Bool = false
   
-  let data: [[ProfileCellModel]] = [
+  let data: [[ProfileCell]] = [
     [
-      ProfileCellModel(title: "Information",                            icon: "person",
+      ProfileCell(title: "Information",                            icon: "person",
                        
                        color: .systemBlue),
-      ProfileCellModel(title: "Manage My Profile",          icon: "person.crop.circle.badge.checkmark.fill",                     color: .systemBlue),
-      ProfileCellModel(title: "Change Email",            icon: "envelope",                                    color: .systemBlue),
-      ProfileCellModel(title: "Change Password",            icon: "lock.rectangle.fill",                                    color: .systemBlue)
+      ProfileCell(title: "Manage My Profile",          icon: "person.crop.circle.badge.checkmark.fill",                     color: .systemBlue),
+      ProfileCell(title: "Change Email",            icon: "envelope",                                    color: .systemBlue),
+      ProfileCell(title: "Change Password",            icon: "lock.rectangle.fill",                                    color: .systemBlue)
     ],
     [
       
-      ProfileCellModel(title: "Important Numbers for You",  icon: "phone",                                                   color: .systemBlue)
+      ProfileCell(title: "Important Numbers for You",  icon: "phone",                                                   color: .systemBlue)
       ,
-      ProfileCellModel(title: "Change Language",            icon: "textformat.size.larger.ja",                                    color: .systemBlue)
+      ProfileCell(title: "Change Language",            icon: "textformat.size.larger.ja",                                    color: .systemBlue)
     ],
     [
-      ProfileCellModel(title: "Logout",                     icon: "power", color: .systemRed),
-      ProfileCellModel(title: "Delete Account",             icon: "trash.square", color: .red)
+      ProfileCell(title: "Logout",                     icon: "power", color: .systemRed),
+      ProfileCell(title: "Delete Account",             icon: "trash.square", color: .red)
     ]
     
   ]
@@ -84,14 +84,14 @@ class ProfileViewController: UIViewController {
     var total: Int = 0
     var deleted: Int = 0
     
-    FirestoreRepository.shared.read(collection:  K.collections.appointments.rawValue, field: field, value: id) { (items: [AppointmentModel]) in
+    FirestoreRepository.shared.read(collection:  K.Collections.appointments, field: field, value: id) { (items: [Appointment]) in
       if items.count == 0 {
         completion()
         return
       }
       total = items.count
       for item in items {
-        FirestoreRepository.shared.delete(collection:  K.collections.appointments.rawValue, documentID: item.docID!) {
+        FirestoreRepository.shared.delete(collection:  K.Collections.appointments, documentID: item.docID!) {
           deleted += 1
           if total == deleted {
             completion()
@@ -105,11 +105,11 @@ class ProfileViewController: UIViewController {
     if deleting { return }
     deleting = true
     
-    let profileFolder: String = user.isDoctor ? K.collections.doctors.rawValue : K.collections.patients.rawValue
+    let profileFolder: String = user.isDoctor ? K.Collections.doctors : K.Collections.patients
     let profileDocID: String = user.isDoctor ? doctorProfile.docID! : patientProfile.docID!
     let field: String = user.isDoctor ? "doctorID" : "patientID"
     
-    FirestoreRepository.shared.delete(collection: K.collections.users.rawValue, documentID: user.docID!) {
+    FirestoreRepository.shared.delete(collection: K.Collections.users, documentID: user.docID!) {
       FirestoreRepository.shared.delete(collection: profileFolder, documentID: profileDocID) {
         self.deleteAppointments(field: field, id: user.id) {
           Auth.auth().currentUser?.delete(completion: { error in
@@ -148,20 +148,20 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     tableView.deselectRow(at: indexPath, animated: true)
     switch data[indexPath.section][indexPath.row].title {
     case "Information":
-      self.performSegue(withIdentifier: K.segues.go_to_InformationPatientViewController.rawValue, sender: nil)
+      self.performSegue(withIdentifier: K.Segues.go_to_InformationPatientViewController, sender: nil)
     case "Manage My Profile":
-      self.performSegue(withIdentifier: K.segues.go_to_QuestionsViewController.rawValue, sender: nil)
+      self.performSegue(withIdentifier: K.Segues.go_to_QuestionsViewController, sender: nil)
     case "Change Email":
-      self.performSegue(withIdentifier: K.segues.go_to_ChangeEmailViewController.rawValue, sender: nil)
+      self.performSegue(withIdentifier: K.Segues.go_to_ChangeEmailViewController, sender: nil)
     case "Change Password":
-      self.performSegue(withIdentifier:  K.segues.go_to_ChangePasswordViewController.rawValue, sender: nil)
+      self.performSegue(withIdentifier:  K.Segues.go_to_ChangePasswordViewController, sender: nil)
     case "Change Language":
       let url = URL(string: UIApplication.openSettingsURLString)!
       UIApplication.shared.open(url)
     case "Contact Customer Service":
       print("Contact Customer Service")
     case "Important Numbers for You":
-      self.performSegue(withIdentifier: K.segues.go_to_ImportantNumbersViewController.rawValue, sender: nil)
+      self.performSegue(withIdentifier: K.Segues.go_to_ImportantNumbersViewController, sender: nil)
     case "Logout":
       do {
         try Auth.auth().signOut()

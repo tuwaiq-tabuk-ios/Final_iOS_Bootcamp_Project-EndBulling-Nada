@@ -18,7 +18,7 @@ class MessageCell: UITableViewCell {
         super.awakeFromNib()
     }
   
-  public func configure(message: MessageModel) {
+  public func configure(message: Message) {
     if message.sender == user.id {
       //messageBubble.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMaxYCorner, .layerMinXMaxYCorner]
       messageLabel.textAlignment = .right

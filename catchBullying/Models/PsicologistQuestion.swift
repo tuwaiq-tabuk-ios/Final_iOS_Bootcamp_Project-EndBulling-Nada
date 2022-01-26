@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct PsicologistQuestionModel {
+struct PsicologistQuestion {
 let question: String
 let answers: [String]
   

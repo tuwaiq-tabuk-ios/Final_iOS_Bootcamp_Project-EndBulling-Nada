@@ -19,7 +19,7 @@ class PatientsListCell: UITableViewCell {
     }
   
   // MARK: - Properties
-  var selectedProfile: PatientModel?
+  var selectedProfile: Patient?
   
   // MARK: - View controller lifecycle
     override func setSelected(_ selected: Bool, animated: Bool) {

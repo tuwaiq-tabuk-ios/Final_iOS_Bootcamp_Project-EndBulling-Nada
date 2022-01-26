@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct ImportantNumberModel {
+struct ImportantNumber {
 var title : String
 var phoneNumber : String
 var icon: String

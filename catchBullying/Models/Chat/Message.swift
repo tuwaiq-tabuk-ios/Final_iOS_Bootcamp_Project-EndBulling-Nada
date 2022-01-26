@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestoreSwift
 
-struct MessageModel: Codable {
+struct Message: Codable {
   var id: UUID
   var content: String
   var received: Bool

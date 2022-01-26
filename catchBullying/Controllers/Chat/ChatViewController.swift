@@ -38,7 +38,7 @@ class ChatViewController: UIViewController {
   
   // MARK: - Methods
   func fetchData() {
-    FirestoreRepository.shared.listen(collection: K.collections.conversations.rawValue,
+    FirestoreRepository.shared.listen(collection: K.Collections.conversations,
                                documentID: conversation!.docID!) { (item: ConversationModel) in
       self.conversation = item
       //      self.messages.sort(by: { $0.sentAt > $1.sentAt })
@@ -55,7 +55,7 @@ class ChatViewController: UIViewController {
   @IBAction func sendButtonPressed(_ sender: Any) {
     guard let message = messageTextField.text else { return }
     if message == "" { return }
-    let messageModel = MessageModel(id: UUID(),
+    let messageModel = Message(id: UUID(),
                                     content: message,
                                     received: false,
                                     sender: user.id,
@@ -63,7 +63,7 @@ class ChatViewController: UIViewController {
     
     conversation?.messages.append(messageModel)
     
-    FirestoreRepository.shared.update(collection: K.collections.conversations.rawValue,
+    FirestoreRepository.shared.update(collection: K.Collections.conversations,
                                documentID: conversation!.docID!,
                                document: conversation) {
       self.messageTextField.text = ""

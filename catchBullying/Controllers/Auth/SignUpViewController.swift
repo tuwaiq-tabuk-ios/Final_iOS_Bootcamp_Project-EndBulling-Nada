@@ -44,31 +44,31 @@ class SignUpViewController: UIViewController {
           self.stopLoading()
         } else {
           guard let usr = usr else { return }
-          var userModel = UserModel(id: usr.uid,
+          var userModel = FirestoreUser(id: usr.uid,
                                email: self.emailTextField.text!,
                                     isDoctor: self.userTypePicker.selectedSegmentIndex == 1)
           
-          FirestoreRepository.shared.create(collection: K.collections.users.rawValue, document: userModel) { userDocID in
+          FirestoreRepository.shared.create(collection: K.Collections.users, document: userModel) { userDocID in
             userModel.docID = userDocID
             user = userModel
             isUpdating = false
             
             if self.userTypePicker.selectedSegmentIndex == 0 {
-              var profileModel = PatientModel(id: user.id,
+              var profileModel = Patient(id: user.id,
                                               nickname: "",
                                               dateOfBirth: nil,
                                               imageURL: "",
                                               description: "",
                                               answers: [])
               
-              FirestoreRepository.shared.create(collection: K.collections.patients.rawValue, document: profileModel) { patientDocID in
+              FirestoreRepository.shared.create(collection: K.Collections.patients, document: profileModel) { patientDocID in
                 profileModel.docID = patientDocID
                 patientProfile = profileModel
                 self.stopLoading()
-                self.performSegue(withIdentifier: K.segues.go_to_QuestionsViewController.rawValue, sender: nil)
+                self.performSegue(withIdentifier: K.Segues.go_to_QuestionsViewController, sender: nil)
               }
             } else {
-              var profileModel = DoctorModel(id: user.id,
+              var profileModel = Doctor(id: user.id,
                                              firstName: "",
                                              lastName: "",
                                              mobileNumber: "",
@@ -79,7 +79,7 @@ class SignUpViewController: UIViewController {
                                              availableDates: [], description: "",
                                              answers: [])
               
-              FirestoreRepository.shared.create(collection: K.collections.doctors.rawValue, document: profileModel) { doctorDocID in
+              FirestoreRepository.shared.create(collection: K.Collections.doctors, document: profileModel) { doctorDocID in
                 profileModel.docID = doctorDocID
                 doctorProfile = profileModel
                 self.stopLoading()
