@@ -45,4 +45,36 @@ Voluntier psychotherapist: Who aims through his work to build a society with goo
    - The doctor recieves a notification  with the appointement with the bullied adolescent indicating the hour of the appointment and kind of appointement, chat or video with Zoom. 
 
 
+# User stories (patient)
+ When users are registering with their email and password the app asks them general psychologist questions
+The user can create and update its profile whith data like nickname, e-mail and also its problem.
+
+https://user-images.githubusercontent.com/91885048/151373715-b738dcd5-4849-4726-bf0a-3c441fec6774.MP4
+
+In the main screen the user can choose from several therapists that includes their experiences, methods of treatment and their Web site
+
+https://user-images.githubusercontent.com/91885048/151374061-f37233c6-aa4c-4544-967e-0b19f5c5b62c.MP4
+
+Once the user chooses a doctor, he can, through the calendar, make an appointment with a psychotherapist from the available appointments with the psychotherapist.
+The doctor can be contacted through chat or via the Zoom account found in the application.
+
+The calendar screen saves the appointments, the psychotherapist and the method of communication. Appointments can be deleted
+
+https://user-images.githubusercontent.com/91885048/151374236-c8b3ae0b-b118-43e7-bbb5-11c841a154b0.MP4
+
+You can chat with the therapist by selecting the chat on the therapist's page or in the tab bar
+
+https://user-images.githubusercontent.com/91885048/151374372-caac3c4f-0858-4bf2-bbed-55d94275fa9f.MP4
+
+A support area with past people's experiences, videos and stories.
+
+https://user-images.githubusercontent.com/91885048/151374566-20e73b2e-11c8-4046-a7b5-94cdece4f428.MP4
+
+
+Information screen
+
+https://user-images.githubusercontent.com/91885048/151374669-482adda9-ccf5-4da4-99c8-52a64474d850.MP4
+
+
+
 
